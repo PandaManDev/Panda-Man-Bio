@@ -16,7 +16,7 @@
     >
 
     <!-- =====================================================
-         SOCIAL / DISCORD SHARE EMBED
+         DISCORD / SOCIAL SHARE EMBED
     ====================================================== -->
 
     <meta property="og:type" content="website">
@@ -38,7 +38,7 @@
 
     <meta
         property="og:url"
-        content="YOUR-WEBSITE-LINK-HERE"
+        content="https://panda-man-bio-sigma.vercel.app/"
     >
 
     <meta
@@ -67,7 +67,7 @@
     >
 
     <!-- =====================================================
-         PAGE TITLE
+         TITLE
     ====================================================== -->
 
     <title>Panda Mans | Bio</title>
@@ -152,12 +152,15 @@
 
 
         /* =====================================================
-           BACKGROUND
+           PANDA MAN BACKGROUND
         ====================================================== */
 
         .background {
             position: fixed;
             inset: 0;
+
+            width: 100vw;
+            height: 100vh;
 
             z-index: -10;
 
@@ -204,7 +207,7 @@
 
 
         /* =====================================================
-           BACKGROUND OVERLAY
+           BACKGROUND DARK OVERLAY
         ====================================================== */
 
         .background::after {
@@ -788,10 +791,6 @@
         }
 
 
-        /* =====================================================
-           ONLINE
-        ====================================================== */
-
         .status.online {
             color: #d7ffe6;
 
@@ -828,10 +827,6 @@
         }
 
 
-        /* =====================================================
-           IDLE
-        ====================================================== */
-
         .status.idle {
             color: #fff1ca;
 
@@ -849,10 +844,6 @@
                 0 0 9px rgba(240,178,50,.8);
         }
 
-
-        /* =====================================================
-           DND
-        ====================================================== */
 
         .status.dnd {
             color: #ffdadd;
@@ -872,10 +863,6 @@
         }
 
 
-        /* =====================================================
-           OFFLINE
-        ====================================================== */
-
         .status.offline {
             color:
                 rgba(255,255,255,.62);
@@ -888,10 +875,6 @@
                 0 0 7px rgba(116,127,141,.5);
         }
 
-
-        /* =====================================================
-           CONNECTING
-        ====================================================== */
 
         .status.connecting {
             color:
@@ -925,7 +908,7 @@
 
 
         /* =====================================================
-           PFP
+           PROFILE IMAGE
         ====================================================== */
 
         .logo-wrap {
@@ -1284,7 +1267,7 @@
 
 
         /* =====================================================
-           SOCIAL ICON
+           ICON
         ====================================================== */
 
         .social-icon {
@@ -1320,7 +1303,7 @@
 
 
         /* =====================================================
-           SOCIAL TEXT
+           TEXT
         ====================================================== */
 
         .social-text {
@@ -1396,7 +1379,7 @@
 
 
         /* =====================================================
-           DISCORD BUTTON
+           DISCORD
         ====================================================== */
 
         .discord-button:hover {
@@ -1551,7 +1534,7 @@
 <body>
 
     <!-- =====================================================
-         BACKGROUND
+         PANDA MAN BACKGROUND
     ====================================================== -->
 
     <div
@@ -1625,7 +1608,7 @@
 
 
     <!-- =====================================================
-         MAIN
+         MAIN CARD
     ====================================================== -->
 
     <main>
@@ -1635,7 +1618,7 @@
             id="profile-card"
         >
 
-            <!-- CARD CORNERS -->
+            <!-- CORNERS -->
 
             <div class="corner corner-tl"></div>
             <div class="corner corner-tr"></div>
@@ -1644,7 +1627,7 @@
 
 
             <!-- =================================================
-                 LIVE DISCORD STATUS
+                 DISCORD STATUS
             ================================================== -->
 
             <div
@@ -1692,7 +1675,7 @@
 
 
             <!-- =================================================
-                 TYPING
+                 TYPING MESSAGE
             ================================================== -->
 
             <div class="subtitle">
@@ -1776,7 +1759,7 @@
                 <!-- ROBLOX -->
 
                 <a
-                    class="social-button roblox-button"
+                    class="social-button"
                     href="https://www.roblox.com/users/9659149141/profile"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -1815,7 +1798,7 @@
                 <!-- PLEASE PROCEED -->
 
                 <a
-                    class="social-button game-button"
+                    class="social-button"
                     href="https://www.roblox.com/games/101511354146772/Please-Proceed"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -1854,7 +1837,7 @@
                 <!-- INSTAGRAM -->
 
                 <a
-                    class="social-button instagram-button"
+                    class="social-button"
                     href="https://www.instagram.com/panda.man.official420/"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -1893,7 +1876,7 @@
                 <!-- THREADS -->
 
                 <a
-                    class="social-button threads-button"
+                    class="social-button"
                     href="https://www.threads.com/@panda.man.official420"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -1932,7 +1915,7 @@
                 <!-- TIKTOK -->
 
                 <a
-                    class="social-button tiktok-button"
+                    class="social-button"
                     href="https://www.tiktok.com/@panda.man.official"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -1971,7 +1954,7 @@
                 <!-- X -->
 
                 <a
-                    class="social-button x-button"
+                    class="social-button"
                     href="https://x.com/pandama58474678"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -2010,11 +1993,11 @@
                 <!-- REDDIT -->
 
                 <a
-                    class="social-button reddit-button"
+                    class="social-button"
                     href="https://www.reddit.com/user/PandaManOfficial420/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Open Panda Man Reddit profile"
+                    aria-label="Open Panda Man Reddit"
                 >
 
                     <span
@@ -2073,7 +2056,7 @@
     <script>
 
         /* =====================================================
-           KEEP PAGE TITLE
+           PAGE TITLE
         ====================================================== */
 
         document.title =
@@ -2081,7 +2064,7 @@
 
 
         /* =====================================================
-           DISCORD CONFIG
+           DISCORD / LANYARD
         ====================================================== */
 
         const DISCORD_ID =
@@ -2117,7 +2100,7 @@
 
 
         /* =====================================================
-           UPDATE STATUS
+           UPDATE DISCORD STATUS
         ====================================================== */
 
         function updateDiscordStatus(status) {
@@ -2197,7 +2180,7 @@
 
 
         /* =====================================================
-           CONNECTING STATUS
+           CONNECTING
         ====================================================== */
 
         function showConnecting() {
@@ -2219,7 +2202,7 @@
 
 
         /* =====================================================
-           GET INITIAL DISCORD STATUS
+           INITIAL STATUS
         ====================================================== */
 
         async function getDiscordStatus() {
@@ -2243,6 +2226,7 @@
                     throw new Error(
                         `Lanyard HTTP ${response.status}`
                     );
+
                 }
 
 
@@ -2266,6 +2250,7 @@
 
                 }
 
+
             } catch (error) {
 
                 console.error(
@@ -2273,10 +2258,15 @@
                     error
                 );
 
+
                 if (!receivedPresence) {
+
                     showConnecting();
+
                 }
+
             }
+
         }
 
 
@@ -2293,6 +2283,7 @@
                 clearInterval(
                     heartbeatTimer
                 );
+
             }
 
 
@@ -2318,17 +2309,20 @@
                     },
                     interval
                 );
+
         }
 
 
         /* =====================================================
-           CONNECT TO LANYARD
+           LANYARD WEBSOCKET
         ====================================================== */
 
         function connectDiscord() {
 
             if (manuallyClosed) {
+
                 return;
+
             }
 
 
@@ -2344,6 +2338,7 @@
             ) {
 
                 return;
+
             }
 
 
@@ -2379,9 +2374,7 @@
                                 );
 
 
-                            /* ==========================
-                               HELLO
-                            =========================== */
+                            /* HELLO */
 
                             if (
                                 packet.op === 1 &&
@@ -2395,13 +2388,17 @@
 
                                 discordSocket.send(
                                     JSON.stringify({
+
                                         op: 2,
 
                                         d: {
+
                                             subscribe_to_ids: [
                                                 DISCORD_ID
                                             ]
+
                                         }
+
                                     })
                                 );
 
@@ -2412,21 +2409,18 @@
 
 
                                 return;
+
                             }
 
 
-                            /* ==========================
-                               EVENTS
-                            =========================== */
+                            /* EVENTS */
 
                             if (
                                 packet.op === 0
                             ) {
 
 
-                                /* ==========================
-                                   INITIAL STATE
-                                =========================== */
+                                /* INIT STATE */
 
                                 if (
                                     packet.t ===
@@ -2461,16 +2455,16 @@
                                         updateDiscordStatus(
                                             "offline"
                                         );
+
                                     }
 
 
                                     return;
+
                                 }
 
 
-                                /* ==========================
-                                   LIVE UPDATE
-                                =========================== */
+                                /* PRESENCE UPDATE */
 
                                 if (
                                     packet.t ===
@@ -2494,10 +2488,12 @@
                                         updateDiscordStatus(
                                             presence.discord_status
                                         );
+
                                     }
 
 
                                     return;
+
                                 }
 
                             }
@@ -2511,6 +2507,7 @@
                             );
 
                         }
+
                     };
 
 
@@ -2536,6 +2533,7 @@
 
                             heartbeatTimer =
                                 null;
+
                         }
 
 
@@ -2543,9 +2541,7 @@
                             null;
 
 
-                        if (
-                            !manuallyClosed
-                        ) {
+                        if (!manuallyClosed) {
 
                             clearTimeout(
                                 reconnectTimer
@@ -2557,6 +2553,7 @@
                                     connectDiscord,
                                     5000
                                 );
+
                         }
 
                     };
@@ -2580,13 +2577,13 @@
                         connectDiscord,
                         5000
                     );
+
             }
+
         }
 
 
-        /* =====================================================
-           START DISCORD
-        ====================================================== */
+        /* START DISCORD */
 
         getDiscordStatus();
 
@@ -2658,6 +2655,7 @@
 
 
                     return;
+
                 }
 
 
@@ -2700,6 +2698,7 @@
 
 
                     return;
+
                 }
 
 
@@ -2707,7 +2706,9 @@
                     typeEffect,
                     35
                 );
+
             }
+
         }
 
 
@@ -2784,6 +2785,7 @@
 
                 }
             );
+
         }
 
 
@@ -2805,7 +2807,9 @@
                     if (
                         event.touches.length !== 1
                     ) {
+
                         return;
+
                     }
 
 
@@ -2832,7 +2836,9 @@
                     if (
                         event.touches.length !== 1
                     ) {
+
                         return;
+
                     }
 
 
@@ -2892,11 +2898,12 @@
                     passive: true
                 }
             );
+
         }
 
 
         /* =====================================================
-           RANDOMIZE PARTICLES
+           RANDOM PARTICLES
         ====================================================== */
 
         document
@@ -2924,7 +2931,7 @@
 
 
         /* =====================================================
-           KEEP TAB TITLE
+           KEEP TITLE
         ====================================================== */
 
         document.title =
