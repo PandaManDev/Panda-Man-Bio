@@ -8,15 +8,18 @@
         content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     >
 
-    <meta name="theme-color" content="#050505">
+    <title>Panda Mans | Bio</title>
 
     <meta
         name="description"
-        content="🐼 Panda Man | Bio — just vibing in panda mode."
+        content="🐼 Panda Man • just vibing in panda mode."
     >
 
+    <meta name="theme-color" content="#050505">
+
+
     <!-- =====================================================
-         DISCORD / SOCIAL SHARE EMBED
+         DISCORD / SOCIAL EMBED
     ====================================================== -->
 
     <meta property="og:type" content="website">
@@ -32,11 +35,6 @@
     >
 
     <meta
-        property="og:image"
-        content="https://github.com/PandaManDev/Panda-Man-Bio/blob/main/panda.man420-banner-1024.gif?raw=true"
-    >
-
-    <meta
         property="og:url"
         content="https://panda-man-bio-sigma.vercel.app/"
     >
@@ -45,6 +43,21 @@
         property="og:site_name"
         content="Panda Mans | Bio"
     >
+
+    <meta
+        property="og:image"
+        content="https://github.com/PandaManDev/Panda-Man-Bio/blob/main/panda.man420-banner-1024.gif?raw=true"
+    >
+
+    <meta
+        property="og:image:alt"
+        content="Panda Man animated banner"
+    >
+
+
+    <!-- =====================================================
+         TWITTER / X EMBED
+    ====================================================== -->
 
     <meta
         name="twitter:card"
@@ -66,11 +79,11 @@
         content="https://github.com/PandaManDev/Panda-Man-Bio/blob/main/panda.man420-banner-1024.gif?raw=true"
     >
 
-    <!-- =====================================================
-         TITLE
-    ====================================================== -->
+    <meta
+        name="twitter:image:alt"
+        content="Panda Man animated banner"
+    >
 
-    <title>Panda Mans | Bio</title>
 
     <!-- =====================================================
          FAVICON
@@ -93,6 +106,7 @@
         href="https://github.com/PandaManDev/Panda-Man-Bio/blob/main/panda.man420-avatar-1024.gif?raw=true"
     >
 
+
     <!-- =====================================================
          FONT
     ====================================================== -->
@@ -110,6 +124,7 @@
         rel="stylesheet"
     >
 
+
     <style>
 
         /* =====================================================
@@ -122,28 +137,38 @@
             box-sizing: border-box;
         }
 
+
         html {
             width: 100%;
             min-height: 100%;
+
             background: #050505;
+
             scroll-behavior: smooth;
         }
+
 
         body {
             width: 100%;
             min-height: 100vh;
+
             overflow-x: hidden;
 
             background: #050505;
-            color: white;
 
-            font-family: "Orbitron", sans-serif;
+            color: #fff;
+
+            font-family:
+                "Orbitron",
+                sans-serif;
         }
+
 
         a {
             color: inherit;
             text-decoration: none;
         }
+
 
         a,
         button {
@@ -152,11 +177,12 @@
 
 
         /* =====================================================
-           PANDA MAN BACKGROUND
+           FULL SCREEN PANDA BACKGROUND
         ====================================================== */
 
         .background {
             position: fixed;
+
             inset: 0;
 
             width: 100vw;
@@ -169,6 +195,7 @@
             background: #050505;
         }
 
+
         .background img {
             position: absolute;
 
@@ -178,12 +205,13 @@
             height: 104%;
 
             object-fit: cover;
+
             object-position: center;
 
             display: block;
 
             filter:
-                brightness(.46)
+                brightness(.48)
                 contrast(1.12)
                 saturate(.72);
 
@@ -192,6 +220,7 @@
             animation:
                 slowZoom 18s ease-in-out infinite alternate;
         }
+
 
         @keyframes slowZoom {
 
@@ -207,21 +236,22 @@
 
 
         /* =====================================================
-           BACKGROUND DARK OVERLAY
+           BACKGROUND OVERLAY
         ====================================================== */
 
         .background::after {
             content: "";
 
             position: absolute;
+
             inset: 0;
 
             background:
                 radial-gradient(
                     circle at center,
-                    rgba(0,0,0,.12) 0%,
-                    rgba(0,0,0,.5) 58%,
-                    rgba(0,0,0,.88) 100%
+                    rgba(0,0,0,.08) 0%,
+                    rgba(0,0,0,.48) 55%,
+                    rgba(0,0,0,.9) 100%
                 );
 
             pointer-events: none;
@@ -253,6 +283,7 @@
             animation:
                 backgroundNoise .35s steps(2) infinite;
         }
+
 
         @keyframes backgroundNoise {
 
@@ -289,6 +320,7 @@
 
         .grid {
             position: fixed;
+
             inset: 0;
 
             z-index: -4;
@@ -328,6 +360,7 @@
                 gridMove 22s linear infinite;
         }
 
+
         @keyframes gridMove {
 
             from {
@@ -347,6 +380,7 @@
 
         .grain {
             position: fixed;
+
             inset: 0;
 
             z-index: -3;
@@ -373,6 +407,7 @@
             content: "";
 
             position: fixed;
+
             inset: 0;
 
             z-index: -2;
@@ -395,6 +430,7 @@
 
         .floating-pandas {
             position: fixed;
+
             inset: 0;
 
             z-index: -1;
@@ -403,6 +439,7 @@
 
             overflow: hidden;
         }
+
 
         .panda {
             position: absolute;
@@ -417,36 +454,52 @@
                 pandaFloat linear infinite;
         }
 
+
         .panda:nth-child(1) {
             left: 8%;
             top: 22%;
+
             font-size: 25px;
+
             animation-duration: 14s;
         }
+
 
         .panda:nth-child(2) {
             left: 82%;
             top: 18%;
+
             font-size: 18px;
+
             animation-duration: 17s;
+
             animation-delay: -5s;
         }
+
 
         .panda:nth-child(3) {
             left: 14%;
             top: 78%;
+
             font-size: 19px;
+
             animation-duration: 19s;
+
             animation-delay: -9s;
         }
+
 
         .panda:nth-child(4) {
             left: 89%;
             top: 72%;
+
             font-size: 27px;
+
             animation-duration: 16s;
+
             animation-delay: -3s;
         }
+
 
         @keyframes pandaFloat {
 
@@ -489,6 +542,7 @@
 
         .particles {
             position: fixed;
+
             inset: 0;
 
             z-index: -1;
@@ -498,6 +552,7 @@
             overflow: hidden;
         }
 
+
         .particle {
             position: absolute;
 
@@ -506,14 +561,17 @@
 
             border-radius: 50%;
 
-            background: rgba(255,255,255,.55);
+            background:
+                rgba(255,255,255,.55);
 
             box-shadow:
-                0 0 8px rgba(255,255,255,.45);
+                0 0 8px
+                rgba(255,255,255,.45);
 
             animation:
                 particleFloat linear infinite;
         }
+
 
         .particle:nth-child(1) {
             left: 8%;
@@ -521,11 +579,13 @@
             animation-delay: -2s;
         }
 
+
         .particle:nth-child(2) {
             left: 17%;
             animation-duration: 11s;
             animation-delay: -6s;
         }
+
 
         .particle:nth-child(3) {
             left: 29%;
@@ -533,11 +593,13 @@
             animation-delay: -4s;
         }
 
+
         .particle:nth-child(4) {
             left: 41%;
             animation-duration: 13s;
             animation-delay: -8s;
         }
+
 
         .particle:nth-child(5) {
             left: 54%;
@@ -545,11 +607,13 @@
             animation-delay: -3s;
         }
 
+
         .particle:nth-child(6) {
             left: 67%;
             animation-duration: 12s;
             animation-delay: -7s;
         }
+
 
         .particle:nth-child(7) {
             left: 76%;
@@ -557,11 +621,13 @@
             animation-delay: -5s;
         }
 
+
         .particle:nth-child(8) {
             left: 88%;
             animation-duration: 14s;
             animation-delay: -10s;
         }
+
 
         .particle:nth-child(9) {
             left: 94%;
@@ -569,12 +635,16 @@
             animation-delay: -1s;
         }
 
+
         @keyframes particleFloat {
 
             0% {
                 bottom: -10px;
+
                 opacity: 0;
-                transform: translateX(0);
+
+                transform:
+                    translateX(0);
             }
 
             10% {
@@ -582,7 +652,8 @@
             }
 
             50% {
-                transform: translateX(30px);
+                transform:
+                    translateX(30px);
             }
 
             90% {
@@ -591,8 +662,11 @@
 
             100% {
                 bottom: 110%;
+
                 opacity: 0;
-                transform: translateX(-20px);
+
+                transform:
+                    translateX(-20px);
             }
 
         }
@@ -610,6 +684,7 @@
             display: flex;
 
             justify-content: center;
+
             align-items: center;
 
             padding: 40px 20px;
@@ -640,7 +715,8 @@
                 );
 
             border:
-                1px solid rgba(255,255,255,.12);
+                1px solid
+                rgba(255,255,255,.12);
 
             backdrop-filter:
                 blur(18px)
@@ -651,24 +727,33 @@
                 saturate(120%);
 
             box-shadow:
-                0 30px 90px rgba(0,0,0,.62),
-                inset 0 1px 0 rgba(255,255,255,.08);
+                0 30px 90px
+                rgba(0,0,0,.62),
+
+                inset 0 1px 0
+                rgba(255,255,255,.08);
 
             transition:
                 transform .18s ease,
                 box-shadow .3s ease;
         }
 
+
         .card:hover {
             box-shadow:
-                0 35px 100px rgba(0,0,0,.72),
-                0 0 45px rgba(255,255,255,.04),
-                inset 0 1px 0 rgba(255,255,255,.1);
+                0 35px 100px
+                rgba(0,0,0,.72),
+
+                0 0 45px
+                rgba(255,255,255,.04),
+
+                inset 0 1px 0
+                rgba(255,255,255,.1);
         }
 
 
         /* =====================================================
-           CORNERS
+           CARD CORNERS
         ====================================================== */
 
         .corner {
@@ -680,245 +765,74 @@
             pointer-events: none;
         }
 
+
         .corner::before,
         .corner::after {
             content: "";
 
             position: absolute;
 
-            background: rgba(255,255,255,.48);
+            background:
+                rgba(255,255,255,.48);
         }
+
 
         .corner::before {
             width: 100%;
             height: 1px;
         }
 
+
         .corner::after {
             width: 1px;
             height: 100%;
         }
+
 
         .corner-tl {
             top: 15px;
             left: 15px;
         }
 
+
         .corner-tr {
             top: 15px;
             right: 15px;
+
             transform: rotate(90deg);
         }
+
 
         .corner-bl {
             bottom: 15px;
             left: 15px;
+
             transform: rotate(-90deg);
         }
+
 
         .corner-br {
             bottom: 15px;
             right: 15px;
+
             transform: rotate(180deg);
         }
 
 
         /* =====================================================
-           DISCORD STATUS
-        ====================================================== */
-
-        .status {
-            position: relative;
-
-            width: fit-content;
-
-            margin:
-                0 auto
-                25px;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            gap: 9px;
-
-            padding:
-                8px
-                14px;
-
-            border-radius: 999px;
-
-            background:
-                rgba(0,0,0,.38);
-
-            border:
-                1px solid rgba(255,255,255,.1);
-
-            color:
-                rgba(255,255,255,.76);
-
-            font-size: 10px;
-
-            font-weight: 700;
-
-            letter-spacing: 1.6px;
-
-            text-transform: uppercase;
-
-            transition:
-                color .3s ease,
-                border-color .3s ease,
-                box-shadow .3s ease;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-
-            flex: 0 0 auto;
-
-            border-radius: 50%;
-
-            background: #747f8d;
-
-            box-shadow:
-                0 0 7px rgba(116,127,141,.5);
-
-            transition:
-                background .3s ease,
-                box-shadow .3s ease;
-        }
-
-
-        .status.online {
-            color: #d7ffe6;
-
-            border-color:
-                rgba(35,165,90,.28);
-
-            box-shadow:
-                0 0 20px rgba(35,165,90,.08);
-        }
-
-        .status.online .status-dot {
-            background: #23a55a;
-
-            box-shadow:
-                0 0 8px rgba(35,165,90,.8);
-
-            animation:
-                onlinePulse 2s ease-in-out infinite;
-        }
-
-        @keyframes onlinePulse {
-
-            0%,
-            100% {
-                box-shadow:
-                    0 0 6px rgba(35,165,90,.6);
-            }
-
-            50% {
-                box-shadow:
-                    0 0 14px rgba(35,165,90,1);
-            }
-
-        }
-
-
-        .status.idle {
-            color: #fff1ca;
-
-            border-color:
-                rgba(240,178,50,.28);
-
-            box-shadow:
-                0 0 20px rgba(240,178,50,.06);
-        }
-
-        .status.idle .status-dot {
-            background: #f0b232;
-
-            box-shadow:
-                0 0 9px rgba(240,178,50,.8);
-        }
-
-
-        .status.dnd {
-            color: #ffdadd;
-
-            border-color:
-                rgba(242,63,67,.3);
-
-            box-shadow:
-                0 0 20px rgba(242,63,67,.07);
-        }
-
-        .status.dnd .status-dot {
-            background: #f23f43;
-
-            box-shadow:
-                0 0 10px rgba(242,63,67,.85);
-        }
-
-
-        .status.offline {
-            color:
-                rgba(255,255,255,.62);
-        }
-
-        .status.offline .status-dot {
-            background: #747f8d;
-
-            box-shadow:
-                0 0 7px rgba(116,127,141,.5);
-        }
-
-
-        .status.connecting {
-            color:
-                rgba(255,255,255,.68);
-        }
-
-        .status.connecting .status-dot {
-            background: #aeb4bd;
-
-            box-shadow:
-                0 0 8px rgba(255,255,255,.35);
-
-            animation:
-                connectingPulse 1.2s ease-in-out infinite;
-        }
-
-        @keyframes connectingPulse {
-
-            0%,
-            100% {
-                opacity: .35;
-                transform: scale(.8);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-        }
-
-
-        /* =====================================================
-           PROFILE IMAGE
+           PROFILE PICTURE
         ====================================================== */
 
         .logo-wrap {
             display: flex;
 
             justify-content: center;
+
             align-items: center;
 
             margin-bottom: 22px;
         }
+
 
         .logo {
             position: relative;
@@ -938,13 +852,20 @@
                 );
 
             box-shadow:
-                0 0 0 1px rgba(255,255,255,.08),
-                0 0 35px rgba(255,255,255,.1),
-                0 18px 50px rgba(0,0,0,.55);
+                0 0 0 1px
+                rgba(255,255,255,.08),
+
+                0 0 35px
+                rgba(255,255,255,.1),
+
+                0 18px 50px
+                rgba(0,0,0,.55);
 
             animation:
-                logoFloat 5s ease-in-out infinite;
+                logoFloat 5s
+                ease-in-out infinite;
         }
+
 
         .logo::before {
             content: "";
@@ -956,11 +877,13 @@
             border-radius: 50%;
 
             border:
-                1px solid rgba(255,255,255,.09);
+                1px solid
+                rgba(255,255,255,.09);
 
             animation:
                 logoRing 4s linear infinite;
         }
+
 
         .logo img {
             width: 100%;
@@ -981,27 +904,33 @@
                 );
         }
 
+
         @keyframes logoFloat {
 
             0%,
             100% {
-                transform: translateY(0);
+                transform:
+                    translateY(0);
             }
 
             50% {
-                transform: translateY(-6px);
+                transform:
+                    translateY(-6px);
             }
 
         }
 
+
         @keyframes logoRing {
 
             from {
-                transform: rotate(0deg);
+                transform:
+                    rotate(0deg);
             }
 
             to {
-                transform: rotate(360deg);
+                transform:
+                    rotate(360deg);
             }
 
         }
@@ -1023,44 +952,57 @@
 
             font-weight: 900;
 
-            letter-spacing: .16em;
+            letter-spacing:
+                .16em;
 
             line-height: 1.1;
 
-            color: white;
+            color: #fff;
 
             text-shadow:
-                0 0 10px rgba(255,255,255,.16),
-                0 0 35px rgba(255,255,255,.08);
+                0 0 10px
+                rgba(255,255,255,.16),
+
+                0 0 35px
+                rgba(255,255,255,.08);
         }
+
 
         .title span {
             display: inline-block;
 
             animation:
-                titleGlow 4s ease-in-out infinite;
+                titleGlow 4s
+                ease-in-out infinite;
         }
+
 
         @keyframes titleGlow {
 
             0%,
             100% {
                 text-shadow:
-                    0 0 10px rgba(255,255,255,.12),
-                    0 0 30px rgba(255,255,255,.05);
+                    0 0 10px
+                    rgba(255,255,255,.12),
+
+                    0 0 30px
+                    rgba(255,255,255,.05);
             }
 
             50% {
                 text-shadow:
-                    0 0 18px rgba(255,255,255,.25),
-                    0 0 45px rgba(255,255,255,.1);
+                    0 0 18px
+                    rgba(255,255,255,.25),
+
+                    0 0 45px
+                    rgba(255,255,255,.1);
             }
 
         }
 
 
         /* =====================================================
-           TYPING
+           TYPING TEXT
         ====================================================== */
 
         .subtitle {
@@ -1077,10 +1019,13 @@
 
             font-weight: 500;
 
-            letter-spacing: .16em;
+            letter-spacing:
+                .16em;
 
-            text-transform: lowercase;
+            text-transform:
+                lowercase;
         }
+
 
         .cursor {
             display: inline-block;
@@ -1090,14 +1035,19 @@
 
             margin-left: 3px;
 
-            vertical-align: -2px;
+            vertical-align:
+                -2px;
 
             background:
                 rgba(255,255,255,.65);
 
             animation:
-                cursorBlink .8s steps(1) infinite;
+                cursorBlink
+                .8s
+                steps(1)
+                infinite;
         }
+
 
         @keyframes cursorBlink {
 
@@ -1126,10 +1076,9 @@
             gap: 13px;
 
             margin:
-                28px
-                0
-                23px;
+                28px 0 23px;
         }
+
 
         .divider-line {
             height: 1px;
@@ -1145,6 +1094,7 @@
                 );
         }
 
+
         .divider-panda {
             font-size: 15px;
 
@@ -1153,14 +1103,17 @@
             filter: grayscale(1);
 
             animation:
-                dividerPanda 3s ease-in-out infinite;
+                dividerPanda 3s
+                ease-in-out infinite;
         }
+
 
         @keyframes dividerPanda {
 
             0%,
             100% {
-                transform: scale(1);
+                transform:
+                    scale(1);
             }
 
             50% {
@@ -1184,6 +1137,7 @@
             gap: 10px;
         }
 
+
         .social-button {
             position: relative;
 
@@ -1198,13 +1152,13 @@
             gap: 14px;
 
             padding:
-                11px
-                14px;
+                11px 14px;
 
             border-radius: 14px;
 
             border:
-                1px solid rgba(255,255,255,.09);
+                1px solid
+                rgba(255,255,255,.09);
 
             background:
                 rgba(255,255,255,.035);
@@ -1217,6 +1171,7 @@
 
             overflow: hidden;
         }
+
 
         .social-button::before {
             content: "";
@@ -1240,10 +1195,12 @@
                 transform .55s ease;
         }
 
+
         .social-button:hover::before {
             transform:
                 translateX(110%);
         }
+
 
         .social-button:hover {
             transform:
@@ -1256,8 +1213,10 @@
                 rgba(255,255,255,.18);
 
             box-shadow:
-                0 12px 30px rgba(0,0,0,.25);
+                0 12px 30px
+                rgba(0,0,0,.25);
         }
+
 
         .social-button:active {
             transform:
@@ -1284,6 +1243,7 @@
             display: flex;
 
             align-items: center;
+
             justify-content: center;
 
             border-radius: 10px;
@@ -1292,9 +1252,10 @@
                 rgba(255,255,255,.065);
 
             border:
-                1px solid rgba(255,255,255,.08);
+                1px solid
+                rgba(255,255,255,.08);
 
-            color: white;
+            color: #fff;
 
             font-size: 18px;
 
@@ -1322,22 +1283,26 @@
             gap: 4px;
         }
 
+
         .social-text strong {
             font-size: 12px;
 
             font-weight: 800;
 
-            letter-spacing: .12em;
+            letter-spacing:
+                .12em;
 
-            color: white;
+            color: #fff;
         }
+
 
         .social-text small {
             font-size: 9px;
 
             font-weight: 500;
 
-            letter-spacing: .06em;
+            letter-spacing:
+                .06em;
 
             color:
                 rgba(255,255,255,.43);
@@ -1369,6 +1334,7 @@
                 color .22s ease;
         }
 
+
         .social-button:hover .arrow {
             transform:
                 translate(2px,-2px);
@@ -1379,7 +1345,7 @@
 
 
         /* =====================================================
-           DISCORD
+           DISCORD BUTTON
         ====================================================== */
 
         .discord-button:hover {
@@ -1390,8 +1356,10 @@
                 rgba(88,101,242,.08);
 
             box-shadow:
-                0 12px 35px rgba(88,101,242,.12);
+                0 12px 35px
+                rgba(88,101,242,.12);
         }
+
 
         .discord-button .social-icon {
             background:
@@ -1418,10 +1386,13 @@
 
             font-weight: 500;
 
-            letter-spacing: .18em;
+            letter-spacing:
+                .18em;
 
-            text-transform: lowercase;
+            text-transform:
+                lowercase;
         }
+
 
         .footer-panda {
             margin-left: 4px;
@@ -1438,7 +1409,8 @@
 
         .social-button:focus-visible {
             outline:
-                2px solid rgba(255,255,255,.65);
+                2px solid
+                rgba(255,255,255,.65);
 
             outline-offset: 3px;
         }
@@ -1452,39 +1424,44 @@
 
             main {
                 padding:
-                    25px
-                    14px;
+                    25px 14px;
             }
+
 
             .card {
                 padding:
-                    40px
-                    18px
-                    25px;
+                    40px 18px 25px;
 
                 border-radius: 21px;
             }
+
 
             .logo {
                 width: 105px;
                 height: 105px;
             }
 
+
             .title {
                 font-size: 30px;
 
-                letter-spacing: .12em;
+                letter-spacing:
+                    .12em;
             }
+
 
             .subtitle {
                 font-size: 9px;
 
-                letter-spacing: .11em;
+                letter-spacing:
+                    .11em;
             }
+
 
             .social-button {
                 min-height: 63px;
             }
+
 
             .social-icon {
                 width: 35px;
@@ -1493,9 +1470,11 @@
                 flex-basis: 35px;
             }
 
+
             .social-text strong {
                 font-size: 10px;
             }
+
 
             .social-text small {
                 font-size: 8px;
@@ -1513,7 +1492,8 @@
             *,
             *::before,
             *::after {
-                animation-duration: .001ms !important;
+                animation-duration:
+                    .001ms !important;
 
                 animation-iteration-count:
                     1 !important;
@@ -1533,8 +1513,9 @@
 
 <body>
 
+
     <!-- =====================================================
-         PANDA MAN BACKGROUND
+         PANDA BACKGROUND
     ====================================================== -->
 
     <div
@@ -1549,6 +1530,10 @@
 
     </div>
 
+
+    <!-- =====================================================
+         EFFECTS
+    ====================================================== -->
 
     <div
         class="background-noise"
@@ -1578,8 +1563,11 @@
     >
 
         <div class="panda">🐼</div>
+
         <div class="panda">🐼</div>
+
         <div class="panda">🐼</div>
+
         <div class="panda">🐼</div>
 
     </div>
@@ -1608,7 +1596,7 @@
 
 
     <!-- =====================================================
-         MAIN CARD
+         MAIN
     ====================================================== -->
 
     <main>
@@ -1618,33 +1606,18 @@
             id="profile-card"
         >
 
-            <!-- CORNERS -->
-
-            <div class="corner corner-tl"></div>
-            <div class="corner corner-tr"></div>
-            <div class="corner corner-bl"></div>
-            <div class="corner corner-br"></div>
-
 
             <!-- =================================================
-                 DISCORD STATUS
+                 CORNERS
             ================================================== -->
 
-            <div
-                class="status connecting"
-                id="discord-status"
-            >
+            <div class="corner corner-tl"></div>
 
-                <span
-                    class="status-dot"
-                    id="status-dot"
-                ></span>
+            <div class="corner corner-tr"></div>
 
-                <span id="status-text">
-                    Connecting to Discord...
-                </span>
+            <div class="corner corner-bl"></div>
 
-            </div>
+            <div class="corner corner-br"></div>
 
 
             <!-- =================================================
@@ -1666,16 +1639,20 @@
 
 
             <!-- =================================================
-                 TITLE
+                 NAME
             ================================================== -->
 
             <h1 class="title">
-                <span>PANDA MAN</span>
+
+                <span>
+                    PANDA MAN
+                </span>
+
             </h1>
 
 
             <!-- =================================================
-                 TYPING MESSAGE
+                 TYPING TEXT
             ================================================== -->
 
             <div class="subtitle">
@@ -1724,7 +1701,6 @@
                     href="https://discord.com/users/1535113286675206214"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Open Panda Man Discord profile"
                 >
 
                     <span
@@ -1733,6 +1709,7 @@
                     >
                         ◉
                     </span>
+
 
                     <span class="social-text">
 
@@ -1745,6 +1722,7 @@
                         </small>
 
                     </span>
+
 
                     <span
                         class="arrow"
@@ -1763,7 +1741,6 @@
                     href="https://www.roblox.com/users/9659149141/profile"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Open Panda Man Roblox profile"
                 >
 
                     <span
@@ -1772,6 +1749,7 @@
                     >
                         ◈
                     </span>
+
 
                     <span class="social-text">
 
@@ -1784,6 +1762,7 @@
                         </small>
 
                     </span>
+
 
                     <span
                         class="arrow"
@@ -1802,7 +1781,6 @@
                     href="https://www.roblox.com/games/101511354146772/Please-Proceed"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Play Please Proceed on Roblox"
                 >
 
                     <span
@@ -1811,6 +1789,7 @@
                     >
                         ▶
                     </span>
+
 
                     <span class="social-text">
 
@@ -1823,6 +1802,7 @@
                         </small>
 
                     </span>
+
 
                     <span
                         class="arrow"
@@ -1841,7 +1821,6 @@
                     href="https://www.instagram.com/panda.man.official420/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Open Panda Man Instagram"
                 >
 
                     <span
@@ -1850,6 +1829,7 @@
                     >
                         ◎
                     </span>
+
 
                     <span class="social-text">
 
@@ -1862,6 +1842,7 @@
                         </small>
 
                     </span>
+
 
                     <span
                         class="arrow"
@@ -1880,7 +1861,6 @@
                     href="https://www.threads.com/@panda.man.official420"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Open Panda Man Threads"
                 >
 
                     <span
@@ -1889,6 +1869,7 @@
                     >
                         @
                     </span>
+
 
                     <span class="social-text">
 
@@ -1901,6 +1882,7 @@
                         </small>
 
                     </span>
+
 
                     <span
                         class="arrow"
@@ -1919,7 +1901,6 @@
                     href="https://www.tiktok.com/@panda.man.official"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Open Panda Man TikTok"
                 >
 
                     <span
@@ -1928,6 +1909,7 @@
                     >
                         ♪
                     </span>
+
 
                     <span class="social-text">
 
@@ -1940,6 +1922,7 @@
                         </small>
 
                     </span>
+
 
                     <span
                         class="arrow"
@@ -1958,7 +1941,6 @@
                     href="https://x.com/pandama58474678"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Open Panda Man X profile"
                 >
 
                     <span
@@ -1967,6 +1949,7 @@
                     >
                         𝕏
                     </span>
+
 
                     <span class="social-text">
 
@@ -1979,6 +1962,7 @@
                         </small>
 
                     </span>
+
 
                     <span
                         class="arrow"
@@ -1997,7 +1981,6 @@
                     href="https://www.reddit.com/user/PandaManOfficial420/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Open Panda Man Reddit"
                 >
 
                     <span
@@ -2006,6 +1989,7 @@
                     >
                         ●
                     </span>
+
 
                     <span class="social-text">
 
@@ -2018,6 +2002,7 @@
                         </small>
 
                     </span>
+
 
                     <span
                         class="arrow"
@@ -2056,548 +2041,11 @@
     <script>
 
         /* =====================================================
-           PAGE TITLE
-        ====================================================== */
-
-        document.title =
-            "Panda Mans | Bio";
-
-
-        /* =====================================================
-           DISCORD / LANYARD
-        ====================================================== */
-
-        const DISCORD_ID =
-            "1535113286675206214";
-
-        const LANYARD_API =
-            `https://api.lanyard.rest/v1/users/${DISCORD_ID}`;
-
-        const LANYARD_SOCKET =
-            "wss://api.lanyard.rest/socket";
-
-
-        const discordStatus =
-            document.getElementById(
-                "discord-status"
-            );
-
-        const statusText =
-            document.getElementById(
-                "status-text"
-            );
-
-
-        let discordSocket = null;
-
-        let heartbeatTimer = null;
-
-        let reconnectTimer = null;
-
-        let receivedPresence = false;
-
-        let manuallyClosed = false;
-
-
-        /* =====================================================
-           UPDATE DISCORD STATUS
-        ====================================================== */
-
-        function updateDiscordStatus(status) {
-
-            discordStatus.classList.remove(
-                "online",
-                "idle",
-                "dnd",
-                "offline",
-                "connecting"
-            );
-
-
-            let text = "Offline";
-
-            let className = "offline";
-
-
-            switch (
-                String(status).toLowerCase()
-            ) {
-
-                case "online":
-
-                    text = "Online";
-
-                    className = "online";
-
-                    break;
-
-
-                case "idle":
-
-                    text = "Idle";
-
-                    className = "idle";
-
-                    break;
-
-
-                case "dnd":
-
-                    text = "Do Not Disturb";
-
-                    className = "dnd";
-
-                    break;
-
-
-                case "offline":
-
-                    text = "Offline";
-
-                    className = "offline";
-
-                    break;
-
-
-                default:
-
-                    text = "Offline";
-
-                    className = "offline";
-
-                    break;
-
-            }
-
-
-            discordStatus.classList.add(
-                className
-            );
-
-            statusText.textContent =
-                text;
-        }
-
-
-        /* =====================================================
-           CONNECTING
-        ====================================================== */
-
-        function showConnecting() {
-
-            discordStatus.classList.remove(
-                "online",
-                "idle",
-                "dnd",
-                "offline"
-            );
-
-            discordStatus.classList.add(
-                "connecting"
-            );
-
-            statusText.textContent =
-                "Connecting to Discord...";
-        }
-
-
-        /* =====================================================
-           INITIAL STATUS
-        ====================================================== */
-
-        async function getDiscordStatus() {
-
-            try {
-
-                showConnecting();
-
-
-                const response =
-                    await fetch(
-                        LANYARD_API,
-                        {
-                            cache: "no-store"
-                        }
-                    );
-
-
-                if (!response.ok) {
-
-                    throw new Error(
-                        `Lanyard HTTP ${response.status}`
-                    );
-
-                }
-
-
-                const result =
-                    await response.json();
-
-
-                if (
-                    result &&
-                    result.success &&
-                    result.data
-                ) {
-
-                    receivedPresence =
-                        true;
-
-
-                    updateDiscordStatus(
-                        result.data.discord_status
-                    );
-
-                }
-
-
-            } catch (error) {
-
-                console.error(
-                    "Lanyard REST error:",
-                    error
-                );
-
-
-                if (!receivedPresence) {
-
-                    showConnecting();
-
-                }
-
-            }
-
-        }
-
-
-        /* =====================================================
-           HEARTBEAT
-        ====================================================== */
-
-        function startHeartbeat(
-            interval
-        ) {
-
-            if (heartbeatTimer) {
-
-                clearInterval(
-                    heartbeatTimer
-                );
-
-            }
-
-
-            heartbeatTimer =
-                setInterval(
-                    () => {
-
-                        if (
-                            discordSocket &&
-                            discordSocket.readyState ===
-                            WebSocket.OPEN
-                        ) {
-
-                            discordSocket.send(
-                                JSON.stringify({
-                                    op: 3,
-                                    d: null
-                                })
-                            );
-
-                        }
-
-                    },
-                    interval
-                );
-
-        }
-
-
-        /* =====================================================
-           LANYARD WEBSOCKET
-        ====================================================== */
-
-        function connectDiscord() {
-
-            if (manuallyClosed) {
-
-                return;
-
-            }
-
-
-            if (
-                discordSocket &&
-                (
-                    discordSocket.readyState ===
-                    WebSocket.OPEN ||
-
-                    discordSocket.readyState ===
-                    WebSocket.CONNECTING
-                )
-            ) {
-
-                return;
-
-            }
-
-
-            showConnecting();
-
-
-            try {
-
-                discordSocket =
-                    new WebSocket(
-                        LANYARD_SOCKET
-                    );
-
-
-                discordSocket.onopen =
-                    () => {
-
-                        console.log(
-                            "Connected to Lanyard."
-                        );
-
-                    };
-
-
-                discordSocket.onmessage =
-                    (event) => {
-
-                        try {
-
-                            const packet =
-                                JSON.parse(
-                                    event.data
-                                );
-
-
-                            /* HELLO */
-
-                            if (
-                                packet.op === 1 &&
-                                packet.d
-                            ) {
-
-                                const heartbeatInterval =
-                                    packet.d
-                                        .heartbeat_interval;
-
-
-                                discordSocket.send(
-                                    JSON.stringify({
-
-                                        op: 2,
-
-                                        d: {
-
-                                            subscribe_to_ids: [
-                                                DISCORD_ID
-                                            ]
-
-                                        }
-
-                                    })
-                                );
-
-
-                                startHeartbeat(
-                                    heartbeatInterval
-                                );
-
-
-                                return;
-
-                            }
-
-
-                            /* EVENTS */
-
-                            if (
-                                packet.op === 0
-                            ) {
-
-
-                                /* INIT STATE */
-
-                                if (
-                                    packet.t ===
-                                    "INIT_STATE"
-                                ) {
-
-                                    const presence =
-                                        packet.d &&
-                                        packet.d[
-                                            DISCORD_ID
-                                        ];
-
-
-                                    if (
-                                        presence
-                                    ) {
-
-                                        receivedPresence =
-                                            true;
-
-
-                                        updateDiscordStatus(
-                                            presence.discord_status
-                                        );
-
-                                    } else {
-
-                                        receivedPresence =
-                                            true;
-
-
-                                        updateDiscordStatus(
-                                            "offline"
-                                        );
-
-                                    }
-
-
-                                    return;
-
-                                }
-
-
-                                /* PRESENCE UPDATE */
-
-                                if (
-                                    packet.t ===
-                                    "PRESENCE_UPDATE"
-                                ) {
-
-                                    const presence =
-                                        packet.d;
-
-
-                                    if (
-                                        presence &&
-                                        presence.user_id ===
-                                        DISCORD_ID
-                                    ) {
-
-                                        receivedPresence =
-                                            true;
-
-
-                                        updateDiscordStatus(
-                                            presence.discord_status
-                                        );
-
-                                    }
-
-
-                                    return;
-
-                                }
-
-                            }
-
-
-                        } catch (error) {
-
-                            console.error(
-                                "Discord packet error:",
-                                error
-                            );
-
-                        }
-
-                    };
-
-
-                discordSocket.onerror =
-                    (error) => {
-
-                        console.warn(
-                            "Lanyard WebSocket error.",
-                            error
-                        );
-
-                    };
-
-
-                discordSocket.onclose =
-                    () => {
-
-                        if (heartbeatTimer) {
-
-                            clearInterval(
-                                heartbeatTimer
-                            );
-
-                            heartbeatTimer =
-                                null;
-
-                        }
-
-
-                        discordSocket =
-                            null;
-
-
-                        if (!manuallyClosed) {
-
-                            clearTimeout(
-                                reconnectTimer
-                            );
-
-
-                            reconnectTimer =
-                                setTimeout(
-                                    connectDiscord,
-                                    5000
-                                );
-
-                        }
-
-                    };
-
-
-            } catch (error) {
-
-                console.error(
-                    "Discord connection error:",
-                    error
-                );
-
-
-                clearTimeout(
-                    reconnectTimer
-                );
-
-
-                reconnectTimer =
-                    setTimeout(
-                        connectDiscord,
-                        5000
-                    );
-
-            }
-
-        }
-
-
-        /* START DISCORD */
-
-        getDiscordStatus();
-
-        connectDiscord();
-
-
-        /* =====================================================
            TYPING EFFECT
         ====================================================== */
 
         const typingElement =
-            document.getElementById(
-                "typing"
-            );
+            document.getElementById("typing");
 
 
         const messages = [
@@ -2623,9 +2071,7 @@
         function typeEffect() {
 
             const currentMessage =
-                messages[
-                    messageIndex
-                ];
+                messages[messageIndex];
 
 
             if (!deleting) {
@@ -2655,7 +2101,6 @@
 
 
                     return;
-
                 }
 
 
@@ -2698,7 +2143,6 @@
 
 
                     return;
-
                 }
 
 
@@ -2716,7 +2160,7 @@
 
 
         /* =====================================================
-           DESKTOP PARALLAX
+           CARD / BACKGROUND PARALLAX
         ====================================================== */
 
         const card =
@@ -2746,13 +2190,13 @@
                     const x =
                         event.clientX /
                         window.innerWidth -
-                        .5;
+                        0.5;
 
 
                     const y =
                         event.clientY /
                         window.innerHeight -
-                        .5;
+                        0.5;
 
 
                     card.style.transform =
@@ -2776,9 +2220,7 @@
                 "mouseleave",
                 () => {
 
-                    card.style.transform =
-                        "";
-
+                    card.style.transform = "";
 
                     background.style.transform =
                         "scale(1.05)";
@@ -2807,20 +2249,16 @@
                     if (
                         event.touches.length !== 1
                     ) {
-
                         return;
-
                     }
 
 
                     touchStartX =
-                        event.touches[0]
-                            .clientX;
+                        event.touches[0].clientX;
 
 
                     touchStartY =
-                        event.touches[0]
-                            .clientY;
+                        event.touches[0].clientY;
 
                 },
                 {
@@ -2836,21 +2274,17 @@
                     if (
                         event.touches.length !== 1
                     ) {
-
                         return;
-
                     }
 
 
                     const x =
-                        event.touches[0]
-                            .clientX -
+                        event.touches[0].clientX -
                         touchStartX;
 
 
                     const y =
-                        event.touches[0]
-                            .clientY -
+                        event.touches[0].clientY -
                         touchStartY;
 
 
@@ -2890,8 +2324,7 @@
                 "touchend",
                 () => {
 
-                    card.style.transform =
-                        "";
+                    card.style.transform = "";
 
                 },
                 {
@@ -2903,7 +2336,7 @@
 
 
         /* =====================================================
-           RANDOM PARTICLES
+           RANDOMIZE PARTICLES
         ====================================================== */
 
         document
@@ -2931,7 +2364,7 @@
 
 
         /* =====================================================
-           KEEP TITLE
+           PAGE TITLE
         ====================================================== */
 
         document.title =
