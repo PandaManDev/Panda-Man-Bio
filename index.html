@@ -1,0 +1,2775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <meta
+        name="theme-color"
+        content="#050505"
+    >
+
+    <meta
+        name="description"
+        content="Panda Man — just vibing in panda mode."
+    >
+
+    <title>Panda Man 🐼</title>
+
+    <!-- =========================================================
+         FAVICON
+    ========================================================== -->
+
+    <!-- Panda emoji favicon -->
+    <link
+        rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐼%3C/text%3E%3C/svg%3E"
+    >
+
+    <link
+        rel="apple-touch-icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐼%3C/text%3E%3C/svg%3E"
+    >
+
+    <style>
+
+        @import url(
+            'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap'
+        );
+
+        /* =========================================================
+           RESET
+        ========================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            min-height: 100%;
+            background: #050505;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            min-height: 100svh;
+
+            overflow-x: hidden;
+
+            font-family: 'Orbitron', sans-serif;
+
+            color: #ffffff;
+
+            background: #050505;
+
+            position: relative;
+
+            isolation: isolate;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* =========================================================
+           VIDEO BACKGROUND
+        ========================================================== */
+
+        .video-background {
+            position: fixed;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            z-index: -20;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #151515 0%,
+                    #050505 70%
+                );
+        }
+
+        .video-background video {
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            width: 100%;
+            height: 100%;
+
+            min-width: 100%;
+            min-height: 100%;
+
+            object-fit: cover;
+
+            transform:
+                translate(-50%, -50%)
+                scale(1.05);
+
+            filter:
+                grayscale(0.25)
+                brightness(0.45)
+                contrast(1.08);
+
+            opacity: 0.72;
+
+            pointer-events: none;
+        }
+
+        /* Dark cinematic overlay */
+
+        .video-overlay {
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0.58) 0%,
+                    rgba(0, 0, 0, 0.25) 35%,
+                    rgba(0, 0, 0, 0.42) 65%,
+                    rgba(0, 0, 0, 0.82) 100%
+                );
+
+            z-index: 1;
+        }
+
+        /* Center glow */
+
+        .video-glow {
+            position: absolute;
+
+            left: 50%;
+            top: 50%;
+
+            width: 70vw;
+            height: 70vw;
+
+            max-width: 850px;
+            max-height: 850px;
+
+            transform:
+                translate(-50%, -50%);
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255, 255, 255, 0.065),
+                    transparent 65%
+                );
+
+            filter: blur(35px);
+
+            z-index: 2;
+
+            pointer-events: none;
+        }
+
+        /* =========================================================
+           CINEMATIC GRAIN
+        ========================================================== */
+
+        .film-grain {
+            position: fixed;
+
+            inset: 0;
+
+            z-index: -1;
+
+            pointer-events: none;
+
+            opacity: 0.055;
+
+            background-image:
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
+
+            animation:
+                grainMove
+                0.25s
+                steps(2)
+                infinite;
+        }
+
+        @keyframes grainMove {
+
+            0% {
+                transform: translate(0, 0);
+            }
+
+            25% {
+                transform: translate(2%, -2%);
+            }
+
+            50% {
+                transform: translate(-2%, 2%);
+            }
+
+            75% {
+                transform: translate(1%, 2%);
+            }
+
+            100% {
+                transform: translate(-1%, -1%);
+            }
+        }
+
+        /* =========================================================
+           GRID
+        ========================================================== */
+
+        .grid {
+            position: fixed;
+
+            inset: -50%;
+
+            z-index: -5;
+
+            opacity: 0.065;
+
+            pointer-events: none;
+
+            background-image:
+                linear-gradient(
+                    rgba(255, 255, 255, 0.08)
+                    1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255, 255, 255, 0.08)
+                    1px,
+                    transparent 1px
+                );
+
+            background-size:
+                70px
+                70px;
+
+            transform:
+                perspective(500px)
+                rotateX(65deg)
+                translateY(150px);
+
+            animation:
+                gridMove
+                18s
+                linear
+                infinite;
+        }
+
+        @keyframes gridMove {
+
+            from {
+                background-position:
+                    0 0;
+            }
+
+            to {
+                background-position:
+                    0 70px;
+            }
+        }
+
+        /* =========================================================
+           VIGNETTE
+        ========================================================== */
+
+        .vignette {
+            position: fixed;
+
+            inset: 0;
+
+            z-index: -2;
+
+            pointer-events: none;
+
+            background:
+                radial-gradient(
+                    ellipse at center,
+                    transparent 28%,
+                    rgba(0, 0, 0, 0.35) 65%,
+                    rgba(0, 0, 0, 0.88) 100%
+                );
+        }
+
+        /* =========================================================
+           FLOATING PANDAS
+        ========================================================== */
+
+        .panda {
+            position: fixed;
+
+            z-index: -1;
+
+            font-size:
+                clamp(
+                    24px,
+                    4vw,
+                    48px
+                );
+
+            opacity: 0.075;
+
+            user-select: none;
+
+            pointer-events: none;
+
+            filter:
+                grayscale(1)
+                drop-shadow(
+                    0 0 18px
+                    rgba(255, 255, 255, 0.3)
+                );
+
+            animation:
+                floatPanda
+                14s
+                ease-in-out
+                infinite;
+        }
+
+        .panda.p1 {
+            left: 7%;
+            top: 17%;
+
+            animation-delay:
+                -3s;
+        }
+
+        .panda.p2 {
+            right: 9%;
+            top: 25%;
+
+            font-size:
+                clamp(
+                    20px,
+                    3vw,
+                    38px
+                );
+
+            animation-delay:
+                -8s;
+        }
+
+        .panda.p3 {
+            left: 12%;
+            bottom: 15%;
+
+            font-size:
+                clamp(
+                    18px,
+                    2.5vw,
+                    34px
+                );
+
+            animation-delay:
+                -6s;
+        }
+
+        .panda.p4 {
+            right: 15%;
+            bottom: 13%;
+
+            font-size:
+                clamp(
+                    25px,
+                    3.5vw,
+                    42px
+                );
+
+            animation-delay:
+                -11s;
+        }
+
+        @keyframes floatPanda {
+
+            0%,
+            100% {
+                transform:
+                    translate3d(0, 0, 0)
+                    rotate(-4deg);
+            }
+
+            50% {
+                transform:
+                    translate3d(0, -30px, 0)
+                    rotate(5deg);
+            }
+        }
+
+        /* =========================================================
+           PARTICLES
+        ========================================================== */
+
+        .particles {
+            position: fixed;
+
+            inset: 0;
+
+            z-index: -1;
+
+            overflow: hidden;
+
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+
+            width: 2px;
+            height: 2px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255, 255, 255, 0.65);
+
+            box-shadow:
+                0 0 8px
+                rgba(255, 255, 255, 0.4);
+
+            animation:
+                particleFloat
+                linear
+                infinite;
+        }
+
+        @keyframes particleFloat {
+
+            from {
+                transform:
+                    translate3d(
+                        0,
+                        110vh,
+                        0
+                    );
+
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.65;
+            }
+
+            90% {
+                opacity: 0.45;
+            }
+
+            to {
+                transform:
+                    translate3d(
+                        30px,
+                        -10vh,
+                        0
+                    );
+
+                opacity: 0;
+            }
+        }
+
+        /* =========================================================
+           PAGE
+        ========================================================== */
+
+        .page {
+            min-height: 100vh;
+            min-height: 100svh;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding:
+                max(
+                    24px,
+                    env(safe-area-inset-top)
+                )
+                max(
+                    18px,
+                    env(safe-area-inset-right)
+                )
+                max(
+                    24px,
+                    env(safe-area-inset-bottom)
+                )
+                max(
+                    18px,
+                    env(safe-area-inset-left)
+                );
+        }
+
+        /* =========================================================
+           CARD
+        ========================================================== */
+
+        .card {
+            width:
+                min(
+                    620px,
+                    100%
+                );
+
+            position: relative;
+
+            padding:
+                54px
+                48px
+                42px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.14);
+
+            border-radius: 28px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15, 15, 15, 0.66),
+                    rgba(5, 5, 5, 0.48)
+                );
+
+            backdrop-filter:
+                blur(25px)
+                saturate(120%);
+
+            -webkit-backdrop-filter:
+                blur(25px)
+                saturate(120%);
+
+            box-shadow:
+
+                0 35px 100px
+                rgba(0, 0, 0, 0.68),
+
+                0 0 80px
+                rgba(0, 0, 0, 0.25),
+
+                inset 0 1px 0
+                rgba(255, 255, 255, 0.08);
+
+            text-align: center;
+
+            overflow: hidden;
+
+            transform-style:
+                preserve-3d;
+
+            animation:
+                cardAppear
+                1s
+                ease-out
+                both;
+        }
+
+        @keyframes cardAppear {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(25px)
+                    scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+        /* Moving shine */
+
+        .card::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    transparent 20%,
+                    rgba(255, 255, 255, 0.05) 50%,
+                    transparent 80%
+                );
+
+            transform:
+                translateX(-100%);
+
+            animation:
+                shine
+                8s
+                ease-in-out
+                infinite;
+
+            pointer-events: none;
+        }
+
+        @keyframes shine {
+
+            0%,
+            55% {
+                transform:
+                    translateX(-100%);
+            }
+
+            75%,
+            100% {
+                transform:
+                    translateX(100%);
+            }
+        }
+
+        /* =========================================================
+           CARD TOP GLOW
+        ========================================================== */
+
+        .card-glow {
+            position: absolute;
+
+            top: -150px;
+            left: 50%;
+
+            width: 350px;
+            height: 250px;
+
+            transform:
+                translateX(-50%);
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255, 255, 255, 0.075),
+                    transparent 70%
+                );
+
+            filter: blur(25px);
+
+            pointer-events: none;
+        }
+
+        /* =========================================================
+           CORNERS
+        ========================================================== */
+
+        .corner {
+            position: absolute;
+
+            width: 44px;
+            height: 44px;
+
+            opacity: 0.55;
+
+            pointer-events: none;
+        }
+
+        .corner::before,
+        .corner::after {
+            content: "";
+
+            position: absolute;
+
+            background:
+                rgba(255, 255, 255, 0.5);
+        }
+
+        .corner::before {
+            width: 100%;
+            height: 1px;
+        }
+
+        .corner::after {
+            width: 1px;
+            height: 100%;
+        }
+
+        .corner.top-left {
+            top: 18px;
+            left: 18px;
+        }
+
+        .corner.top-right {
+            top: 18px;
+            right: 18px;
+
+            transform:
+                rotate(90deg);
+        }
+
+        .corner.bottom-left {
+            bottom: 18px;
+            left: 18px;
+
+            transform:
+                rotate(-90deg);
+        }
+
+        .corner.bottom-right {
+            bottom: 18px;
+            right: 18px;
+
+            transform:
+                rotate(180deg);
+        }
+
+        /* =========================================================
+           STATUS
+        ========================================================== */
+
+        .status {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 9px;
+
+            padding:
+                8px
+                13px;
+
+            margin-bottom:
+                28px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.1);
+
+            border-radius:
+                999px;
+
+            background:
+                rgba(255, 255, 255, 0.045);
+
+            color:
+                rgba(255, 255, 255, 0.68);
+
+            font-size:
+                10px;
+
+            font-weight:
+                600;
+
+            letter-spacing:
+                2px;
+
+            text-transform:
+                uppercase;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 0 10px
+                rgba(255, 255, 255, 0.9);
+
+            animation:
+                statusPulse
+                2s
+                ease-in-out
+                infinite;
+        }
+
+        @keyframes statusPulse {
+
+            0%,
+            100% {
+                opacity: 0.4;
+
+                transform:
+                    scale(0.85);
+            }
+
+            50% {
+                opacity: 1;
+
+                transform:
+                    scale(1.15);
+            }
+        }
+
+        /* =========================================================
+           MAIN PANDA
+        ========================================================== */
+
+        .main-panda {
+            display: block;
+
+            font-size:
+                clamp(
+                    70px,
+                    13vw,
+                    105px
+                );
+
+            line-height: 1;
+
+            margin-bottom:
+                22px;
+
+            filter:
+                grayscale(1)
+                drop-shadow(
+                    0 0 25px
+                    rgba(255, 255, 255, 0.2)
+                );
+
+            animation:
+
+                pandaBounce
+                4s
+                ease-in-out
+                infinite,
+
+                pandaGlow
+                3s
+                ease-in-out
+                infinite
+                alternate;
+
+            user-select: none;
+        }
+
+        @keyframes pandaBounce {
+
+            0%,
+            100% {
+                transform:
+                    translateY(0)
+                    rotate(-2deg);
+            }
+
+            50% {
+                transform:
+                    translateY(-8px)
+                    rotate(2deg);
+            }
+        }
+
+        @keyframes pandaGlow {
+
+            from {
+                filter:
+                    grayscale(1)
+                    drop-shadow(
+                        0 0 14px
+                        rgba(255, 255, 255, 0.1)
+                    );
+            }
+
+            to {
+                filter:
+                    grayscale(1)
+                    drop-shadow(
+                        0 0 30px
+                        rgba(255, 255, 255, 0.3)
+                    );
+            }
+        }
+
+        /* =========================================================
+           TITLE
+        ========================================================== */
+
+        h1 {
+            font-size:
+                clamp(
+                    32px,
+                    7vw,
+                    58px
+                );
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                clamp(
+                    4px,
+                    1.5vw,
+                    10px
+                );
+
+            line-height:
+                1.05;
+
+            color:
+                #ffffff;
+
+            text-shadow:
+                0 0 20px
+                rgba(255, 255, 255, 0.1);
+
+            margin-left:
+                clamp(
+                    4px,
+                    1.5vw,
+                    10px
+                );
+        }
+
+        .divider {
+            width: 90px;
+            height: 1px;
+
+            margin:
+                22px
+                auto
+                20px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.8),
+                    transparent
+                );
+
+            box-shadow:
+                0 0 12px
+                rgba(255, 255, 255, 0.2);
+        }
+
+        /* =========================================================
+           TYPING
+        ========================================================== */
+
+        .typing-container {
+            min-height:
+                27px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            color:
+                rgba(255, 255, 255, 0.55);
+
+            font-size:
+                11px;
+
+            font-weight:
+                500;
+
+            letter-spacing:
+                2px;
+
+            text-transform:
+                lowercase;
+        }
+
+        .typing {
+            display:
+                inline-block;
+        }
+
+        .cursor {
+            display:
+                inline-block;
+
+            width:
+                1px;
+
+            height:
+                13px;
+
+            margin-left:
+                4px;
+
+            vertical-align:
+                middle;
+
+            background:
+                rgba(255, 255, 255, 0.7);
+
+            animation:
+                cursorBlink
+                0.8s
+                steps(1)
+                infinite;
+        }
+
+        @keyframes cursorBlink {
+
+            0%,
+            45% {
+                opacity:
+                    1;
+            }
+
+            46%,
+            100% {
+                opacity:
+                    0;
+            }
+        }
+
+        /* =========================================================
+           SOCIAL LINKS
+        ========================================================== */
+
+        .social-links {
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            gap:
+                12px;
+
+            width:
+                100%;
+
+            margin-top:
+                34px;
+        }
+
+        .social-button {
+            width:
+                100%;
+
+            min-height:
+                68px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            padding:
+                13px
+                15px;
+
+            position:
+                relative;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.1);
+
+            border-radius:
+                17px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255, 255, 255, 0.065),
+                    rgba(255, 255, 255, 0.018)
+                );
+
+            color:
+                #ffffff;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+
+            overflow:
+                hidden;
+        }
+
+        .social-button::before {
+            content:
+                "";
+
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.065),
+                    transparent
+                );
+
+            transform:
+                translateX(-100%);
+
+            transition:
+                transform
+                0.6s
+                ease;
+
+            pointer-events:
+                none;
+        }
+
+        .social-button:hover {
+            transform:
+                translateY(-3px);
+
+            border-color:
+                rgba(255, 255, 255, 0.25);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255, 255, 255, 0.1),
+                    rgba(255, 255, 255, 0.035)
+                );
+
+            box-shadow:
+                0 12px 30px
+                rgba(0, 0, 0, 0.3),
+
+                0 0 30px
+                rgba(255, 255, 255, 0.04);
+        }
+
+        .social-button:hover::before {
+            transform:
+                translateX(100%);
+        }
+
+        .social-button:active {
+            transform:
+                translateY(-1px)
+                scale(0.99);
+        }
+
+        /* =========================================================
+           ICON
+        ========================================================== */
+
+        .social-icon {
+            width:
+                42px;
+
+            height:
+                42px;
+
+            flex:
+                0 0 42px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.09);
+
+            border-radius:
+                12px;
+
+            background:
+                rgba(255, 255, 255, 0.06);
+
+            color:
+                rgba(255, 255, 255, 0.92);
+
+            font-size:
+                20px;
+
+            box-shadow:
+                inset 0 1px 0
+                rgba(255, 255, 255, 0.08);
+        }
+
+        /* =========================================================
+           TEXT
+        ========================================================== */
+
+        .social-text {
+            flex:
+                1;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                flex-start;
+
+            min-width:
+                0;
+
+            margin-left:
+                14px;
+
+            text-align:
+                left;
+        }
+
+        .social-text strong {
+            font-size:
+                12px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                2px;
+
+            line-height:
+                1.4;
+        }
+
+        .social-text small {
+            margin-top:
+                4px;
+
+            color:
+                rgba(255, 255, 255, 0.43);
+
+            font-size:
+                9px;
+
+            font-weight:
+                500;
+
+            letter-spacing:
+                0.8px;
+
+            white-space:
+                nowrap;
+
+            overflow:
+                hidden;
+
+            text-overflow:
+                ellipsis;
+
+            max-width:
+                100%;
+        }
+
+        /* =========================================================
+           ARROW
+        ========================================================== */
+
+        .arrow {
+            flex:
+                0 0 auto;
+
+            margin-left:
+                12px;
+
+            color:
+                rgba(255, 255, 255, 0.4);
+
+            font-size:
+                18px;
+
+            transition:
+                transform 0.25s ease,
+                color 0.25s ease;
+        }
+
+        .social-button:hover .arrow {
+            color:
+                rgba(255, 255, 255, 0.95);
+
+            transform:
+                translate(
+                    3px,
+                    -3px
+                );
+        }
+
+        /* =========================================================
+           PLATFORM ICON SIZES
+        ========================================================== */
+
+        .roblox-button .social-icon {
+            font-size:
+                18px;
+        }
+
+        .game-button .social-icon {
+            font-size:
+                15px;
+        }
+
+        .instagram-button .social-icon {
+            font-size:
+                22px;
+        }
+
+        .threads-button .social-icon {
+            font-size:
+                21px;
+
+            font-weight:
+                700;
+        }
+
+        .tiktok-button .social-icon {
+            font-size:
+                20px;
+
+            font-weight:
+                800;
+        }
+
+        .x-button .social-icon {
+            font-size:
+                19px;
+
+            font-weight:
+                800;
+        }
+
+        .reddit-button .social-icon {
+            font-size:
+                20px;
+        }
+
+        /* =========================================================
+           FOCUS
+        ========================================================== */
+
+        .social-button:focus-visible {
+            outline:
+                none;
+
+            border-color:
+                rgba(255, 255, 255, 0.55);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(255, 255, 255, 0.08),
+
+                0 0 25px
+                rgba(255, 255, 255, 0.08);
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================== */
+
+        .footer {
+            margin-top:
+                31px;
+
+            color:
+                rgba(255, 255, 255, 0.27);
+
+            font-size:
+                8px;
+
+            font-weight:
+                500;
+
+            letter-spacing:
+                3px;
+
+            text-transform:
+                lowercase;
+        }
+
+        .footer span {
+            display:
+                inline-block;
+
+            margin:
+                0 5px;
+
+            color:
+                rgba(255, 255, 255, 0.13);
+        }
+
+        /* =========================================================
+           TABLET
+        ========================================================== */
+
+        @media (max-width: 700px) {
+
+            .card {
+                padding:
+                    46px
+                    30px
+                    36px;
+
+                border-radius:
+                    24px;
+            }
+
+            .corner {
+                width:
+                    34px;
+
+                height:
+                    34px;
+            }
+
+            .social-links {
+                margin-top:
+                    30px;
+            }
+
+        }
+
+        /* =========================================================
+           MOBILE
+        ========================================================== */
+
+        @media (max-width: 520px) {
+
+            .page {
+                align-items:
+                    center;
+
+                padding:
+                    18px
+                    max(
+                        14px,
+                        env(safe-area-inset-right)
+                    )
+                    18px
+                    max(
+                        14px,
+                        env(safe-area-inset-left)
+                    );
+            }
+
+            .video-background video {
+                transform:
+                    translate(
+                        -50%,
+                        -50%
+                    )
+                    scale(1.12);
+
+                filter:
+                    grayscale(0.25)
+                    brightness(0.35)
+                    contrast(1.05);
+            }
+
+            .card {
+                padding:
+                    38px
+                    18px
+                    31px;
+
+                border-radius:
+                    21px;
+            }
+
+            .status {
+                margin-bottom:
+                    23px;
+
+                padding:
+                    7px
+                    11px;
+
+                font-size:
+                    8px;
+
+                letter-spacing:
+                    1.7px;
+            }
+
+            .main-panda {
+                font-size:
+                    76px;
+
+                margin-bottom:
+                    18px;
+            }
+
+            h1 {
+                font-size:
+                    31px;
+
+                letter-spacing:
+                    4px;
+            }
+
+            .divider {
+                margin:
+                    18px
+                    auto
+                    16px;
+            }
+
+            .typing-container {
+                font-size:
+                    9px;
+
+                letter-spacing:
+                    1.5px;
+            }
+
+            .social-links {
+                gap:
+                    10px;
+
+                margin-top:
+                    27px;
+            }
+
+            .social-button {
+                min-height:
+                    63px;
+
+                padding:
+                    10px
+                    11px;
+
+                border-radius:
+                    15px;
+            }
+
+            .social-icon {
+                width:
+                    38px;
+
+                height:
+                    38px;
+
+                flex-basis:
+                    38px;
+
+                border-radius:
+                    10px;
+            }
+
+            .social-text {
+                margin-left:
+                    11px;
+            }
+
+            .social-text strong {
+                font-size:
+                    10px;
+
+                letter-spacing:
+                    1.5px;
+            }
+
+            .social-text small {
+                font-size:
+                    8px;
+
+                margin-top:
+                    3px;
+            }
+
+            .arrow {
+                font-size:
+                    16px;
+
+                margin-left:
+                    7px;
+            }
+
+            .footer {
+                margin-top:
+                    25px;
+
+                font-size:
+                    7px;
+
+                letter-spacing:
+                    2.4px;
+            }
+
+            .panda {
+                opacity:
+                    0.04;
+            }
+
+        }
+
+        /* =========================================================
+           VERY SMALL PHONES
+        ========================================================== */
+
+        @media (max-width: 370px) {
+
+            .page {
+                padding:
+                    12px;
+            }
+
+            .card {
+                padding:
+                    32px
+                    13px
+                    26px;
+            }
+
+            .main-panda {
+                font-size:
+                    65px;
+            }
+
+            h1 {
+                font-size:
+                    27px;
+
+                letter-spacing:
+                    3px;
+            }
+
+            .typing-container {
+                font-size:
+                    8px;
+            }
+
+            .social-button {
+                min-height:
+                    59px;
+            }
+
+            .social-icon {
+                width:
+                    35px;
+
+                height:
+                    35px;
+
+                flex-basis:
+                    35px;
+            }
+
+            .social-text strong {
+                font-size:
+                    9px;
+            }
+
+            .social-text small {
+                font-size:
+                    7px;
+            }
+
+        }
+
+        /* =========================================================
+           SHORT SCREENS
+        ========================================================== */
+
+        @media (
+            max-height: 650px
+        ) and (
+            min-width: 521px
+        ) {
+
+            .card {
+                padding-top:
+                    30px;
+
+                padding-bottom:
+                    28px;
+            }
+
+            .main-panda {
+                font-size:
+                    65px;
+
+                margin-bottom:
+                    12px;
+            }
+
+            .status {
+                margin-bottom:
+                    15px;
+            }
+
+            .divider {
+                margin-top:
+                    14px;
+
+                margin-bottom:
+                    12px;
+            }
+
+            .social-links {
+                margin-top:
+                    20px;
+            }
+
+            .social-button {
+                min-height:
+                    57px;
+            }
+
+            .footer {
+                margin-top:
+                    18px;
+            }
+
+        }
+
+        /* =========================================================
+           TOUCH DEVICES
+        ========================================================== */
+
+        @media (
+            hover: none
+        ) and (
+            pointer: coarse
+        ) {
+
+            .social-button:hover {
+                transform:
+                    none;
+
+                border-color:
+                    rgba(255, 255, 255, 0.1);
+
+                background:
+                    linear-gradient(
+                        135deg,
+                        rgba(255, 255, 255, 0.065),
+                        rgba(255, 255, 255, 0.018)
+                    );
+
+                box-shadow:
+                    none;
+            }
+
+            .social-button:hover::before {
+                transform:
+                    translateX(-100%);
+            }
+
+            .social-button:hover .arrow {
+                color:
+                    rgba(255, 255, 255, 0.4);
+
+                transform:
+                    none;
+            }
+
+            .social-button:active {
+                transform:
+                    scale(0.98);
+
+                border-color:
+                    rgba(255, 255, 255, 0.25);
+            }
+
+        }
+
+        /* =========================================================
+           REDUCED MOTION
+        ========================================================== */
+
+        @media (
+            prefers-reduced-motion: reduce
+        ) {
+
+            html {
+                scroll-behavior:
+                    auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration:
+                    0.01ms !important;
+
+                animation-iteration-count:
+                    1 !important;
+
+                transition-duration:
+                    0.01ms !important;
+            }
+
+            .grid,
+            .film-grain {
+                animation:
+                    none;
+            }
+
+            .particle {
+                display:
+                    none;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================================
+         VIDEO BACKGROUND
+
+         Put your video in the same folder as index.html
+         and name it:
+
+         background.mp4
+    ========================================================== -->
+
+    <div
+        class="video-background"
+        aria-hidden="true"
+    >
+
+        <video
+            id="backgroundVideo"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+        >
+
+            <source
+                src="background.mp4"
+                type="video/mp4"
+            >
+
+        </video>
+
+        <div class="video-overlay"></div>
+
+        <div class="video-glow"></div>
+
+    </div>
+
+
+    <!-- Film grain -->
+
+    <div
+        class="film-grain"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- Grid -->
+
+    <div
+        class="grid"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- Vignette -->
+
+    <div
+        class="vignette"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =========================================================
+         FLOATING PANDAS
+    ========================================================== -->
+
+    <div
+        class="panda p1"
+        aria-hidden="true"
+    >
+        🐼
+    </div>
+
+    <div
+        class="panda p2"
+        aria-hidden="true"
+    >
+        🐼
+    </div>
+
+    <div
+        class="panda p3"
+        aria-hidden="true"
+    >
+        🐼
+    </div>
+
+    <div
+        class="panda p4"
+        aria-hidden="true"
+    >
+        🐼
+    </div>
+
+
+    <!-- =========================================================
+         PARTICLES
+    ========================================================== -->
+
+    <div
+        class="particles"
+        id="particles"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =========================================================
+         MAIN
+    ========================================================== -->
+
+    <main class="page">
+
+        <section
+            class="card"
+            id="card"
+            aria-label="Panda Man profile"
+        >
+
+            <div
+                class="card-glow"
+                aria-hidden="true"
+            ></div>
+
+
+            <!-- Decorative corners -->
+
+            <div
+                class="corner top-left"
+                aria-hidden="true"
+            ></div>
+
+            <div
+                class="corner top-right"
+                aria-hidden="true"
+            ></div>
+
+            <div
+                class="corner bottom-left"
+                aria-hidden="true"
+            ></div>
+
+            <div
+                class="corner bottom-right"
+                aria-hidden="true"
+            ></div>
+
+
+            <!-- =================================================
+                 STATUS
+            ================================================== -->
+
+            <div class="status">
+
+                <span
+                    class="status-dot"
+                    aria-hidden="true"
+                ></span>
+
+                Currently existing
+
+            </div>
+
+
+            <!-- =================================================
+                 PANDA
+            ================================================== -->
+
+            <div
+                class="main-panda"
+                aria-hidden="true"
+            >
+                🐼
+            </div>
+
+
+            <!-- =================================================
+                 TITLE
+            ================================================== -->
+
+            <h1>
+                PANDA MAN
+            </h1>
+
+
+            <div
+                class="divider"
+                aria-hidden="true"
+            ></div>
+
+
+            <!-- =================================================
+                 TYPING STATUS
+            ================================================== -->
+
+            <div
+                class="typing-container"
+                aria-live="polite"
+            >
+
+                <span
+                    class="typing"
+                    id="typing"
+                ></span>
+
+                <span
+                    class="cursor"
+                    aria-hidden="true"
+                ></span>
+
+            </div>
+
+
+            <!-- =================================================
+                 SOCIAL LINKS
+            ================================================== -->
+
+            <div class="social-links">
+
+
+                <!-- ROBLOX -->
+
+                <a
+                    class="social-button roblox-button"
+                    href="https://www.roblox.com/users/9659149141/profile"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Panda Man Roblox profile"
+                >
+
+                    <span
+                        class="social-icon"
+                        aria-hidden="true"
+                    >
+                        ◈
+                    </span>
+
+                    <span class="social-text">
+
+                        <strong>
+                            ROBLOX
+                        </strong>
+
+                        <small>
+                            PandaManOfficial
+                        </small>
+
+                    </span>
+
+                    <span
+                        class="arrow"
+                        aria-hidden="true"
+                    >
+                        ↗
+                    </span>
+
+                </a>
+
+
+                <!-- PLEASE PROCEED -->
+
+                <a
+                    class="social-button game-button"
+                    href="https://www.roblox.com/games/101511354146772/Please-Proceed"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Play Please Proceed on Roblox"
+                >
+
+                    <span
+                        class="social-icon"
+                        aria-hidden="true"
+                    >
+                        ▶
+                    </span>
+
+                    <span class="social-text">
+
+                        <strong>
+                            PLEASE PROCEED
+                        </strong>
+
+                        <small>
+                            Roblox Game • Play Now
+                        </small>
+
+                    </span>
+
+                    <span
+                        class="arrow"
+                        aria-hidden="true"
+                    >
+                        ↗
+                    </span>
+
+                </a>
+
+
+                <!-- INSTAGRAM -->
+
+                <a
+                    class="social-button instagram-button"
+                    href="https://www.instagram.com/panda.man.official420/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Panda Man Instagram"
+                >
+
+                    <span
+                        class="social-icon"
+                        aria-hidden="true"
+                    >
+                        ◎
+                    </span>
+
+                    <span class="social-text">
+
+                        <strong>
+                            INSTAGRAM
+                        </strong>
+
+                        <small>
+                            @panda.man.official420
+                        </small>
+
+                    </span>
+
+                    <span
+                        class="arrow"
+                        aria-hidden="true"
+                    >
+                        ↗
+                    </span>
+
+                </a>
+
+
+                <!-- THREADS -->
+
+                <a
+                    class="social-button threads-button"
+                    href="https://www.threads.com/@panda.man.official420"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Panda Man Threads"
+                >
+
+                    <span
+                        class="social-icon"
+                        aria-hidden="true"
+                    >
+                        @
+                    </span>
+
+                    <span class="social-text">
+
+                        <strong>
+                            THREADS
+                        </strong>
+
+                        <small>
+                            @panda.man.official420
+                        </small>
+
+                    </span>
+
+                    <span
+                        class="arrow"
+                        aria-hidden="true"
+                    >
+                        ↗
+                    </span>
+
+                </a>
+
+
+                <!-- TIKTOK -->
+
+                <a
+                    class="social-button tiktok-button"
+                    href="https://www.tiktok.com/@panda.man.official"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Panda Man TikTok"
+                >
+
+                    <span
+                        class="social-icon"
+                        aria-hidden="true"
+                    >
+                        ♪
+                    </span>
+
+                    <span class="social-text">
+
+                        <strong>
+                            TIKTOK
+                        </strong>
+
+                        <small>
+                            @panda.man.official
+                        </small>
+
+                    </span>
+
+                    <span
+                        class="arrow"
+                        aria-hidden="true"
+                    >
+                        ↗
+                    </span>
+
+                </a>
+
+
+                <!-- X -->
+
+                <a
+                    class="social-button x-button"
+                    href="https://x.com/pandama58474678"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Panda Man X profile"
+                >
+
+                    <span
+                        class="social-icon"
+                        aria-hidden="true"
+                    >
+                        𝕏
+                    </span>
+
+                    <span class="social-text">
+
+                        <strong>
+                            X
+                        </strong>
+
+                        <small>
+                            @pandama58474678
+                        </small>
+
+                    </span>
+
+                    <span
+                        class="arrow"
+                        aria-hidden="true"
+                    >
+                        ↗
+                    </span>
+
+                </a>
+
+
+                <!-- REDDIT -->
+
+                <a
+                    class="social-button reddit-button"
+                    href="https://www.reddit.com/user/PandaManOfficial420/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Panda Man Reddit profile"
+                >
+
+                    <span
+                        class="social-icon"
+                        aria-hidden="true"
+                    >
+                        ●
+                    </span>
+
+                    <span class="social-text">
+
+                        <strong>
+                            REDDIT
+                        </strong>
+
+                        <small>
+                            u/PandaManOfficial420
+                        </small>
+
+                    </span>
+
+                    <span
+                        class="arrow"
+                        aria-hidden="true"
+                    >
+                        ↗
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            <!-- =================================================
+                 FOOTER
+            ================================================== -->
+
+            <div class="footer">
+
+                stay chill
+
+                <span>
+                    •
+                </span>
+
+                stay panda
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script>
+
+        /* =========================================================
+           VIDEO
+        ========================================================== */
+
+        const backgroundVideo =
+            document.getElementById(
+                "backgroundVideo"
+            );
+
+
+        /*
+         * Try to start the video.
+         * Browsers normally allow this because
+         * the video is muted.
+         */
+
+        function startBackgroundVideo() {
+
+            if (!backgroundVideo) {
+                return;
+            }
+
+            const playPromise =
+                backgroundVideo.play();
+
+            if (
+                playPromise !== undefined
+            ) {
+
+                playPromise.catch(() => {
+
+                    /*
+                     * Some browsers may block
+                     * autoplay until interaction.
+                     */
+
+                    document.addEventListener(
+                        "click",
+                        () => {
+                            backgroundVideo.play()
+                                .catch(() => {});
+                        },
+                        {
+                            once: true
+                        }
+                    );
+
+                });
+
+            }
+
+        }
+
+
+        startBackgroundVideo();
+
+
+        /* =========================================================
+           TYPING EFFECT
+        ========================================================== */
+
+        const typingElement =
+            document.getElementById(
+                "typing"
+            );
+
+
+        const messages = [
+
+            "mentally afk",
+
+            "just vibing",
+
+            "do not disturb the panda",
+
+            "🐼 panda mode activated"
+
+        ];
+
+
+        let messageIndex = 0;
+
+        let characterIndex = 0;
+
+        let deleting = false;
+
+
+        const typingSpeed =
+            85;
+
+        const deletingSpeed =
+            45;
+
+        const pauseAfterTyping =
+            1700;
+
+        const pauseAfterDeleting =
+            450;
+
+
+        function typeLoop() {
+
+            const currentMessage =
+                messages[
+                    messageIndex
+                ];
+
+
+            if (!deleting) {
+
+                characterIndex++;
+
+
+                typingElement.textContent =
+                    currentMessage.slice(
+                        0,
+                        characterIndex
+                    );
+
+
+                if (
+                    characterIndex >=
+                    currentMessage.length
+                ) {
+
+                    deleting = true;
+
+
+                    setTimeout(
+                        typeLoop,
+                        pauseAfterTyping
+                    );
+
+
+                    return;
+                }
+
+
+                setTimeout(
+                    typeLoop,
+                    typingSpeed
+                );
+
+
+                return;
+            }
+
+
+            characterIndex--;
+
+
+            typingElement.textContent =
+                currentMessage.slice(
+                    0,
+                    characterIndex
+                );
+
+
+            if (
+                characterIndex <= 0
+            ) {
+
+                deleting = false;
+
+
+                messageIndex =
+                    (
+                        messageIndex + 1
+                    ) %
+                    messages.length;
+
+
+                setTimeout(
+                    typeLoop,
+                    pauseAfterDeleting
+                );
+
+
+                return;
+            }
+
+
+            setTimeout(
+                typeLoop,
+                deletingSpeed
+            );
+
+        }
+
+
+        typeLoop();
+
+
+        /* =========================================================
+           PARTICLES
+        ========================================================== */
+
+        const particleContainer =
+            document.getElementById(
+                "particles"
+            );
+
+
+        const particleCount =
+            window.innerWidth < 600
+                ? 24
+                : 42;
+
+
+        for (
+            let i = 0;
+            i < particleCount;
+            i++
+        ) {
+
+            const particle =
+                document.createElement(
+                    "span"
+                );
+
+
+            particle.className =
+                "particle";
+
+
+            particle.style.left =
+                Math.random() *
+                100 +
+                "%";
+
+
+            particle.style.animationDuration =
+                (
+                    8 +
+                    Math.random() *
+                    14
+                ) +
+                "s";
+
+
+            particle.style.animationDelay =
+                (
+                    -Math.random() *
+                    20
+                ) +
+                "s";
+
+
+            const size =
+                1 +
+                Math.random() *
+                2;
+
+
+            particle.style.width =
+                size +
+                "px";
+
+
+            particle.style.height =
+                size +
+                "px";
+
+
+            particleContainer.appendChild(
+                particle
+            );
+
+        }
+
+
+        /* =========================================================
+           MOUSE PARALLAX
+        ========================================================== */
+
+        const card =
+            document.getElementById(
+                "card"
+            );
+
+
+        const supportsHover =
+            window.matchMedia(
+                "(hover: hover) and (pointer: fine)"
+            ).matches;
+
+
+        const reducedMotion =
+            window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches;
+
+
+        if (
+            supportsHover &&
+            !reducedMotion
+        ) {
+
+            window.addEventListener(
+                "mousemove",
+                (event) => {
+
+                    const x =
+                        (
+                            event.clientX /
+                            window.innerWidth
+                        ) -
+                        0.5;
+
+
+                    const y =
+                        (
+                            event.clientY /
+                            window.innerHeight
+                        ) -
+                        0.5;
+
+
+                    const rotateX =
+                        y *
+                        -3;
+
+
+                    const rotateY =
+                        x *
+                        3;
+
+
+                    card.style.transform =
+                        `perspective(1000px)
+                         rotateX(${rotateX}deg)
+                         rotateY(${rotateY}deg)`;
+
+                },
+                {
+                    passive: true
+                }
+            );
+
+
+            window.addEventListener(
+                "mouseleave",
+                () => {
+
+                    card.style.transform =
+                        "";
+
+                }
+            );
+
+        }
+
+
+        /* =========================================================
+           TAB TITLE
+        ========================================================== */
+
+        const originalTitle =
+            document.title;
+
+
+        document.addEventListener(
+            "visibilitychange",
+            () => {
+
+                if (
+                    document.hidden
+                ) {
+
+                    document.title =
+                        "Come back 🐼";
+
+                } else {
+
+                    document.title =
+                        originalTitle;
+
+                }
+
+            }
+        );
+
+
+        /* =========================================================
+           MOBILE RESIZE
+        ========================================================== */
+
+        window.addEventListener(
+            "resize",
+            () => {
+
+                if (
+                    window.innerWidth <
+                    700
+                ) {
+
+                    card.style.transform =
+                        "";
+
+                }
+
+            },
+            {
+                passive: true
+            }
+        );
+
+    </script>
+
+</body>
+</html>
