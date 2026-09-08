@@ -2,29 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    >
-
-    <meta
-        name="theme-color"
-        content="#050505"
-    >
-
-    <meta
-        name="description"
-        content="Panda Man — just vibing in panda mode."
-    >
+    <meta name="theme-color" content="#050505">
+    <meta name="description" content="Panda Man 🐼 — just vibing in panda mode.">
 
     <title>Panda Man 🐼</title>
 
-    <!-- =========================================================
-         FAVICON
-    ========================================================== -->
-
-    <!-- Panda emoji favicon -->
+    <!-- Panda Favicon -->
     <link
         rel="icon"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐼%3C/text%3E%3C/svg%3E"
@@ -35,15 +20,20 @@
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐼%3C/text%3E%3C/svg%3E"
     >
 
-    <style>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        @import url(
-            'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap'
-        );
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
 
         /* =========================================================
            RESET
-        ========================================================== */
+        ========================================================= */
 
         * {
             margin: 0;
@@ -53,165 +43,178 @@
 
         html {
             min-height: 100%;
-            background: #050505;
             scroll-behavior: smooth;
         }
 
         body {
             min-height: 100vh;
-            min-height: 100svh;
-
             overflow-x: hidden;
 
-            font-family: 'Orbitron', sans-serif;
-
+            background: #020303;
             color: #ffffff;
 
-            background: #050505;
-
-            position: relative;
-
-            isolation: isolate;
+            font-family: "Orbitron", sans-serif;
         }
 
         a {
             color: inherit;
             text-decoration: none;
+        }
 
+        button,
+        a {
             -webkit-tap-highlight-color: transparent;
         }
 
+
         /* =========================================================
-           VIDEO BACKGROUND
-        ========================================================== */
+           BACKGROUND
+        ========================================================= */
 
-        .video-background {
+        .background {
             position: fixed;
-
             inset: 0;
-
-            width: 100%;
-            height: 100%;
 
             z-index: -20;
 
             overflow: hidden;
 
-            background:
-                radial-gradient(
-                    circle at center,
-                    #151515 0%,
-                    #050505 70%
-                );
+            background: #020505;
         }
 
-        .video-background video {
+        .background img {
             position: absolute;
-
-            top: 50%;
-            left: 50%;
+            inset: 0;
 
             width: 100%;
             height: 100%;
 
-            min-width: 100%;
-            min-height: 100%;
-
             object-fit: cover;
+            object-position: center;
 
-            transform:
-                translate(-50%, -50%)
-                scale(1.05);
+            display: block;
 
             filter:
-                grayscale(0.25)
-                brightness(0.45)
-                contrast(1.08);
+                brightness(0.58)
+                contrast(1.08)
+                saturate(0.82);
 
-            opacity: 0.72;
+            transform: scale(1.05);
 
-            pointer-events: none;
+            animation: slowZoom 18s ease-in-out infinite alternate;
         }
 
-        /* Dark cinematic overlay */
+        /* Cinematic darkness */
+        .background::before {
+            content: "";
 
-        .video-overlay {
             position: absolute;
-
             inset: 0;
+
+            z-index: 2;
 
             background:
                 linear-gradient(
                     180deg,
-                    rgba(0, 0, 0, 0.58) 0%,
-                    rgba(0, 0, 0, 0.25) 35%,
+                    rgba(0, 0, 0, 0.50) 0%,
+                    rgba(0, 0, 0, 0.18) 32%,
                     rgba(0, 0, 0, 0.42) 65%,
-                    rgba(0, 0, 0, 0.82) 100%
+                    rgba(0, 0, 0, 0.86) 100%
                 );
 
-            z-index: 1;
+            pointer-events: none;
         }
 
-        /* Center glow */
+        /* Vignette */
+        .background::after {
+            content: "";
 
-        .video-glow {
             position: absolute;
+            inset: 0;
 
-            left: 50%;
-            top: 50%;
-
-            width: 70vw;
-            height: 70vw;
-
-            max-width: 850px;
-            max-height: 850px;
-
-            transform:
-                translate(-50%, -50%);
-
-            border-radius: 50%;
+            z-index: 3;
 
             background:
                 radial-gradient(
-                    circle,
-                    rgba(255, 255, 255, 0.065),
-                    transparent 65%
+                    circle at center,
+                    transparent 20%,
+                    rgba(0, 0, 0, 0.30) 58%,
+                    rgba(0, 0, 0, 0.78) 100%
                 );
-
-            filter: blur(35px);
-
-            z-index: 2;
 
             pointer-events: none;
         }
 
+        @keyframes slowZoom {
+            from {
+                transform: scale(1.05);
+            }
+
+            to {
+                transform: scale(1.11);
+            }
+        }
+
+
         /* =========================================================
-           CINEMATIC GRAIN
-        ========================================================== */
+           ATMOSPHERIC GRID
+        ========================================================= */
 
-        .film-grain {
+        .grid {
             position: fixed;
-
             inset: 0;
 
-            z-index: -1;
+            z-index: -10;
 
             pointer-events: none;
 
-            opacity: 0.055;
+            opacity: 0.08;
 
             background-image:
-                url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
+                linear-gradient(
+                    rgba(255,255,255,0.08) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.08) 1px,
+                    transparent 1px
+                );
 
-            animation:
-                grainMove
-                0.25s
-                steps(2)
-                infinite;
+            background-size: 70px 70px;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    transparent,
+                    black 30%,
+                    black 70%,
+                    transparent
+                );
+        }
+
+
+        /* =========================================================
+           GRAIN
+        ========================================================= */
+
+        .grain {
+            position: fixed;
+            inset: -50%;
+
+            z-index: 20;
+
+            pointer-events: none;
+
+            opacity: 0.045;
+
+            background-image:
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+
+            animation: grainMove 0.25s steps(2) infinite;
         }
 
         @keyframes grainMove {
-
             0% {
                 transform: translate(0, 0);
             }
@@ -225,208 +228,24 @@
             }
 
             75% {
-                transform: translate(1%, 2%);
+                transform: translate(2%, 2%);
             }
 
             100% {
-                transform: translate(-1%, -1%);
+                transform: translate(-2%, -2%);
             }
         }
 
-        /* =========================================================
-           GRID
-        ========================================================== */
-
-        .grid {
-            position: fixed;
-
-            inset: -50%;
-
-            z-index: -5;
-
-            opacity: 0.065;
-
-            pointer-events: none;
-
-            background-image:
-                linear-gradient(
-                    rgba(255, 255, 255, 0.08)
-                    1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(255, 255, 255, 0.08)
-                    1px,
-                    transparent 1px
-                );
-
-            background-size:
-                70px
-                70px;
-
-            transform:
-                perspective(500px)
-                rotateX(65deg)
-                translateY(150px);
-
-            animation:
-                gridMove
-                18s
-                linear
-                infinite;
-        }
-
-        @keyframes gridMove {
-
-            from {
-                background-position:
-                    0 0;
-            }
-
-            to {
-                background-position:
-                    0 70px;
-            }
-        }
-
-        /* =========================================================
-           VIGNETTE
-        ========================================================== */
-
-        .vignette {
-            position: fixed;
-
-            inset: 0;
-
-            z-index: -2;
-
-            pointer-events: none;
-
-            background:
-                radial-gradient(
-                    ellipse at center,
-                    transparent 28%,
-                    rgba(0, 0, 0, 0.35) 65%,
-                    rgba(0, 0, 0, 0.88) 100%
-                );
-        }
-
-        /* =========================================================
-           FLOATING PANDAS
-        ========================================================== */
-
-        .panda {
-            position: fixed;
-
-            z-index: -1;
-
-            font-size:
-                clamp(
-                    24px,
-                    4vw,
-                    48px
-                );
-
-            opacity: 0.075;
-
-            user-select: none;
-
-            pointer-events: none;
-
-            filter:
-                grayscale(1)
-                drop-shadow(
-                    0 0 18px
-                    rgba(255, 255, 255, 0.3)
-                );
-
-            animation:
-                floatPanda
-                14s
-                ease-in-out
-                infinite;
-        }
-
-        .panda.p1 {
-            left: 7%;
-            top: 17%;
-
-            animation-delay:
-                -3s;
-        }
-
-        .panda.p2 {
-            right: 9%;
-            top: 25%;
-
-            font-size:
-                clamp(
-                    20px,
-                    3vw,
-                    38px
-                );
-
-            animation-delay:
-                -8s;
-        }
-
-        .panda.p3 {
-            left: 12%;
-            bottom: 15%;
-
-            font-size:
-                clamp(
-                    18px,
-                    2.5vw,
-                    34px
-                );
-
-            animation-delay:
-                -6s;
-        }
-
-        .panda.p4 {
-            right: 15%;
-            bottom: 13%;
-
-            font-size:
-                clamp(
-                    25px,
-                    3.5vw,
-                    42px
-                );
-
-            animation-delay:
-                -11s;
-        }
-
-        @keyframes floatPanda {
-
-            0%,
-            100% {
-                transform:
-                    translate3d(0, 0, 0)
-                    rotate(-4deg);
-            }
-
-            50% {
-                transform:
-                    translate3d(0, -30px, 0)
-                    rotate(5deg);
-            }
-        }
 
         /* =========================================================
            PARTICLES
-        ========================================================== */
+        ========================================================= */
 
         .particles {
             position: fixed;
-
             inset: 0;
 
-            z-index: -1;
+            z-index: -5;
 
             overflow: hidden;
 
@@ -436,64 +255,123 @@
         .particle {
             position: absolute;
 
-            width: 2px;
-            height: 2px;
+            width: 3px;
+            height: 3px;
 
             border-radius: 50%;
 
-            background:
-                rgba(255, 255, 255, 0.65);
+            background: rgba(255,255,255,0.65);
 
             box-shadow:
-                0 0 8px
-                rgba(255, 255, 255, 0.4);
+                0 0 8px rgba(255,255,255,0.45);
 
             animation:
-                particleFloat
-                linear
-                infinite;
+                floatParticle linear infinite,
+                particleGlow 3s ease-in-out infinite alternate;
         }
 
-        @keyframes particleFloat {
-
+        @keyframes floatParticle {
             from {
-                transform:
-                    translate3d(
-                        0,
-                        110vh,
-                        0
-                    );
-
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 0.65;
-            }
-
-            90% {
-                opacity: 0.45;
+                transform: translateY(110vh) translateX(0);
             }
 
             to {
-                transform:
-                    translate3d(
-                        30px,
-                        -10vh,
-                        0
-                    );
-
-                opacity: 0;
+                transform: translateY(-15vh) translateX(80px);
             }
         }
 
-        /* =========================================================
-           PAGE
-        ========================================================== */
+        @keyframes particleGlow {
+            from {
+                opacity: 0.2;
+            }
 
-        .page {
+            to {
+                opacity: 0.8;
+            }
+        }
+
+
+        /* =========================================================
+           FLOATING PANDAS
+        ========================================================= */
+
+        .floating-pandas {
+            position: fixed;
+            inset: 0;
+
+            z-index: -2;
+
+            overflow: hidden;
+
+            pointer-events: none;
+        }
+
+        .panda {
+            position: absolute;
+
+            font-size: clamp(25px, 3vw, 45px);
+
+            opacity: 0.10;
+
+            filter:
+                grayscale(1)
+                blur(0.3px)
+                drop-shadow(0 0 15px rgba(255,255,255,0.15));
+
+            animation:
+                pandaFloat 14s ease-in-out infinite;
+        }
+
+        .panda:nth-child(1) {
+            left: 7%;
+            top: 20%;
+            animation-delay: -3s;
+        }
+
+        .panda:nth-child(2) {
+            right: 8%;
+            top: 15%;
+            animation-delay: -8s;
+        }
+
+        .panda:nth-child(3) {
+            left: 13%;
+            bottom: 12%;
+            animation-delay: -5s;
+        }
+
+        .panda:nth-child(4) {
+            right: 14%;
+            bottom: 18%;
+            animation-delay: -10s;
+        }
+
+        @keyframes pandaFloat {
+            0%,
+            100% {
+                transform:
+                    translate3d(0, 0, 0)
+                    rotate(-4deg);
+            }
+
+            50% {
+                transform:
+                    translate3d(20px, -30px, 0)
+                    rotate(4deg);
+            }
+        }
+
+
+        /* =========================================================
+           MAIN
+        ========================================================= */
+
+        main {
+            position: relative;
+
             min-height: 100vh;
-            min-height: 100svh;
+
+            width: 100%;
 
             display: flex;
 
@@ -501,194 +379,123 @@
             justify-content: center;
 
             padding:
-                max(
-                    24px,
-                    env(safe-area-inset-top)
-                )
-                max(
-                    18px,
-                    env(safe-area-inset-right)
-                )
-                max(
-                    24px,
-                    env(safe-area-inset-bottom)
-                )
-                max(
-                    18px,
-                    env(safe-area-inset-left)
-                );
+                70px 20px
+                calc(70px + env(safe-area-inset-bottom));
         }
 
+
         /* =========================================================
-           CARD
-        ========================================================== */
+           PROFILE CARD
+        ========================================================= */
 
         .card {
-            width:
-                min(
-                    620px,
-                    100%
-                );
-
             position: relative;
 
-            padding:
-                54px
-                48px
-                42px;
+            width: min(520px, 100%);
+
+            padding: 42px 30px 30px;
 
             border:
                 1px solid
-                rgba(255, 255, 255, 0.14);
+                rgba(255,255,255,0.14);
 
             border-radius: 28px;
 
             background:
                 linear-gradient(
                     145deg,
-                    rgba(15, 15, 15, 0.66),
-                    rgba(5, 5, 5, 0.48)
+                    rgba(15,15,15,0.80),
+                    rgba(3,3,3,0.68)
                 );
 
-            backdrop-filter:
-                blur(25px)
-                saturate(120%);
-
-            -webkit-backdrop-filter:
-                blur(25px)
-                saturate(120%);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
 
             box-shadow:
-
-                0 35px 100px
-                rgba(0, 0, 0, 0.68),
-
-                0 0 80px
-                rgba(0, 0, 0, 0.25),
-
-                inset 0 1px 0
-                rgba(255, 255, 255, 0.08);
-
-            text-align: center;
+                0 30px 100px rgba(0,0,0,0.70),
+                inset 0 1px 0 rgba(255,255,255,0.08),
+                0 0 50px rgba(255,255,255,0.025);
 
             overflow: hidden;
 
-            transform-style:
-                preserve-3d;
-
-            animation:
-                cardAppear
-                1s
-                ease-out
-                both;
+            animation: cardAppear 1s cubic-bezier(.2,.8,.2,1) both;
         }
 
         @keyframes cardAppear {
-
             from {
                 opacity: 0;
-
                 transform:
-                    translateY(25px)
-                    scale(0.96);
+                    translateY(30px)
+                    scale(0.97);
             }
 
             to {
                 opacity: 1;
-
                 transform:
                     translateY(0)
                     scale(1);
             }
         }
 
-        /* Moving shine */
-
+        /* Top shine */
         .card::before {
             content: "";
 
             position: absolute;
 
-            inset: 0;
+            top: 0;
+            left: 10%;
+
+            width: 80%;
+            height: 1px;
 
             background:
                 linear-gradient(
-                    120deg,
-                    transparent 20%,
-                    rgba(255, 255, 255, 0.05) 50%,
-                    transparent 80%
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,0.55),
+                    transparent
                 );
 
-            transform:
-                translateX(-100%);
-
-            animation:
-                shine
-                8s
-                ease-in-out
-                infinite;
-
-            pointer-events: none;
+            opacity: 0.65;
         }
 
-        @keyframes shine {
+        /* Glow */
+        .card::after {
+            content: "";
 
-            0%,
-            55% {
-                transform:
-                    translateX(-100%);
-            }
-
-            75%,
-            100% {
-                transform:
-                    translateX(100%);
-            }
-        }
-
-        /* =========================================================
-           CARD TOP GLOW
-        ========================================================== */
-
-        .card-glow {
             position: absolute;
 
-            top: -150px;
+            width: 260px;
+            height: 260px;
+
             left: 50%;
+            top: -170px;
 
-            width: 350px;
-            height: 250px;
-
-            transform:
-                translateX(-50%);
-
-            border-radius: 50%;
+            transform: translateX(-50%);
 
             background:
                 radial-gradient(
                     circle,
-                    rgba(255, 255, 255, 0.075),
+                    rgba(255,255,255,0.07),
                     transparent 70%
                 );
-
-            filter: blur(25px);
 
             pointer-events: none;
         }
 
+
         /* =========================================================
-           CORNERS
-        ========================================================== */
+           CORNER DETAILS
+        ========================================================= */
 
         .corner {
             position: absolute;
 
-            width: 44px;
-            height: 44px;
+            width: 24px;
+            height: 24px;
 
-            opacity: 0.55;
-
-            pointer-events: none;
+            opacity: 0.6;
         }
 
         .corner::before,
@@ -697,8 +504,7 @@
 
             position: absolute;
 
-            background:
-                rgba(255, 255, 255, 0.5);
+            background: rgba(255,255,255,0.6);
         }
 
         .corner::before {
@@ -711,78 +517,65 @@
             height: 100%;
         }
 
-        .corner.top-left {
-            top: 18px;
-            left: 18px;
+        .corner-tl {
+            top: 15px;
+            left: 15px;
         }
 
-        .corner.top-right {
-            top: 18px;
-            right: 18px;
-
-            transform:
-                rotate(90deg);
+        .corner-tr {
+            top: 15px;
+            right: 15px;
+            transform: rotate(90deg);
         }
 
-        .corner.bottom-left {
-            bottom: 18px;
-            left: 18px;
-
-            transform:
-                rotate(-90deg);
+        .corner-bl {
+            bottom: 15px;
+            left: 15px;
+            transform: rotate(-90deg);
         }
 
-        .corner.bottom-right {
-            bottom: 18px;
-            right: 18px;
-
-            transform:
-                rotate(180deg);
+        .corner-br {
+            bottom: 15px;
+            right: 15px;
+            transform: rotate(180deg);
         }
+
 
         /* =========================================================
            STATUS
-        ========================================================== */
+        ========================================================= */
 
         .status {
-            display: inline-flex;
+            position: relative;
+
+            width: fit-content;
+
+            margin: 0 auto 22px;
+
+            display: flex;
 
             align-items: center;
-            justify-content: center;
-
             gap: 9px;
 
-            padding:
-                8px
-                13px;
+            padding: 8px 14px;
 
-            margin-bottom:
-                28px;
+            border-radius: 999px;
 
             border:
                 1px solid
-                rgba(255, 255, 255, 0.1);
-
-            border-radius:
-                999px;
+                rgba(255,255,255,0.12);
 
             background:
-                rgba(255, 255, 255, 0.045);
+                rgba(255,255,255,0.045);
 
-            color:
-                rgba(255, 255, 255, 0.68);
+            color: rgba(255,255,255,0.70);
 
-            font-size:
-                10px;
+            font-size: 10px;
+            font-weight: 600;
 
-            font-weight:
-                600;
+            letter-spacing: 1.8px;
 
-            letter-spacing:
-                2px;
-
-            text-transform:
-                uppercase;
+            text-transform: uppercase;
         }
 
         .status-dot {
@@ -791,518 +584,439 @@
 
             border-radius: 50%;
 
-            background: #ffffff;
+            background: #b7ffb7;
 
             box-shadow:
-                0 0 10px
-                rgba(255, 255, 255, 0.9);
+                0 0 10px rgba(130,255,150,0.8);
 
-            animation:
-                statusPulse
-                2s
-                ease-in-out
-                infinite;
+            animation: statusPulse 2s ease-in-out infinite;
         }
 
         @keyframes statusPulse {
-
             0%,
             100% {
-                opacity: 0.4;
-
-                transform:
-                    scale(0.85);
+                opacity: 0.5;
+                transform: scale(0.85);
             }
 
             50% {
                 opacity: 1;
-
-                transform:
-                    scale(1.15);
+                transform: scale(1.15);
             }
         }
 
+
         /* =========================================================
-           MAIN PANDA
-        ========================================================== */
+           PANDA LOGO
+        ========================================================= */
 
-        .main-panda {
-            display: block;
+        .logo-wrap {
+            display: flex;
 
-            font-size:
-                clamp(
-                    70px,
-                    13vw,
-                    105px
+            justify-content: center;
+
+            margin-bottom: 16px;
+        }
+
+        .logo {
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 105px;
+            height: 105px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle at 35% 25%,
+                    rgba(255,255,255,0.16),
+                    rgba(255,255,255,0.025) 48%,
+                    rgba(0,0,0,0.25) 100%
                 );
+
+            border:
+                1px solid
+                rgba(255,255,255,0.16);
+
+            box-shadow:
+                0 0 40px rgba(255,255,255,0.08),
+                inset 0 0 25px rgba(255,255,255,0.035);
+
+            animation: logoFloat 5s ease-in-out infinite;
+        }
+
+        .logo::before {
+            content: "";
+
+            position: absolute;
+            inset: -9px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.07);
+
+            animation: logoRing 7s linear infinite;
+        }
+
+        .logo::after {
+            content: "";
+
+            position: absolute;
+
+            inset: -20px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,255,255,0.08),
+                    transparent 65%
+                );
+
+            z-index: -1;
+        }
+
+        .logo span {
+            font-size: 58px;
 
             line-height: 1;
 
-            margin-bottom:
-                22px;
-
             filter:
-                grayscale(1)
                 drop-shadow(
-                    0 0 25px
-                    rgba(255, 255, 255, 0.2)
+                    0 0 16px
+                    rgba(255,255,255,0.22)
                 );
-
-            animation:
-
-                pandaBounce
-                4s
-                ease-in-out
-                infinite,
-
-                pandaGlow
-                3s
-                ease-in-out
-                infinite
-                alternate;
-
-            user-select: none;
         }
 
-        @keyframes pandaBounce {
-
+        @keyframes logoFloat {
             0%,
             100% {
-                transform:
-                    translateY(0)
-                    rotate(-2deg);
+                transform: translateY(0);
             }
 
             50% {
-                transform:
-                    translateY(-8px)
-                    rotate(2deg);
+                transform: translateY(-7px);
             }
         }
 
-        @keyframes pandaGlow {
-
+        @keyframes logoRing {
             from {
-                filter:
-                    grayscale(1)
-                    drop-shadow(
-                        0 0 14px
-                        rgba(255, 255, 255, 0.1)
-                    );
+                transform: rotate(0deg);
             }
 
             to {
-                filter:
-                    grayscale(1)
-                    drop-shadow(
-                        0 0 30px
-                        rgba(255, 255, 255, 0.3)
-                    );
+                transform: rotate(360deg);
             }
         }
 
+
         /* =========================================================
            TITLE
-        ========================================================== */
+        ========================================================= */
 
-        h1 {
-            font-size:
-                clamp(
-                    32px,
-                    7vw,
-                    58px
-                );
+        .title {
+            text-align: center;
 
-            font-weight:
-                800;
+            font-size: clamp(34px, 8vw, 52px);
 
-            letter-spacing:
-                clamp(
-                    4px,
-                    1.5vw,
-                    10px
-                );
+            font-weight: 900;
 
-            line-height:
-                1.05;
+            letter-spacing: 5px;
 
-            color:
-                #ffffff;
+            line-height: 1.1;
+
+            color: #ffffff;
 
             text-shadow:
-                0 0 20px
-                rgba(255, 255, 255, 0.1);
+                0 0 20px rgba(255,255,255,0.12);
 
-            margin-left:
-                clamp(
-                    4px,
-                    1.5vw,
-                    10px
-                );
+            margin-bottom: 9px;
         }
 
-        .divider {
-            width: 90px;
-            height: 1px;
+        .title span {
+            display: inline-block;
 
-            margin:
-                22px
-                auto
-                20px;
+            background:
+                linear-gradient(
+                    180deg,
+                    #ffffff 0%,
+                    #bbbbbb 52%,
+                    #666666 100%
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            min-height: 20px;
+
+            text-align: center;
+
+            color: rgba(255,255,255,0.48);
+
+            font-size: 11px;
+
+            letter-spacing: 2.8px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 26px;
+        }
+
+        .cursor {
+            display: inline-block;
+
+            width: 7px;
+            height: 12px;
+
+            margin-left: 4px;
+
+            vertical-align: -1px;
+
+            background: rgba(255,255,255,0.65);
+
+            animation: cursorBlink 0.8s steps(1) infinite;
+        }
+
+        @keyframes cursorBlink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================================================
+           DIVIDER
+        ========================================================= */
+
+        .divider {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin: 0 0 22px;
+        }
+
+        .divider-line {
+            flex: 1;
+
+            height: 1px;
 
             background:
                 linear-gradient(
                     90deg,
                     transparent,
-                    rgba(255, 255, 255, 0.8),
+                    rgba(255,255,255,0.12)
+                );
+        }
+
+        .divider-line:last-child {
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.12),
                     transparent
                 );
-
-            box-shadow:
-                0 0 12px
-                rgba(255, 255, 255, 0.2);
         }
 
-        /* =========================================================
-           TYPING
-        ========================================================== */
+        .divider-panda {
+            font-size: 14px;
 
-        .typing-container {
-            min-height:
-                27px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            color:
-                rgba(255, 255, 255, 0.55);
-
-            font-size:
-                11px;
-
-            font-weight:
-                500;
-
-            letter-spacing:
-                2px;
-
-            text-transform:
-                lowercase;
+            opacity: 0.5;
         }
 
-        .typing {
-            display:
-                inline-block;
-        }
-
-        .cursor {
-            display:
-                inline-block;
-
-            width:
-                1px;
-
-            height:
-                13px;
-
-            margin-left:
-                4px;
-
-            vertical-align:
-                middle;
-
-            background:
-                rgba(255, 255, 255, 0.7);
-
-            animation:
-                cursorBlink
-                0.8s
-                steps(1)
-                infinite;
-        }
-
-        @keyframes cursorBlink {
-
-            0%,
-            45% {
-                opacity:
-                    1;
-            }
-
-            46%,
-            100% {
-                opacity:
-                    0;
-            }
-        }
 
         /* =========================================================
            SOCIAL LINKS
-        ========================================================== */
+        ========================================================= */
 
         .social-links {
-            display:
-                flex;
+            display: flex;
 
-            flex-direction:
-                column;
+            flex-direction: column;
 
-            gap:
-                12px;
-
-            width:
-                100%;
-
-            margin-top:
-                34px;
+            gap: 10px;
         }
 
         .social-button {
-            width:
-                100%;
+            position: relative;
 
-            min-height:
-                68px;
+            display: flex;
 
-            display:
-                flex;
+            align-items: center;
 
-            align-items:
-                center;
+            min-height: 62px;
 
-            padding:
-                13px
-                15px;
+            padding: 10px 15px;
 
-            position:
-                relative;
+            border-radius: 15px;
 
             border:
                 1px solid
-                rgba(255, 255, 255, 0.1);
-
-            border-radius:
-                17px;
+                rgba(255,255,255,0.09);
 
             background:
                 linear-gradient(
-                    135deg,
-                    rgba(255, 255, 255, 0.065),
-                    rgba(255, 255, 255, 0.018)
+                    100deg,
+                    rgba(255,255,255,0.055),
+                    rgba(255,255,255,0.025)
                 );
 
-            color:
-                #ffffff;
+            overflow: hidden;
 
             transition:
                 transform 0.25s ease,
                 border-color 0.25s ease,
                 background 0.25s ease,
                 box-shadow 0.25s ease;
-
-            overflow:
-                hidden;
         }
 
         .social-button::before {
-            content:
-                "";
+            content: "";
 
-            position:
-                absolute;
+            position: absolute;
 
-            inset:
-                0;
+            top: 0;
+            bottom: 0;
+
+            left: -100%;
+
+            width: 70%;
 
             background:
                 linear-gradient(
                     90deg,
                     transparent,
-                    rgba(255, 255, 255, 0.065),
+                    rgba(255,255,255,0.07),
                     transparent
                 );
 
-            transform:
-                translateX(-100%);
+            transform: skewX(-20deg);
 
-            transition:
-                transform
-                0.6s
-                ease;
+            transition: left 0.6s ease;
+        }
 
-            pointer-events:
-                none;
+        .social-button:hover::before {
+            left: 130%;
         }
 
         .social-button:hover {
             transform:
-                translateY(-3px);
+                translateY(-2px)
+                translateX(3px);
 
             border-color:
-                rgba(255, 255, 255, 0.25);
+                rgba(255,255,255,0.22);
 
             background:
-                linear-gradient(
-                    135deg,
-                    rgba(255, 255, 255, 0.1),
-                    rgba(255, 255, 255, 0.035)
-                );
+                rgba(255,255,255,0.075);
 
             box-shadow:
-                0 12px 30px
-                rgba(0, 0, 0, 0.3),
-
-                0 0 30px
-                rgba(255, 255, 255, 0.04);
-        }
-
-        .social-button:hover::before {
-            transform:
-                translateX(100%);
+                0 10px 30px rgba(0,0,0,0.25),
+                0 0 25px rgba(255,255,255,0.035);
         }
 
         .social-button:active {
-            transform:
-                translateY(-1px)
-                scale(0.99);
+            transform: scale(0.985);
         }
 
-        /* =========================================================
-           ICON
-        ========================================================== */
-
         .social-icon {
-            width:
-                42px;
+            position: relative;
 
-            height:
-                42px;
+            flex: 0 0 42px;
 
-            flex:
-                0 0 42px;
+            width: 42px;
+            height: 42px;
 
-            display:
-                flex;
+            display: flex;
 
-            align-items:
-                center;
+            align-items: center;
+            justify-content: center;
 
-            justify-content:
-                center;
+            margin-right: 12px;
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,255,255,0.055);
 
             border:
                 1px solid
-                rgba(255, 255, 255, 0.09);
+                rgba(255,255,255,0.09);
 
-            border-radius:
-                12px;
+            color: #ffffff;
 
-            background:
-                rgba(255, 255, 255, 0.06);
+            font-size: 19px;
 
-            color:
-                rgba(255, 255, 255, 0.92);
-
-            font-size:
-                20px;
-
-            box-shadow:
-                inset 0 1px 0
-                rgba(255, 255, 255, 0.08);
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease;
         }
 
-        /* =========================================================
-           TEXT
-        ========================================================== */
+        .social-button:hover .social-icon {
+            transform: scale(1.08) rotate(-3deg);
+
+            background:
+                rgba(255,255,255,0.09);
+        }
 
         .social-text {
-            flex:
-                1;
+            display: flex;
 
-            display:
-                flex;
+            flex-direction: column;
 
-            flex-direction:
-                column;
+            min-width: 0;
 
-            align-items:
-                flex-start;
-
-            min-width:
-                0;
-
-            margin-left:
-                14px;
-
-            text-align:
-                left;
+            gap: 3px;
         }
 
         .social-text strong {
-            font-size:
-                12px;
+            font-size: 12px;
 
-            font-weight:
-                800;
+            font-weight: 800;
 
-            letter-spacing:
-                2px;
-
-            line-height:
-                1.4;
+            letter-spacing: 1.4px;
         }
 
         .social-text small {
-            margin-top:
-                4px;
+            font-family: "Orbitron", sans-serif;
 
-            color:
-                rgba(255, 255, 255, 0.43);
+            font-size: 8px;
 
-            font-size:
-                9px;
+            font-weight: 500;
 
-            font-weight:
-                500;
+            letter-spacing: 1px;
 
-            letter-spacing:
-                0.8px;
+            color: rgba(255,255,255,0.40);
 
-            white-space:
-                nowrap;
+            white-space: nowrap;
 
-            overflow:
-                hidden;
+            overflow: hidden;
 
-            text-overflow:
-                ellipsis;
-
-            max-width:
-                100%;
+            text-overflow: ellipsis;
         }
 
-        /* =========================================================
-           ARROW
-        ========================================================== */
-
         .arrow {
-            flex:
-                0 0 auto;
+            margin-left: auto;
 
-            margin-left:
-                12px;
+            padding-left: 10px;
 
-            color:
-                rgba(255, 255, 255, 0.4);
+            color: rgba(255,255,255,0.30);
 
-            font-size:
-                18px;
+            font-size: 17px;
 
             transition:
                 transform 0.25s ease,
@@ -1310,531 +1024,160 @@
         }
 
         .social-button:hover .arrow {
-            color:
-                rgba(255, 255, 255, 0.95);
+            color: rgba(255,255,255,0.85);
 
             transform:
-                translate(
-                    3px,
-                    -3px
-                );
+                translate(2px, -2px);
         }
 
-        /* =========================================================
-           PLATFORM ICON SIZES
-        ========================================================== */
-
-        .roblox-button .social-icon {
-            font-size:
-                18px;
-        }
-
-        .game-button .social-icon {
-            font-size:
-                15px;
-        }
-
-        .instagram-button .social-icon {
-            font-size:
-                22px;
-        }
-
-        .threads-button .social-icon {
-            font-size:
-                21px;
-
-            font-weight:
-                700;
-        }
-
-        .tiktok-button .social-icon {
-            font-size:
-                20px;
-
-            font-weight:
-                800;
-        }
-
-        .x-button .social-icon {
-            font-size:
-                19px;
-
-            font-weight:
-                800;
-        }
-
-        .reddit-button .social-icon {
-            font-size:
-                20px;
-        }
-
-        /* =========================================================
-           FOCUS
-        ========================================================== */
-
-        .social-button:focus-visible {
-            outline:
-                none;
-
-            border-color:
-                rgba(255, 255, 255, 0.55);
-
-            box-shadow:
-                0 0 0 3px
-                rgba(255, 255, 255, 0.08),
-
-                0 0 25px
-                rgba(255, 255, 255, 0.08);
-        }
 
         /* =========================================================
            FOOTER
-        ========================================================== */
+        ========================================================= */
 
         .footer {
-            margin-top:
-                31px;
+            text-align: center;
 
-            color:
-                rgba(255, 255, 255, 0.27);
+            margin-top: 24px;
 
-            font-size:
-                8px;
+            color: rgba(255,255,255,0.28);
 
-            font-weight:
-                500;
+            font-size: 8px;
 
-            letter-spacing:
-                3px;
+            letter-spacing: 2px;
 
-            text-transform:
-                lowercase;
+            text-transform: uppercase;
         }
 
-        .footer span {
-            display:
-                inline-block;
+        .footer-panda {
+            display: inline-block;
 
-            margin:
-                0 5px;
+            margin-left: 5px;
 
-            color:
-                rgba(255, 255, 255, 0.13);
+            opacity: 0.7;
         }
+
+
+        /* =========================================================
+           FOCUS
+        ========================================================= */
+
+        .social-button:focus-visible {
+            outline: 2px solid rgba(255,255,255,0.75);
+
+            outline-offset: 3px;
+        }
+
 
         /* =========================================================
            TABLET
-        ========================================================== */
+        ========================================================= */
 
-        @media (max-width: 700px) {
+        @media (max-width: 600px) {
 
-            .card {
+            main {
                 padding:
-                    46px
-                    30px
-                    36px;
-
-                border-radius:
-                    24px;
-            }
-
-            .corner {
-                width:
-                    34px;
-
-                height:
-                    34px;
-            }
-
-            .social-links {
-                margin-top:
-                    30px;
-            }
-
-        }
-
-        /* =========================================================
-           MOBILE
-        ========================================================== */
-
-        @media (max-width: 520px) {
-
-            .page {
-                align-items:
-                    center;
-
-                padding:
-                    18px
-                    max(
-                        14px,
-                        env(safe-area-inset-right)
-                    )
-                    18px
-                    max(
-                        14px,
-                        env(safe-area-inset-left)
-                    );
-            }
-
-            .video-background video {
-                transform:
-                    translate(
-                        -50%,
-                        -50%
-                    )
-                    scale(1.12);
-
-                filter:
-                    grayscale(0.25)
-                    brightness(0.35)
-                    contrast(1.05);
+                    35px 14px
+                    calc(35px + env(safe-area-inset-bottom));
             }
 
             .card {
-                padding:
-                    38px
-                    18px
-                    31px;
+                padding: 34px 17px 22px;
 
-                border-radius:
-                    21px;
+                border-radius: 23px;
             }
 
-            .status {
-                margin-bottom:
-                    23px;
-
-                padding:
-                    7px
-                    11px;
-
-                font-size:
-                    8px;
-
-                letter-spacing:
-                    1.7px;
+            .logo {
+                width: 90px;
+                height: 90px;
             }
 
-            .main-panda {
-                font-size:
-                    76px;
-
-                margin-bottom:
-                    18px;
+            .logo span {
+                font-size: 49px;
             }
 
-            h1 {
-                font-size:
-                    31px;
+            .title {
+                font-size: 34px;
 
-                letter-spacing:
-                    4px;
+                letter-spacing: 3px;
             }
 
-            .divider {
-                margin:
-                    18px
-                    auto
-                    16px;
-            }
+            .subtitle {
+                font-size: 9px;
 
-            .typing-container {
-                font-size:
-                    9px;
-
-                letter-spacing:
-                    1.5px;
-            }
-
-            .social-links {
-                gap:
-                    10px;
-
-                margin-top:
-                    27px;
+                letter-spacing: 2px;
             }
 
             .social-button {
-                min-height:
-                    63px;
-
-                padding:
-                    10px
-                    11px;
-
-                border-radius:
-                    15px;
+                min-height: 59px;
             }
 
             .social-icon {
-                width:
-                    38px;
+                width: 39px;
+                height: 39px;
 
-                height:
-                    38px;
+                flex-basis: 39px;
 
-                flex-basis:
-                    38px;
-
-                border-radius:
-                    10px;
-            }
-
-            .social-text {
-                margin-left:
-                    11px;
+                margin-right: 10px;
             }
 
             .social-text strong {
-                font-size:
-                    10px;
-
-                letter-spacing:
-                    1.5px;
+                font-size: 10px;
             }
 
             .social-text small {
-                font-size:
-                    8px;
-
-                margin-top:
-                    3px;
+                font-size: 7px;
             }
 
             .arrow {
-                font-size:
-                    16px;
-
-                margin-left:
-                    7px;
+                font-size: 15px;
             }
-
-            .footer {
-                margin-top:
-                    25px;
-
-                font-size:
-                    7px;
-
-                letter-spacing:
-                    2.4px;
-            }
-
-            .panda {
-                opacity:
-                    0.04;
-            }
-
         }
+
 
         /* =========================================================
            VERY SMALL PHONES
-        ========================================================== */
+        ========================================================= */
 
         @media (max-width: 370px) {
 
-            .page {
-                padding:
-                    12px;
-            }
-
             .card {
-                padding:
-                    32px
-                    13px
-                    26px;
+                padding-left: 13px;
+                padding-right: 13px;
             }
 
-            .main-panda {
-                font-size:
-                    65px;
-            }
-
-            h1 {
-                font-size:
-                    27px;
-
-                letter-spacing:
-                    3px;
-            }
-
-            .typing-container {
-                font-size:
-                    8px;
+            .title {
+                font-size: 29px;
             }
 
             .social-button {
-                min-height:
-                    59px;
-            }
-
-            .social-icon {
-                width:
-                    35px;
-
-                height:
-                    35px;
-
-                flex-basis:
-                    35px;
+                padding-left: 11px;
+                padding-right: 11px;
             }
 
             .social-text strong {
-                font-size:
-                    9px;
+                font-size: 9px;
             }
-
-            .social-text small {
-                font-size:
-                    7px;
-            }
-
         }
 
-        /* =========================================================
-           SHORT SCREENS
-        ========================================================== */
-
-        @media (
-            max-height: 650px
-        ) and (
-            min-width: 521px
-        ) {
-
-            .card {
-                padding-top:
-                    30px;
-
-                padding-bottom:
-                    28px;
-            }
-
-            .main-panda {
-                font-size:
-                    65px;
-
-                margin-bottom:
-                    12px;
-            }
-
-            .status {
-                margin-bottom:
-                    15px;
-            }
-
-            .divider {
-                margin-top:
-                    14px;
-
-                margin-bottom:
-                    12px;
-            }
-
-            .social-links {
-                margin-top:
-                    20px;
-            }
-
-            .social-button {
-                min-height:
-                    57px;
-            }
-
-            .footer {
-                margin-top:
-                    18px;
-            }
-
-        }
-
-        /* =========================================================
-           TOUCH DEVICES
-        ========================================================== */
-
-        @media (
-            hover: none
-        ) and (
-            pointer: coarse
-        ) {
-
-            .social-button:hover {
-                transform:
-                    none;
-
-                border-color:
-                    rgba(255, 255, 255, 0.1);
-
-                background:
-                    linear-gradient(
-                        135deg,
-                        rgba(255, 255, 255, 0.065),
-                        rgba(255, 255, 255, 0.018)
-                    );
-
-                box-shadow:
-                    none;
-            }
-
-            .social-button:hover::before {
-                transform:
-                    translateX(-100%);
-            }
-
-            .social-button:hover .arrow {
-                color:
-                    rgba(255, 255, 255, 0.4);
-
-                transform:
-                    none;
-            }
-
-            .social-button:active {
-                transform:
-                    scale(0.98);
-
-                border-color:
-                    rgba(255, 255, 255, 0.25);
-            }
-
-        }
 
         /* =========================================================
            REDUCED MOTION
-        ========================================================== */
+        ========================================================= */
 
-        @media (
-            prefers-reduced-motion: reduce
-        ) {
+        @media (prefers-reduced-motion: reduce) {
 
             html {
-                scroll-behavior:
-                    auto;
+                scroll-behavior: auto;
             }
 
             *,
             *::before,
             *::after {
-                animation-duration:
-                    0.01ms !important;
-
-                animation-iteration-count:
-                    1 !important;
-
-                transition-duration:
-                    0.01ms !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
-
-            .grid,
-            .film-grain {
-                animation:
-                    none;
-            }
-
-            .particle {
-                display:
-                    none;
-            }
-
         }
 
     </style>
@@ -1843,224 +1186,169 @@
 <body>
 
     <!-- =========================================================
-         VIDEO BACKGROUND
+         BACKGROUND IMAGE
+    ========================================================= -->
 
-         Put your video in the same folder as index.html
-         and name it:
+    <div class="background" aria-hidden="true">
 
-         background.mp4
-    ========================================================== -->
-
-    <div
-        class="video-background"
-        aria-hidden="true"
-    >
-
-        <video
-            id="backgroundVideo"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="auto"
+        <img
+            src="https://images.openai.com/static-rsc-4/0vO5DjQLwEgxwzxOKfLOJmwZLW6qkKZOtcFJbvGvI9hNtbGrxnCLp8-mD31v-Z6VRZicr53OProHbinNSUnS0yYHOh70EmCslgij2_YQ6InwGDgkC7NdXMiYDt2LS4iv69mkY2-caobglUQJURaBkRk_A5Rs2cUKi4NXy3EMiKIaM-h1zTH5kVe0MQCU2HZE?purpose=fullsize"
+            alt=""
         >
-
-            <source
-                src="background.mp4"
-                type="video/mp4"
-            >
-
-        </video>
-
-        <div class="video-overlay"></div>
-
-        <div class="video-glow"></div>
 
     </div>
 
 
-    <!-- Film grain -->
-
-    <div
-        class="film-grain"
-        aria-hidden="true"
-    ></div>
+    <!-- Atmospheric Grid -->
+    <div class="grid" aria-hidden="true"></div>
 
 
-    <!-- Grid -->
-
-    <div
-        class="grid"
-        aria-hidden="true"
-    ></div>
-
-
-    <!-- Vignette -->
-
-    <div
-        class="vignette"
-        aria-hidden="true"
-    ></div>
+    <!-- Grain -->
+    <div class="grain" aria-hidden="true"></div>
 
 
     <!-- =========================================================
          FLOATING PANDAS
-    ========================================================== -->
+    ========================================================= -->
 
-    <div
-        class="panda p1"
-        aria-hidden="true"
-    >
-        🐼
-    </div>
+    <div class="floating-pandas" aria-hidden="true">
 
-    <div
-        class="panda p2"
-        aria-hidden="true"
-    >
-        🐼
-    </div>
+        <div class="panda">🐼</div>
+        <div class="panda">🐼</div>
+        <div class="panda">🐼</div>
+        <div class="panda">🐼</div>
 
-    <div
-        class="panda p3"
-        aria-hidden="true"
-    >
-        🐼
-    </div>
-
-    <div
-        class="panda p4"
-        aria-hidden="true"
-    >
-        🐼
     </div>
 
 
     <!-- =========================================================
          PARTICLES
-    ========================================================== -->
+    ========================================================= -->
 
-    <div
-        class="particles"
-        id="particles"
-        aria-hidden="true"
-    ></div>
+    <div class="particles" aria-hidden="true">
+
+        <span
+            class="particle"
+            style="left:8%; animation-duration:14s; animation-delay:-2s;"
+        ></span>
+
+        <span
+            class="particle"
+            style="left:17%; animation-duration:19s; animation-delay:-9s;"
+        ></span>
+
+        <span
+            class="particle"
+            style="left:28%; animation-duration:16s; animation-delay:-4s;"
+        ></span>
+
+        <span
+            class="particle"
+            style="left:39%; animation-duration:22s; animation-delay:-15s;"
+        ></span>
+
+        <span
+            class="particle"
+            style="left:51%; animation-duration:18s; animation-delay:-7s;"
+        ></span>
+
+        <span
+            class="particle"
+            style="left:62%; animation-duration:24s; animation-delay:-17s;"
+        ></span>
+
+        <span
+            class="particle"
+            style="left:73%; animation-duration:15s; animation-delay:-5s;"
+        ></span>
+
+        <span
+            class="particle"
+            style="left:84%; animation-duration:21s; animation-delay:-12s;"
+        ></span>
+
+        <span
+            class="particle"
+            style="left:93%; animation-duration:17s; animation-delay:-3s;"
+        ></span>
+
+    </div>
 
 
     <!-- =========================================================
          MAIN
-    ========================================================== -->
+    ========================================================= -->
 
-    <main class="page">
+    <main>
 
-        <section
-            class="card"
-            id="card"
-            aria-label="Panda Man profile"
-        >
+        <section class="card" id="profile-card">
 
-            <div
-                class="card-glow"
-                aria-hidden="true"
-            ></div>
+            <!-- Corner Decorations -->
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-tr"></div>
+            <div class="corner corner-bl"></div>
+            <div class="corner corner-br"></div>
 
 
-            <!-- Decorative corners -->
-
-            <div
-                class="corner top-left"
-                aria-hidden="true"
-            ></div>
-
-            <div
-                class="corner top-right"
-                aria-hidden="true"
-            ></div>
-
-            <div
-                class="corner bottom-left"
-                aria-hidden="true"
-            ></div>
-
-            <div
-                class="corner bottom-right"
-                aria-hidden="true"
-            ></div>
-
-
-            <!-- =================================================
-                 STATUS
-            ================================================== -->
-
+            <!-- Status -->
             <div class="status">
 
-                <span
-                    class="status-dot"
-                    aria-hidden="true"
-                ></span>
+                <span class="status-dot"></span>
 
-                Currently existing
+                <span>Currently existing</span>
 
             </div>
 
 
-            <!-- =================================================
-                 PANDA
-            ================================================== -->
+            <!-- Panda Logo -->
+            <div class="logo-wrap">
 
-            <div
-                class="main-panda"
-                aria-hidden="true"
-            >
-                🐼
+                <div class="logo">
+
+                    <span>🐼</span>
+
+                </div>
+
             </div>
 
 
-            <!-- =================================================
-                 TITLE
-            ================================================== -->
+            <!-- Title -->
+            <h1 class="title">
 
-            <h1>
-                PANDA MAN
+                <span>PANDA MAN</span>
+
             </h1>
 
 
-            <div
-                class="divider"
-                aria-hidden="true"
-            ></div>
+            <!-- Typing Subtitle -->
+            <div class="subtitle">
+
+                <span id="typing"></span>
+                <span class="cursor"></span>
+
+            </div>
 
 
-            <!-- =================================================
-                 TYPING STATUS
-            ================================================== -->
+            <!-- Divider -->
+            <div class="divider">
 
-            <div
-                class="typing-container"
-                aria-live="polite"
-            >
+                <div class="divider-line"></div>
 
-                <span
-                    class="typing"
-                    id="typing"
-                ></span>
+                <div class="divider-panda">🐼</div>
 
-                <span
-                    class="cursor"
-                    aria-hidden="true"
-                ></span>
+                <div class="divider-line"></div>
 
             </div>
 
 
             <!-- =================================================
                  SOCIAL LINKS
-            ================================================== -->
+            ================================================= -->
 
             <div class="social-links">
 
 
-                <!-- ROBLOX -->
+                <!-- ROBLOX PROFILE -->
 
                 <a
                     class="social-button roblox-button"
@@ -2070,18 +1358,13 @@
                     aria-label="Open Panda Man Roblox profile"
                 >
 
-                    <span
-                        class="social-icon"
-                        aria-hidden="true"
-                    >
+                    <span class="social-icon" aria-hidden="true">
                         ◈
                     </span>
 
                     <span class="social-text">
 
-                        <strong>
-                            ROBLOX
-                        </strong>
+                        <strong>ROBLOX</strong>
 
                         <small>
                             PandaManOfficial
@@ -2089,17 +1372,14 @@
 
                     </span>
 
-                    <span
-                        class="arrow"
-                        aria-hidden="true"
-                    >
+                    <span class="arrow" aria-hidden="true">
                         ↗
                     </span>
 
                 </a>
 
 
-                <!-- PLEASE PROCEED -->
+                <!-- ROBLOX GAME -->
 
                 <a
                     class="social-button game-button"
@@ -2109,18 +1389,13 @@
                     aria-label="Play Please Proceed on Roblox"
                 >
 
-                    <span
-                        class="social-icon"
-                        aria-hidden="true"
-                    >
+                    <span class="social-icon" aria-hidden="true">
                         ▶
                     </span>
 
                     <span class="social-text">
 
-                        <strong>
-                            PLEASE PROCEED
-                        </strong>
+                        <strong>PLEASE PROCEED</strong>
 
                         <small>
                             Roblox Game • Play Now
@@ -2128,10 +1403,7 @@
 
                     </span>
 
-                    <span
-                        class="arrow"
-                        aria-hidden="true"
-                    >
+                    <span class="arrow" aria-hidden="true">
                         ↗
                     </span>
 
@@ -2148,18 +1420,13 @@
                     aria-label="Open Panda Man Instagram"
                 >
 
-                    <span
-                        class="social-icon"
-                        aria-hidden="true"
-                    >
+                    <span class="social-icon" aria-hidden="true">
                         ◎
                     </span>
 
                     <span class="social-text">
 
-                        <strong>
-                            INSTAGRAM
-                        </strong>
+                        <strong>INSTAGRAM</strong>
 
                         <small>
                             @panda.man.official420
@@ -2167,10 +1434,7 @@
 
                     </span>
 
-                    <span
-                        class="arrow"
-                        aria-hidden="true"
-                    >
+                    <span class="arrow" aria-hidden="true">
                         ↗
                     </span>
 
@@ -2187,18 +1451,13 @@
                     aria-label="Open Panda Man Threads"
                 >
 
-                    <span
-                        class="social-icon"
-                        aria-hidden="true"
-                    >
+                    <span class="social-icon" aria-hidden="true">
                         @
                     </span>
 
                     <span class="social-text">
 
-                        <strong>
-                            THREADS
-                        </strong>
+                        <strong>THREADS</strong>
 
                         <small>
                             @panda.man.official420
@@ -2206,10 +1465,7 @@
 
                     </span>
 
-                    <span
-                        class="arrow"
-                        aria-hidden="true"
-                    >
+                    <span class="arrow" aria-hidden="true">
                         ↗
                     </span>
 
@@ -2226,18 +1482,13 @@
                     aria-label="Open Panda Man TikTok"
                 >
 
-                    <span
-                        class="social-icon"
-                        aria-hidden="true"
-                    >
+                    <span class="social-icon" aria-hidden="true">
                         ♪
                     </span>
 
                     <span class="social-text">
 
-                        <strong>
-                            TIKTOK
-                        </strong>
+                        <strong>TIKTOK</strong>
 
                         <small>
                             @panda.man.official
@@ -2245,10 +1496,7 @@
 
                     </span>
 
-                    <span
-                        class="arrow"
-                        aria-hidden="true"
-                    >
+                    <span class="arrow" aria-hidden="true">
                         ↗
                     </span>
 
@@ -2265,18 +1513,13 @@
                     aria-label="Open Panda Man X profile"
                 >
 
-                    <span
-                        class="social-icon"
-                        aria-hidden="true"
-                    >
+                    <span class="social-icon" aria-hidden="true">
                         𝕏
                     </span>
 
                     <span class="social-text">
 
-                        <strong>
-                            X
-                        </strong>
+                        <strong>X</strong>
 
                         <small>
                             @pandama58474678
@@ -2284,10 +1527,7 @@
 
                     </span>
 
-                    <span
-                        class="arrow"
-                        aria-hidden="true"
-                    >
+                    <span class="arrow" aria-hidden="true">
                         ↗
                     </span>
 
@@ -2304,18 +1544,13 @@
                     aria-label="Open Panda Man Reddit profile"
                 >
 
-                    <span
-                        class="social-icon"
-                        aria-hidden="true"
-                    >
+                    <span class="social-icon" aria-hidden="true">
                         ●
                     </span>
 
                     <span class="social-text">
 
-                        <strong>
-                            REDDIT
-                        </strong>
+                        <strong>REDDIT</strong>
 
                         <small>
                             u/PandaManOfficial420
@@ -2323,31 +1558,25 @@
 
                     </span>
 
-                    <span
-                        class="arrow"
-                        aria-hidden="true"
-                    >
+                    <span class="arrow" aria-hidden="true">
                         ↗
                     </span>
 
                 </a>
 
+
             </div>
 
 
-            <!-- =================================================
-                 FOOTER
-            ================================================== -->
+            <!-- Footer -->
 
             <div class="footer">
 
-                stay chill
+                stay chill • stay panda
 
-                <span>
-                    •
+                <span class="footer-panda">
+                    🐼
                 </span>
-
-                stay panda
 
             </div>
 
@@ -2358,129 +1587,43 @@
 
     <!-- =========================================================
          JAVASCRIPT
-    ========================================================== -->
+    ========================================================= -->
 
     <script>
 
-        /* =========================================================
-           VIDEO
-        ========================================================== */
-
-        const backgroundVideo =
-            document.getElementById(
-                "backgroundVideo"
-            );
-
-
-        /*
-         * Try to start the video.
-         * Browsers normally allow this because
-         * the video is muted.
-         */
-
-        function startBackgroundVideo() {
-
-            if (!backgroundVideo) {
-                return;
-            }
-
-            const playPromise =
-                backgroundVideo.play();
-
-            if (
-                playPromise !== undefined
-            ) {
-
-                playPromise.catch(() => {
-
-                    /*
-                     * Some browsers may block
-                     * autoplay until interaction.
-                     */
-
-                    document.addEventListener(
-                        "click",
-                        () => {
-                            backgroundVideo.play()
-                                .catch(() => {});
-                        },
-                        {
-                            once: true
-                        }
-                    );
-
-                });
-
-            }
-
-        }
-
-
-        startBackgroundVideo();
-
-
-        /* =========================================================
+        /* =====================================================
            TYPING EFFECT
-        ========================================================== */
+        ===================================================== */
 
         const typingElement =
-            document.getElementById(
-                "typing"
-            );
-
+            document.getElementById("typing");
 
         const messages = [
-
             "mentally afk",
-
             "just vibing",
-
             "do not disturb the panda",
-
             "🐼 panda mode activated"
-
         ];
 
-
         let messageIndex = 0;
-
         let characterIndex = 0;
 
         let deleting = false;
 
-
-        const typingSpeed =
-            85;
-
-        const deletingSpeed =
-            45;
-
-        const pauseAfterTyping =
-            1700;
-
-        const pauseAfterDeleting =
-            450;
-
-
-        function typeLoop() {
+        function typeEffect() {
 
             const currentMessage =
-                messages[
-                    messageIndex
-                ];
-
+                messages[messageIndex];
 
             if (!deleting) {
 
-                characterIndex++;
-
-
                 typingElement.textContent =
-                    currentMessage.slice(
+                    currentMessage.substring(
                         0,
-                        characterIndex
+                        characterIndex + 1
                     );
 
+                characterIndex++;
 
                 if (
                     characterIndex >=
@@ -2489,247 +1632,121 @@
 
                     deleting = true;
 
-
                     setTimeout(
-                        typeLoop,
-                        pauseAfterTyping
+                        typeEffect,
+                        1800
                     );
-
 
                     return;
                 }
 
+                setTimeout(
+                    typeEffect,
+                    65
+                );
+
+            } else {
+
+                typingElement.textContent =
+                    currentMessage.substring(
+                        0,
+                        characterIndex - 1
+                    );
+
+                characterIndex--;
+
+                if (characterIndex <= 0) {
+
+                    deleting = false;
+
+                    messageIndex =
+                        (messageIndex + 1) %
+                        messages.length;
+
+                    setTimeout(
+                        typeEffect,
+                        450
+                    );
+
+                    return;
+                }
 
                 setTimeout(
-                    typeLoop,
-                    typingSpeed
+                    typeEffect,
+                    35
                 );
-
-
-                return;
             }
-
-
-            characterIndex--;
-
-
-            typingElement.textContent =
-                currentMessage.slice(
-                    0,
-                    characterIndex
-                );
-
-
-            if (
-                characterIndex <= 0
-            ) {
-
-                deleting = false;
-
-
-                messageIndex =
-                    (
-                        messageIndex + 1
-                    ) %
-                    messages.length;
-
-
-                setTimeout(
-                    typeLoop,
-                    pauseAfterDeleting
-                );
-
-
-                return;
-            }
-
-
-            setTimeout(
-                typeLoop,
-                deletingSpeed
-            );
-
         }
 
-
-        typeLoop();
-
-
-        /* =========================================================
-           PARTICLES
-        ========================================================== */
-
-        const particleContainer =
-            document.getElementById(
-                "particles"
-            );
+        typeEffect();
 
 
-        const particleCount =
-            window.innerWidth < 600
-                ? 24
-                : 42;
-
-
-        for (
-            let i = 0;
-            i < particleCount;
-            i++
-        ) {
-
-            const particle =
-                document.createElement(
-                    "span"
-                );
-
-
-            particle.className =
-                "particle";
-
-
-            particle.style.left =
-                Math.random() *
-                100 +
-                "%";
-
-
-            particle.style.animationDuration =
-                (
-                    8 +
-                    Math.random() *
-                    14
-                ) +
-                "s";
-
-
-            particle.style.animationDelay =
-                (
-                    -Math.random() *
-                    20
-                ) +
-                "s";
-
-
-            const size =
-                1 +
-                Math.random() *
-                2;
-
-
-            particle.style.width =
-                size +
-                "px";
-
-
-            particle.style.height =
-                size +
-                "px";
-
-
-            particleContainer.appendChild(
-                particle
-            );
-
-        }
-
-
-        /* =========================================================
+        /* =====================================================
            MOUSE PARALLAX
-        ========================================================== */
+        ===================================================== */
 
         const card =
-            document.getElementById(
-                "card"
-            );
+            document.getElementById("profile-card");
 
+        const background =
+            document.querySelector(".background img");
 
-        const supportsHover =
+        const isTouch =
             window.matchMedia(
-                "(hover: hover) and (pointer: fine)"
+                "(pointer: coarse)"
             ).matches;
 
+        if (!isTouch) {
 
-        const reducedMotion =
-            window.matchMedia(
-                "(prefers-reduced-motion: reduce)"
-            ).matches;
-
-
-        if (
-            supportsHover &&
-            !reducedMotion
-        ) {
-
-            window.addEventListener(
+            document.addEventListener(
                 "mousemove",
                 (event) => {
 
                     const x =
-                        (
-                            event.clientX /
-                            window.innerWidth
-                        ) -
-                        0.5;
-
+                        (event.clientX /
+                        window.innerWidth - 0.5);
 
                     const y =
-                        (
-                            event.clientY /
-                            window.innerHeight
-                        ) -
-                        0.5;
-
-
-                    const rotateX =
-                        y *
-                        -3;
-
-
-                    const rotateY =
-                        x *
-                        3;
-
+                        (event.clientY /
+                        window.innerHeight - 0.5);
 
                     card.style.transform =
                         `perspective(1000px)
-                         rotateX(${rotateX}deg)
-                         rotateY(${rotateY}deg)`;
+                         rotateY(${x * 2}deg)
+                         rotateX(${y * -2}deg)`;
 
-                },
-                {
-                    passive: true
+                    background.style.transform =
+                        `scale(1.07)
+                         translate(${x * -8}px, ${y * -8}px)`;
                 }
             );
 
-
-            window.addEventListener(
+            document.addEventListener(
                 "mouseleave",
                 () => {
 
                     card.style.transform =
                         "";
 
+                    background.style.transform =
+                        "scale(1.05)";
                 }
             );
-
         }
 
 
-        /* =========================================================
+        /* =====================================================
            TAB TITLE
-        ========================================================== */
+        ===================================================== */
 
         const originalTitle =
             document.title;
-
 
         document.addEventListener(
             "visibilitychange",
             () => {
 
-                if (
-                    document.hidden
-                ) {
+                if (document.hidden) {
 
                     document.title =
                         "Come back 🐼";
@@ -2745,29 +1762,83 @@
         );
 
 
-        /* =========================================================
-           MOBILE RESIZE
-        ========================================================== */
+        /* =====================================================
+           RANDOM PARTICLE POSITIONS
+        ===================================================== */
 
-        window.addEventListener(
-            "resize",
-            () => {
+        document
+            .querySelectorAll(".particle")
+            .forEach((particle) => {
 
-                if (
-                    window.innerWidth <
-                    700
-                ) {
+                particle.style.top =
+                    `${Math.random() * 100}%`;
+
+                particle.style.opacity =
+                    `${0.2 + Math.random() * 0.5}`;
+
+            });
+
+
+        /* =====================================================
+           MOBILE TOUCH TILT
+        ===================================================== */
+
+        if (isTouch) {
+
+            let touchStartX = 0;
+
+            document.addEventListener(
+                "touchstart",
+                (event) => {
+
+                    if (!event.touches.length)
+                        return;
+
+                    touchStartX =
+                        event.touches[0].clientX;
+                },
+                { passive: true }
+            );
+
+            document.addEventListener(
+                "touchmove",
+                (event) => {
+
+                    if (!event.touches.length)
+                        return;
+
+                    const currentX =
+                        event.touches[0].clientX;
+
+                    const difference =
+                        currentX - touchStartX;
+
+                    const rotation =
+                        Math.max(
+                            -1.5,
+                            Math.min(
+                                1.5,
+                                difference / 100
+                            )
+                        );
 
                     card.style.transform =
-                        "";
+                        `perspective(900px)
+                         rotateY(${rotation}deg)`;
+                },
+                { passive: true }
+            );
 
-                }
+            document.addEventListener(
+                "touchend",
+                () => {
 
-            },
-            {
-                passive: true
-            }
-        );
+                    card.style.transform = "";
+
+                },
+                { passive: true }
+            );
+        }
 
     </script>
 
