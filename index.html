@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <meta name="theme-color" content="#050505">
-    <meta name="description" content="Panda Man 🐼 — just vibing in panda mode.">
+    <meta
+        name="description"
+        content="Panda Man 🐼 — just vibing in panda mode."
+    >
 
     <title>Panda Man 🐼</title>
 
-    <!-- Panda Favicon -->
+    <!-- Favicon -->
     <link
         rel="icon"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐼%3C/text%3E%3C/svg%3E"
@@ -30,7 +33,6 @@
     >
 
     <style>
-
         /* =========================================================
            RESET
         ========================================================= */
@@ -49,10 +51,8 @@
         body {
             min-height: 100vh;
             overflow-x: hidden;
-
             background: #020303;
-            color: #ffffff;
-
+            color: #fff;
             font-family: "Orbitron", sans-serif;
         }
 
@@ -68,17 +68,14 @@
 
 
         /* =========================================================
-           BACKGROUND
+           ANIMATED BANNER BACKGROUND
         ========================================================= */
 
         .background {
             position: fixed;
             inset: 0;
-
             z-index: -20;
-
             overflow: hidden;
-
             background: #020505;
         }
 
@@ -95,16 +92,20 @@
             display: block;
 
             filter:
-                brightness(0.58)
-                contrast(1.08)
-                saturate(0.82);
+                brightness(.55)
+                contrast(1.10)
+                saturate(.80);
 
             transform: scale(1.05);
 
-            animation: slowZoom 18s ease-in-out infinite alternate;
+            animation:
+                slowZoom 18s ease-in-out infinite alternate;
         }
 
-        /* Cinematic darkness */
+        /*
+            Dark cinematic overlay
+        */
+
         .background::before {
             content: "";
 
@@ -116,16 +117,19 @@
             background:
                 linear-gradient(
                     180deg,
-                    rgba(0, 0, 0, 0.50) 0%,
-                    rgba(0, 0, 0, 0.18) 32%,
-                    rgba(0, 0, 0, 0.42) 65%,
-                    rgba(0, 0, 0, 0.86) 100%
+                    rgba(0, 0, 0, .58) 0%,
+                    rgba(0, 0, 0, .18) 30%,
+                    rgba(0, 0, 0, .42) 65%,
+                    rgba(0, 0, 0, .88) 100%
                 );
 
             pointer-events: none;
         }
 
-        /* Vignette */
+        /*
+            Center vignette
+        */
+
         .background::after {
             content: "";
 
@@ -137,9 +141,9 @@
             background:
                 radial-gradient(
                     circle at center,
-                    transparent 20%,
-                    rgba(0, 0, 0, 0.30) 58%,
-                    rgba(0, 0, 0, 0.78) 100%
+                    transparent 18%,
+                    rgba(0, 0, 0, .30) 58%,
+                    rgba(0, 0, 0, .82) 100%
                 );
 
             pointer-events: none;
@@ -157,7 +161,7 @@
 
 
         /* =========================================================
-           ATMOSPHERIC GRID
+           GRID
         ========================================================= */
 
         .grid {
@@ -168,16 +172,16 @@
 
             pointer-events: none;
 
-            opacity: 0.08;
+            opacity: .08;
 
             background-image:
                 linear-gradient(
-                    rgba(255,255,255,0.08) 1px,
+                    rgba(255, 255, 255, .08) 1px,
                     transparent 1px
                 ),
                 linear-gradient(
                     90deg,
-                    rgba(255,255,255,0.08) 1px,
+                    rgba(255, 255, 255, .08) 1px,
                     transparent 1px
                 );
 
@@ -195,7 +199,7 @@
 
 
         /* =========================================================
-           GRAIN
+           FILM GRAIN
         ========================================================= */
 
         .grain {
@@ -206,15 +210,17 @@
 
             pointer-events: none;
 
-            opacity: 0.045;
+            opacity: .045;
 
             background-image:
                 url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
 
-            animation: grainMove 0.25s steps(2) infinite;
+            animation:
+                grainMove .25s steps(2) infinite;
         }
 
         @keyframes grainMove {
+
             0% {
                 transform: translate(0, 0);
             }
@@ -260,10 +266,10 @@
 
             border-radius: 50%;
 
-            background: rgba(255,255,255,0.65);
+            background: rgba(255, 255, 255, .65);
 
             box-shadow:
-                0 0 8px rgba(255,255,255,0.45);
+                0 0 8px rgba(255, 255, 255, .45);
 
             animation:
                 floatParticle linear infinite,
@@ -271,22 +277,28 @@
         }
 
         @keyframes floatParticle {
+
             from {
-                transform: translateY(110vh) translateX(0);
+                transform:
+                    translateY(110vh)
+                    translateX(0);
             }
 
             to {
-                transform: translateY(-15vh) translateX(80px);
+                transform:
+                    translateY(-15vh)
+                    translateX(80px);
             }
         }
 
         @keyframes particleGlow {
+
             from {
-                opacity: 0.2;
+                opacity: .2;
             }
 
             to {
-                opacity: 0.8;
+                opacity: .8;
             }
         }
 
@@ -311,12 +323,15 @@
 
             font-size: clamp(25px, 3vw, 45px);
 
-            opacity: 0.10;
+            opacity: .10;
 
             filter:
                 grayscale(1)
-                blur(0.3px)
-                drop-shadow(0 0 15px rgba(255,255,255,0.15));
+                blur(.3px)
+                drop-shadow(
+                    0 0 15px
+                    rgba(255, 255, 255, .15)
+                );
 
             animation:
                 pandaFloat 14s ease-in-out infinite;
@@ -347,6 +362,7 @@
         }
 
         @keyframes pandaFloat {
+
             0%,
             100% {
                 transform:
@@ -370,7 +386,6 @@
             position: relative;
 
             min-height: 100vh;
-
             width: 100%;
 
             display: flex;
@@ -379,7 +394,8 @@
             justify-content: center;
 
             padding:
-                70px 20px
+                70px
+                20px
                 calc(70px + env(safe-area-inset-bottom));
         }
 
@@ -393,51 +409,60 @@
 
             width: min(520px, 100%);
 
-            padding: 42px 30px 30px;
+            padding:
+                42px
+                30px
+                30px;
 
             border:
                 1px solid
-                rgba(255,255,255,0.14);
+                rgba(255, 255, 255, .14);
 
             border-radius: 28px;
 
             background:
                 linear-gradient(
                     145deg,
-                    rgba(15,15,15,0.80),
-                    rgba(3,3,3,0.68)
+                    rgba(15, 15, 15, .80),
+                    rgba(3, 3, 3, .68)
                 );
 
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
 
             box-shadow:
-                0 30px 100px rgba(0,0,0,0.70),
-                inset 0 1px 0 rgba(255,255,255,0.08),
-                0 0 50px rgba(255,255,255,0.025);
+                0 30px 100px rgba(0, 0, 0, .70),
+                inset 0 1px 0 rgba(255, 255, 255, .08),
+                0 0 50px rgba(255, 255, 255, .025);
 
             overflow: hidden;
 
-            animation: cardAppear 1s cubic-bezier(.2,.8,.2,1) both;
+            animation:
+                cardAppear
+                1s
+                cubic-bezier(.2, .8, .2, 1)
+                both;
         }
 
         @keyframes cardAppear {
+
             from {
                 opacity: 0;
+
                 transform:
                     translateY(30px)
-                    scale(0.97);
+                    scale(.97);
             }
 
             to {
                 opacity: 1;
+
                 transform:
                     translateY(0)
                     scale(1);
             }
         }
 
-        /* Top shine */
         .card::before {
             content: "";
 
@@ -453,14 +478,13 @@
                 linear-gradient(
                     90deg,
                     transparent,
-                    rgba(255,255,255,0.55),
+                    rgba(255, 255, 255, .55),
                     transparent
                 );
 
-            opacity: 0.65;
+            opacity: .65;
         }
 
-        /* Glow */
         .card::after {
             content: "";
 
@@ -472,12 +496,13 @@
             left: 50%;
             top: -170px;
 
-            transform: translateX(-50%);
+            transform:
+                translateX(-50%);
 
             background:
                 radial-gradient(
                     circle,
-                    rgba(255,255,255,0.07),
+                    rgba(255, 255, 255, .07),
                     transparent 70%
                 );
 
@@ -486,7 +511,7 @@
 
 
         /* =========================================================
-           CORNER DETAILS
+           CARD CORNERS
         ========================================================= */
 
         .corner {
@@ -495,7 +520,7 @@
             width: 24px;
             height: 24px;
 
-            opacity: 0.6;
+            opacity: .6;
         }
 
         .corner::before,
@@ -504,7 +529,8 @@
 
             position: absolute;
 
-            background: rgba(255,255,255,0.6);
+            background:
+                rgba(255, 255, 255, .6);
         }
 
         .corner::before {
@@ -525,18 +551,21 @@
         .corner-tr {
             top: 15px;
             right: 15px;
+
             transform: rotate(90deg);
         }
 
         .corner-bl {
             bottom: 15px;
             left: 15px;
+
             transform: rotate(-90deg);
         }
 
         .corner-br {
             bottom: 15px;
             right: 15px;
+
             transform: rotate(180deg);
         }
 
@@ -550,27 +579,35 @@
 
             width: fit-content;
 
-            margin: 0 auto 22px;
+            margin:
+                0
+                auto
+                22px;
 
             display: flex;
 
             align-items: center;
+
             gap: 9px;
 
-            padding: 8px 14px;
+            padding:
+                8px
+                14px;
 
             border-radius: 999px;
 
             border:
                 1px solid
-                rgba(255,255,255,0.12);
+                rgba(255, 255, 255, .12);
 
             background:
-                rgba(255,255,255,0.045);
+                rgba(255, 255, 255, .045);
 
-            color: rgba(255,255,255,0.70);
+            color:
+                rgba(255, 255, 255, .70);
 
             font-size: 10px;
+
             font-weight: 600;
 
             letter-spacing: 1.8px;
@@ -587,16 +624,22 @@
             background: #b7ffb7;
 
             box-shadow:
-                0 0 10px rgba(130,255,150,0.8);
+                0 0 10px
+                rgba(130, 255, 150, .8);
 
-            animation: statusPulse 2s ease-in-out infinite;
+            animation:
+                statusPulse
+                2s
+                ease-in-out
+                infinite;
         }
 
         @keyframes statusPulse {
+
             0%,
             100% {
-                opacity: 0.5;
-                transform: scale(0.85);
+                opacity: .5;
+                transform: scale(.85);
             }
 
             50% {
@@ -607,7 +650,7 @@
 
 
         /* =========================================================
-           PANDA LOGO
+           PROFILE PFP
         ========================================================= */
 
         .logo-wrap {
@@ -634,36 +677,79 @@
             background:
                 radial-gradient(
                     circle at 35% 25%,
-                    rgba(255,255,255,0.16),
-                    rgba(255,255,255,0.025) 48%,
-                    rgba(0,0,0,0.25) 100%
+                    rgba(255, 255, 255, .16),
+                    rgba(255, 255, 255, .025) 48%,
+                    rgba(0, 0, 0, .25) 100%
                 );
 
             border:
                 1px solid
-                rgba(255,255,255,0.16);
+                rgba(255, 255, 255, .16);
 
             box-shadow:
-                0 0 40px rgba(255,255,255,0.08),
-                inset 0 0 25px rgba(255,255,255,0.035);
+                0 0 40px
+                rgba(255, 255, 255, .08),
 
-            animation: logoFloat 5s ease-in-out infinite;
+                inset 0 0 25px
+                rgba(255, 255, 255, .035);
+
+            animation:
+                logoFloat
+                5s
+                ease-in-out
+                infinite;
+
+            overflow: visible;
         }
+
+        /*
+            Animated PFP GIF
+        */
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            border-radius: 50%;
+
+            filter:
+                drop-shadow(
+                    0 0 16px
+                    rgba(255, 255, 255, .22)
+                );
+        }
+
+        /*
+            Outer rotating ring
+        */
 
         .logo::before {
             content: "";
 
             position: absolute;
+
             inset: -9px;
 
             border-radius: 50%;
 
             border:
                 1px solid
-                rgba(255,255,255,0.07);
+                rgba(255, 255, 255, .07);
 
-            animation: logoRing 7s linear infinite;
+            animation:
+                logoRing
+                7s
+                linear
+                infinite;
         }
+
+        /*
+            PFP glow
+        */
 
         .logo::after {
             content: "";
@@ -677,26 +763,15 @@
             background:
                 radial-gradient(
                     circle,
-                    rgba(255,255,255,0.08),
+                    rgba(255, 255, 255, .08),
                     transparent 65%
                 );
 
             z-index: -1;
         }
 
-        .logo span {
-            font-size: 58px;
-
-            line-height: 1;
-
-            filter:
-                drop-shadow(
-                    0 0 16px
-                    rgba(255,255,255,0.22)
-                );
-        }
-
         @keyframes logoFloat {
+
             0%,
             100% {
                 transform: translateY(0);
@@ -708,6 +783,7 @@
         }
 
         @keyframes logoRing {
+
             from {
                 transform: rotate(0deg);
             }
@@ -725,7 +801,12 @@
         .title {
             text-align: center;
 
-            font-size: clamp(34px, 8vw, 52px);
+            font-size:
+                clamp(
+                    34px,
+                    8vw,
+                    52px
+                );
 
             font-weight: 900;
 
@@ -733,10 +814,11 @@
 
             line-height: 1.1;
 
-            color: #ffffff;
+            color: #fff;
 
             text-shadow:
-                0 0 20px rgba(255,255,255,0.12);
+                0 0 20px
+                rgba(255, 255, 255, .12);
 
             margin-bottom: 9px;
         }
@@ -747,9 +829,9 @@
             background:
                 linear-gradient(
                     180deg,
-                    #ffffff 0%,
-                    #bbbbbb 52%,
-                    #666666 100%
+                    #fff 0%,
+                    #bbb 52%,
+                    #666 100%
                 );
 
             -webkit-background-clip: text;
@@ -758,12 +840,18 @@
             -webkit-text-fill-color: transparent;
         }
 
+
+        /* =========================================================
+           TYPING SUBTITLE
+        ========================================================= */
+
         .subtitle {
             min-height: 20px;
 
             text-align: center;
 
-            color: rgba(255,255,255,0.48);
+            color:
+                rgba(255, 255, 255, .48);
 
             font-size: 11px;
 
@@ -784,12 +872,18 @@
 
             vertical-align: -1px;
 
-            background: rgba(255,255,255,0.65);
+            background:
+                rgba(255, 255, 255, .65);
 
-            animation: cursorBlink 0.8s steps(1) infinite;
+            animation:
+                cursorBlink
+                .8s
+                steps(1)
+                infinite;
         }
 
         @keyframes cursorBlink {
+
             50% {
                 opacity: 0;
             }
@@ -807,7 +901,10 @@
 
             gap: 12px;
 
-            margin: 0 0 22px;
+            margin:
+                0
+                0
+                22px;
         }
 
         .divider-line {
@@ -819,7 +916,7 @@
                 linear-gradient(
                     90deg,
                     transparent,
-                    rgba(255,255,255,0.12)
+                    rgba(255, 255, 255, .12)
                 );
         }
 
@@ -827,15 +924,14 @@
             background:
                 linear-gradient(
                     90deg,
-                    rgba(255,255,255,0.12),
+                    rgba(255, 255, 255, .12),
                     transparent
                 );
         }
 
         .divider-panda {
             font-size: 14px;
-
-            opacity: 0.5;
+            opacity: .5;
         }
 
 
@@ -860,29 +956,35 @@
 
             min-height: 62px;
 
-            padding: 10px 15px;
+            padding:
+                10px
+                15px;
 
             border-radius: 15px;
 
             border:
                 1px solid
-                rgba(255,255,255,0.09);
+                rgba(255, 255, 255, .09);
 
             background:
                 linear-gradient(
                     100deg,
-                    rgba(255,255,255,0.055),
-                    rgba(255,255,255,0.025)
+                    rgba(255, 255, 255, .055),
+                    rgba(255, 255, 255, .025)
                 );
 
             overflow: hidden;
 
             transition:
-                transform 0.25s ease,
-                border-color 0.25s ease,
-                background 0.25s ease,
-                box-shadow 0.25s ease;
+                transform .25s ease,
+                border-color .25s ease,
+                background .25s ease,
+                box-shadow .25s ease;
         }
+
+        /*
+            Shine animation
+        */
 
         .social-button::before {
             content: "";
@@ -900,13 +1002,15 @@
                 linear-gradient(
                     90deg,
                     transparent,
-                    rgba(255,255,255,0.07),
+                    rgba(255, 255, 255, .07),
                     transparent
                 );
 
-            transform: skewX(-20deg);
+            transform:
+                skewX(-20deg);
 
-            transition: left 0.6s ease;
+            transition:
+                left .6s ease;
         }
 
         .social-button:hover::before {
@@ -919,24 +1023,33 @@
                 translateX(3px);
 
             border-color:
-                rgba(255,255,255,0.22);
+                rgba(255, 255, 255, .22);
 
             background:
-                rgba(255,255,255,0.075);
+                rgba(255, 255, 255, .075);
 
             box-shadow:
-                0 10px 30px rgba(0,0,0,0.25),
-                0 0 25px rgba(255,255,255,0.035);
+                0 10px 30px
+                rgba(0, 0, 0, .25),
+
+                0 0 25px
+                rgba(255, 255, 255, .035);
         }
 
         .social-button:active {
-            transform: scale(0.985);
+            transform: scale(.985);
         }
+
+
+        /* =========================================================
+           SOCIAL ICON
+        ========================================================= */
 
         .social-icon {
             position: relative;
 
-            flex: 0 0 42px;
+            flex:
+                0 0 42px;
 
             width: 42px;
             height: 42px;
@@ -951,27 +1064,34 @@
             border-radius: 12px;
 
             background:
-                rgba(255,255,255,0.055);
+                rgba(255, 255, 255, .055);
 
             border:
                 1px solid
-                rgba(255,255,255,0.09);
+                rgba(255, 255, 255, .09);
 
-            color: #ffffff;
+            color: #fff;
 
             font-size: 19px;
 
             transition:
-                transform 0.25s ease,
-                background 0.25s ease;
+                transform .25s ease,
+                background .25s ease;
         }
 
         .social-button:hover .social-icon {
-            transform: scale(1.08) rotate(-3deg);
+            transform:
+                scale(1.08)
+                rotate(-3deg);
 
             background:
-                rgba(255,255,255,0.09);
+                rgba(255, 255, 255, .09);
         }
+
+
+        /* =========================================================
+           SOCIAL TEXT
+        ========================================================= */
 
         .social-text {
             display: flex;
@@ -1000,7 +1120,8 @@
 
             letter-spacing: 1px;
 
-            color: rgba(255,255,255,0.40);
+            color:
+                rgba(255, 255, 255, .40);
 
             white-space: nowrap;
 
@@ -1009,22 +1130,29 @@
             text-overflow: ellipsis;
         }
 
+
+        /* =========================================================
+           ARROW
+        ========================================================= */
+
         .arrow {
             margin-left: auto;
 
             padding-left: 10px;
 
-            color: rgba(255,255,255,0.30);
+            color:
+                rgba(255, 255, 255, .30);
 
             font-size: 17px;
 
             transition:
-                transform 0.25s ease,
-                color 0.25s ease;
+                transform .25s ease,
+                color .25s ease;
         }
 
         .social-button:hover .arrow {
-            color: rgba(255,255,255,0.85);
+            color:
+                rgba(255, 255, 255, .85);
 
             transform:
                 translate(2px, -2px);
@@ -1040,7 +1168,8 @@
 
             margin-top: 24px;
 
-            color: rgba(255,255,255,0.28);
+            color:
+                rgba(255, 255, 255, .28);
 
             font-size: 8px;
 
@@ -1054,35 +1183,44 @@
 
             margin-left: 5px;
 
-            opacity: 0.7;
+            opacity: .7;
         }
 
 
         /* =========================================================
-           FOCUS
+           ACCESSIBILITY
         ========================================================= */
 
         .social-button:focus-visible {
-            outline: 2px solid rgba(255,255,255,0.75);
+            outline:
+                2px solid
+                rgba(255, 255, 255, .75);
 
             outline-offset: 3px;
         }
 
 
         /* =========================================================
-           TABLET
+           MOBILE
         ========================================================= */
 
         @media (max-width: 600px) {
 
             main {
                 padding:
-                    35px 14px
-                    calc(35px + env(safe-area-inset-bottom));
+                    35px
+                    14px
+                    calc(
+                        35px +
+                        env(safe-area-inset-bottom)
+                    );
             }
 
             .card {
-                padding: 34px 17px 22px;
+                padding:
+                    34px
+                    17px
+                    22px;
 
                 border-radius: 23px;
             }
@@ -1092,19 +1230,13 @@
                 height: 90px;
             }
 
-            .logo span {
-                font-size: 49px;
-            }
-
             .title {
                 font-size: 34px;
-
                 letter-spacing: 3px;
             }
 
             .subtitle {
                 font-size: 9px;
-
                 letter-spacing: 2px;
             }
 
@@ -1136,7 +1268,7 @@
 
 
         /* =========================================================
-           VERY SMALL PHONES
+           SMALL PHONES
         ========================================================= */
 
         @media (max-width: 370px) {
@@ -1174,44 +1306,53 @@
             *,
             *::before,
             *::after {
-                animation-duration: 0.01ms !important;
+                animation-duration: .01ms !important;
                 animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
+                transition-duration: .01ms !important;
             }
         }
-
     </style>
 </head>
+
 
 <body>
 
     <!-- =========================================================
-         BACKGROUND IMAGE
+         ANIMATED BANNER GIF
     ========================================================= -->
 
     <div class="background" aria-hidden="true">
 
         <img
-            src="https://images.openai.com/static-rsc-4/0vO5DjQLwEgxwzxOKfLOJmwZLW6qkKZOtcFJbvGvI9hNtbGrxnCLp8-mD31v-Z6VRZicr53OProHbinNSUnS0yYHOh70EmCslgij2_YQ6InwGDgkC7NdXMiYDt2LS4iv69mkY2-caobglUQJURaBkRk_A5Rs2cUKi4NXy3EMiKIaM-h1zTH5kVe0MQCU2HZE?purpose=fullsize"
+            src="https://github.com/PandaManDev/Panda-Man-Bio/blob/main/panda.man420-banner-1024.gif?raw=true"
             alt=""
         >
 
     </div>
 
 
-    <!-- Atmospheric Grid -->
-    <div class="grid" aria-hidden="true"></div>
+    <!-- Grid -->
+    <div
+        class="grid"
+        aria-hidden="true"
+    ></div>
 
 
     <!-- Grain -->
-    <div class="grain" aria-hidden="true"></div>
+    <div
+        class="grain"
+        aria-hidden="true"
+    ></div>
 
 
     <!-- =========================================================
          FLOATING PANDAS
     ========================================================= -->
 
-    <div class="floating-pandas" aria-hidden="true">
+    <div
+        class="floating-pandas"
+        aria-hidden="true"
+    >
 
         <div class="panda">🐼</div>
         <div class="panda">🐼</div>
@@ -1225,116 +1366,188 @@
          PARTICLES
     ========================================================= -->
 
-    <div class="particles" aria-hidden="true">
+    <div
+        class="particles"
+        aria-hidden="true"
+    >
 
         <span
             class="particle"
-            style="left:8%; animation-duration:14s; animation-delay:-2s;"
+            style="
+                left:8%;
+                animation-duration:14s;
+                animation-delay:-2s;
+            "
         ></span>
 
         <span
             class="particle"
-            style="left:17%; animation-duration:19s; animation-delay:-9s;"
+            style="
+                left:17%;
+                animation-duration:19s;
+                animation-delay:-9s;
+            "
         ></span>
 
         <span
             class="particle"
-            style="left:28%; animation-duration:16s; animation-delay:-4s;"
+            style="
+                left:28%;
+                animation-duration:16s;
+                animation-delay:-4s;
+            "
         ></span>
 
         <span
             class="particle"
-            style="left:39%; animation-duration:22s; animation-delay:-15s;"
+            style="
+                left:39%;
+                animation-duration:22s;
+                animation-delay:-15s;
+            "
         ></span>
 
         <span
             class="particle"
-            style="left:51%; animation-duration:18s; animation-delay:-7s;"
+            style="
+                left:51%;
+                animation-duration:18s;
+                animation-delay:-7s;
+            "
         ></span>
 
         <span
             class="particle"
-            style="left:62%; animation-duration:24s; animation-delay:-17s;"
+            style="
+                left:62%;
+                animation-duration:24s;
+                animation-delay:-17s;
+            "
         ></span>
 
         <span
             class="particle"
-            style="left:73%; animation-duration:15s; animation-delay:-5s;"
+            style="
+                left:73%;
+                animation-duration:15s;
+                animation-delay:-5s;
+            "
         ></span>
 
         <span
             class="particle"
-            style="left:84%; animation-duration:21s; animation-delay:-12s;"
+            style="
+                left:84%;
+                animation-duration:21s;
+                animation-delay:-12s;
+            "
         ></span>
 
         <span
             class="particle"
-            style="left:93%; animation-duration:17s; animation-delay:-3s;"
+            style="
+                left:93%;
+                animation-duration:17s;
+                animation-delay:-3s;
+            "
         ></span>
 
     </div>
 
 
     <!-- =========================================================
-         MAIN
+         MAIN PROFILE
     ========================================================= -->
 
     <main>
 
-        <section class="card" id="profile-card">
+        <section
+            class="card"
+            id="profile-card"
+        >
 
-            <!-- Corner Decorations -->
+            <!-- Corner decorations -->
+
             <div class="corner corner-tl"></div>
             <div class="corner corner-tr"></div>
             <div class="corner corner-bl"></div>
             <div class="corner corner-br"></div>
 
 
-            <!-- Status -->
+            <!-- =================================================
+                 STATUS
+            ================================================= -->
+
             <div class="status">
 
                 <span class="status-dot"></span>
 
-                <span>Currently existing</span>
+                <span>
+                    Currently existing
+                </span>
 
             </div>
 
 
-            <!-- Panda Logo -->
+            <!-- =================================================
+                 ANIMATED PFP GIF
+            ================================================= -->
+
             <div class="logo-wrap">
 
                 <div class="logo">
 
-                    <span>🐼</span>
+                    <img
+                        src="https://github.com/PandaManDev/Panda-Man-Bio/blob/main/panda.man420-avatar-1024.gif?raw=true"
+                        alt="Panda Man profile picture"
+                    >
 
                 </div>
 
             </div>
 
 
-            <!-- Title -->
+            <!-- =================================================
+                 NAME
+            ================================================= -->
+
             <h1 class="title">
 
-                <span>PANDA MAN</span>
+                <span>
+                    PANDA MAN
+                </span>
 
             </h1>
 
 
-            <!-- Typing Subtitle -->
+            <!-- =================================================
+                 TYPING TEXT
+            ================================================= -->
+
             <div class="subtitle">
 
                 <span id="typing"></span>
-                <span class="cursor"></span>
+
+                <span
+                    class="cursor"
+                    aria-hidden="true"
+                ></span>
 
             </div>
 
 
             <!-- Divider -->
+
             <div class="divider">
 
                 <div class="divider-line"></div>
 
-                <div class="divider-panda">🐼</div>
+                <div
+                    class="divider-panda"
+                    aria-hidden="true"
+                >
+                    🐼
+                </div>
 
                 <div class="divider-line"></div>
 
@@ -1348,7 +1561,7 @@
             <div class="social-links">
 
 
-                <!-- ROBLOX PROFILE -->
+                <!-- Roblox -->
 
                 <a
                     class="social-button roblox-button"
@@ -1358,13 +1571,18 @@
                     aria-label="Open Panda Man Roblox profile"
                 >
 
-                    <span class="social-icon" aria-hidden="true">
+                    <span
+                        class="social-icon"
+                        aria-hidden="true"
+                    >
                         ◈
                     </span>
 
                     <span class="social-text">
 
-                        <strong>ROBLOX</strong>
+                        <strong>
+                            ROBLOX
+                        </strong>
 
                         <small>
                             PandaManOfficial
@@ -1372,14 +1590,17 @@
 
                     </span>
 
-                    <span class="arrow" aria-hidden="true">
+                    <span
+                        class="arrow"
+                        aria-hidden="true"
+                    >
                         ↗
                     </span>
 
                 </a>
 
 
-                <!-- ROBLOX GAME -->
+                <!-- Please Proceed -->
 
                 <a
                     class="social-button game-button"
@@ -1389,13 +1610,18 @@
                     aria-label="Play Please Proceed on Roblox"
                 >
 
-                    <span class="social-icon" aria-hidden="true">
+                    <span
+                        class="social-icon"
+                        aria-hidden="true"
+                    >
                         ▶
                     </span>
 
                     <span class="social-text">
 
-                        <strong>PLEASE PROCEED</strong>
+                        <strong>
+                            PLEASE PROCEED
+                        </strong>
 
                         <small>
                             Roblox Game • Play Now
@@ -1403,14 +1629,17 @@
 
                     </span>
 
-                    <span class="arrow" aria-hidden="true">
+                    <span
+                        class="arrow"
+                        aria-hidden="true"
+                    >
                         ↗
                     </span>
 
                 </a>
 
 
-                <!-- INSTAGRAM -->
+                <!-- Instagram -->
 
                 <a
                     class="social-button instagram-button"
@@ -1420,13 +1649,18 @@
                     aria-label="Open Panda Man Instagram"
                 >
 
-                    <span class="social-icon" aria-hidden="true">
+                    <span
+                        class="social-icon"
+                        aria-hidden="true"
+                    >
                         ◎
                     </span>
 
                     <span class="social-text">
 
-                        <strong>INSTAGRAM</strong>
+                        <strong>
+                            INSTAGRAM
+                        </strong>
 
                         <small>
                             @panda.man.official420
@@ -1434,14 +1668,17 @@
 
                     </span>
 
-                    <span class="arrow" aria-hidden="true">
+                    <span
+                        class="arrow"
+                        aria-hidden="true"
+                    >
                         ↗
                     </span>
 
                 </a>
 
 
-                <!-- THREADS -->
+                <!-- Threads -->
 
                 <a
                     class="social-button threads-button"
@@ -1451,13 +1688,18 @@
                     aria-label="Open Panda Man Threads"
                 >
 
-                    <span class="social-icon" aria-hidden="true">
+                    <span
+                        class="social-icon"
+                        aria-hidden="true"
+                    >
                         @
                     </span>
 
                     <span class="social-text">
 
-                        <strong>THREADS</strong>
+                        <strong>
+                            THREADS
+                        </strong>
 
                         <small>
                             @panda.man.official420
@@ -1465,14 +1707,17 @@
 
                     </span>
 
-                    <span class="arrow" aria-hidden="true">
+                    <span
+                        class="arrow"
+                        aria-hidden="true"
+                    >
                         ↗
                     </span>
 
                 </a>
 
 
-                <!-- TIKTOK -->
+                <!-- TikTok -->
 
                 <a
                     class="social-button tiktok-button"
@@ -1482,13 +1727,18 @@
                     aria-label="Open Panda Man TikTok"
                 >
 
-                    <span class="social-icon" aria-hidden="true">
+                    <span
+                        class="social-icon"
+                        aria-hidden="true"
+                    >
                         ♪
                     </span>
 
                     <span class="social-text">
 
-                        <strong>TIKTOK</strong>
+                        <strong>
+                            TIKTOK
+                        </strong>
 
                         <small>
                             @panda.man.official
@@ -1496,7 +1746,10 @@
 
                     </span>
 
-                    <span class="arrow" aria-hidden="true">
+                    <span
+                        class="arrow"
+                        aria-hidden="true"
+                    >
                         ↗
                     </span>
 
@@ -1513,13 +1766,18 @@
                     aria-label="Open Panda Man X profile"
                 >
 
-                    <span class="social-icon" aria-hidden="true">
+                    <span
+                        class="social-icon"
+                        aria-hidden="true"
+                    >
                         𝕏
                     </span>
 
                     <span class="social-text">
 
-                        <strong>X</strong>
+                        <strong>
+                            X
+                        </strong>
 
                         <small>
                             @pandama58474678
@@ -1527,14 +1785,17 @@
 
                     </span>
 
-                    <span class="arrow" aria-hidden="true">
+                    <span
+                        class="arrow"
+                        aria-hidden="true"
+                    >
                         ↗
                     </span>
 
                 </a>
 
 
-                <!-- REDDIT -->
+                <!-- Reddit -->
 
                 <a
                     class="social-button reddit-button"
@@ -1544,13 +1805,18 @@
                     aria-label="Open Panda Man Reddit profile"
                 >
 
-                    <span class="social-icon" aria-hidden="true">
+                    <span
+                        class="social-icon"
+                        aria-hidden="true"
+                    >
                         ●
                     </span>
 
                     <span class="social-text">
 
-                        <strong>REDDIT</strong>
+                        <strong>
+                            REDDIT
+                        </strong>
 
                         <small>
                             u/PandaManOfficial420
@@ -1558,23 +1824,30 @@
 
                     </span>
 
-                    <span class="arrow" aria-hidden="true">
+                    <span
+                        class="arrow"
+                        aria-hidden="true"
+                    >
                         ↗
                     </span>
 
                 </a>
 
-
             </div>
 
 
-            <!-- Footer -->
+            <!-- =================================================
+                 FOOTER
+            ================================================= -->
 
             <div class="footer">
 
                 stay chill • stay panda
 
-                <span class="footer-panda">
+                <span
+                    class="footer-panda"
+                    aria-hidden="true"
+                >
                     🐼
                 </span>
 
@@ -1591,9 +1864,9 @@
 
     <script>
 
-        /* =====================================================
+        /* =======================================================
            TYPING EFFECT
-        ===================================================== */
+        ======================================================= */
 
         const typingElement =
             document.getElementById("typing");
@@ -1607,13 +1880,18 @@
 
         let messageIndex = 0;
         let characterIndex = 0;
-
         let deleting = false;
+
 
         function typeEffect() {
 
             const currentMessage =
                 messages[messageIndex];
+
+
+            /*
+                Typing
+            */
 
             if (!deleting) {
 
@@ -1624,6 +1902,11 @@
                     );
 
                 characterIndex++;
+
+
+                /*
+                    Finished typing
+                */
 
                 if (
                     characterIndex >=
@@ -1640,12 +1923,20 @@
                     return;
                 }
 
+
                 setTimeout(
                     typeEffect,
                     65
                 );
 
-            } else {
+            }
+
+
+            /*
+                Deleting
+            */
+
+            else {
 
                 typingElement.textContent =
                     currentMessage.substring(
@@ -1655,12 +1946,19 @@
 
                 characterIndex--;
 
+
+                /*
+                    Finished deleting
+                */
+
                 if (characterIndex <= 0) {
 
                     deleting = false;
 
                     messageIndex =
-                        (messageIndex + 1) %
+                        (
+                            messageIndex + 1
+                        ) %
                         messages.length;
 
                     setTimeout(
@@ -1671,6 +1969,7 @@
                     return;
                 }
 
+
                 setTimeout(
                     typeEffect,
                     35
@@ -1678,23 +1977,38 @@
             }
         }
 
+
         typeEffect();
 
 
-        /* =====================================================
-           MOUSE PARALLAX
-        ===================================================== */
+        /* =======================================================
+           ELEMENTS
+        ======================================================= */
 
         const card =
-            document.getElementById("profile-card");
+            document.getElementById(
+                "profile-card"
+            );
 
         const background =
-            document.querySelector(".background img");
+            document.querySelector(
+                ".background img"
+            );
+
+
+        /* =======================================================
+           TOUCH DETECTION
+        ======================================================= */
 
         const isTouch =
             window.matchMedia(
                 "(pointer: coarse)"
             ).matches;
+
+
+        /* =======================================================
+           DESKTOP PARALLAX
+        ======================================================= */
 
         if (!isTouch) {
 
@@ -1703,30 +2017,43 @@
                 (event) => {
 
                     const x =
-                        (event.clientX /
-                        window.innerWidth - 0.5);
+                        event.clientX /
+                        window.innerWidth -
+                        .5;
 
                     const y =
-                        (event.clientY /
-                        window.innerHeight - 0.5);
+                        event.clientY /
+                        window.innerHeight -
+                        .5;
+
+
+                    /*
+                        Card tilt
+                    */
 
                     card.style.transform =
                         `perspective(1000px)
                          rotateY(${x * 2}deg)
                          rotateX(${y * -2}deg)`;
 
+
+                    /*
+                        Background movement
+                    */
+
                     background.style.transform =
                         `scale(1.07)
-                         translate(${x * -8}px, ${y * -8}px)`;
+                         translate(${x * -8}px,
+                                   ${y * -8}px)`;
                 }
             );
+
 
             document.addEventListener(
                 "mouseleave",
                 () => {
 
-                    card.style.transform =
-                        "";
+                    card.style.transform = "";
 
                     background.style.transform =
                         "scale(1.05)";
@@ -1735,36 +2062,29 @@
         }
 
 
-        /* =====================================================
+        /* =======================================================
            TAB TITLE
-        ===================================================== */
+        ======================================================= */
 
         const originalTitle =
             document.title;
+
 
         document.addEventListener(
             "visibilitychange",
             () => {
 
-                if (document.hidden) {
-
-                    document.title =
-                        "Come back 🐼";
-
-                } else {
-
-                    document.title =
-                        originalTitle;
-
-                }
-
+                document.title =
+                    document.hidden
+                        ? "Come back 🐼"
+                        : originalTitle;
             }
         );
 
 
-        /* =====================================================
+        /* =======================================================
            RANDOM PARTICLE POSITIONS
-        ===================================================== */
+        ======================================================= */
 
         document
             .querySelectorAll(".particle")
@@ -1774,44 +2094,56 @@
                     `${Math.random() * 100}%`;
 
                 particle.style.opacity =
-                    `${0.2 + Math.random() * 0.5}`;
-
+                    `${.2 + Math.random() * .5}`;
             });
 
 
-        /* =====================================================
+        /* =======================================================
            MOBILE TOUCH TILT
-        ===================================================== */
+        ======================================================= */
 
         if (isTouch) {
 
             let touchStartX = 0;
 
+
             document.addEventListener(
                 "touchstart",
                 (event) => {
 
-                    if (!event.touches.length)
+                    if (
+                        !event.touches.length
+                    ) {
                         return;
+                    }
 
                     touchStartX =
                         event.touches[0].clientX;
+
                 },
-                { passive: true }
+                {
+                    passive: true
+                }
             );
+
 
             document.addEventListener(
                 "touchmove",
                 (event) => {
 
-                    if (!event.touches.length)
+                    if (
+                        !event.touches.length
+                    ) {
                         return;
+                    }
 
                     const currentX =
                         event.touches[0].clientX;
 
                     const difference =
-                        currentX - touchStartX;
+                        currentX -
+                        touchStartX;
+
 
                     const rotation =
                         Math.max(
@@ -1822,12 +2154,17 @@
                             )
                         );
 
+
                     card.style.transform =
                         `perspective(900px)
                          rotateY(${rotation}deg)`;
+
                 },
-                { passive: true }
+                {
+                    passive: true
+                }
             );
+
 
             document.addEventListener(
                 "touchend",
@@ -1836,7 +2173,9 @@
                     card.style.transform = "";
 
                 },
-                { passive: true }
+                {
+                    passive: true
+                }
             );
         }
 
