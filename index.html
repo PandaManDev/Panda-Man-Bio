@@ -274,7 +274,7 @@
             opacity: .055;
 
             background-image:
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='.8'/%3E%3C/svg%3E");
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise'[...]
 
             background-repeat: repeat;
 
@@ -1002,1375 +1002,256 @@
 
 
         /* =====================================================
-           TYPING TEXT
+           SUBTITLE
         ====================================================== */
 
         .subtitle {
-            min-height: 27px;
-
-            margin-top: 13px;
-
             text-align: center;
 
+            font-size:
+                clamp(
+                    10px,
+                    2vw,
+                    14px
+                );
+
             color:
-                rgba(255,255,255,.58);
+                rgba(255,255,255,.68);
 
-            font-size: 12px;
+            letter-spacing: .14em;
 
-            font-weight: 500;
+            line-height: 1.4;
 
-            letter-spacing:
-                .16em;
+            margin-top: 18px;
 
-            text-transform:
-                lowercase;
-        }
-
-
-        .cursor {
-            display: inline-block;
-
-            width: 7px;
-            height: 14px;
-
-            margin-left: 3px;
-
-            vertical-align:
-                -2px;
-
-            background:
-                rgba(255,255,255,.65);
-
-            animation:
-                cursorBlink
-                .8s
-                steps(1)
-                infinite;
-        }
-
-
-        @keyframes cursorBlink {
-
-            0%,
-            50% {
-                opacity: 1;
-            }
-
-            51%,
-            100% {
-                opacity: 0;
-            }
-
+            text-transform: uppercase;
         }
 
 
         /* =====================================================
-           DIVIDER
+           LINKS
         ====================================================== */
 
-        .divider {
+        .links {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            margin-top: 32px;
+
+            justify-content: center;
+        }
+
+
+        .link {
+            padding:
+                8px
+                16px;
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,255,255,.08);
+
+            border:
+                1px solid
+                rgba(255,255,255,.16);
+
+            color: #fff;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: .1em;
+
+            text-transform: uppercase;
+
+            transition:
+                all .2s ease;
+
+            cursor: pointer;
+        }
+
+
+        .link:hover {
+            background:
+                rgba(255,255,255,.15);
+
+            border-color:
+                rgba(255,255,255,.28);
+
+            box-shadow:
+                0 0 20px
+                rgba(255,255,255,.1);
+        }
+
+
+        .link:active {
+            transform: scale(.96);
+        }
+
+
+        /* =====================================================
+           STATUS INDICATOR
+        ====================================================== */
+
+        .status-pill {
+            position: absolute;
+
+            top: 22px;
+            right: 24px;
+
+            padding: 6px 12px;
+
+            background:
+                rgba(35,165,90,.16);
+
+            border:
+                1px solid
+                rgba(35,165,90,.32);
+
+            border-radius: 999px;
+
+            color:
+                rgba(35,165,90,.92);
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+
             display: flex;
 
             align-items: center;
 
-            gap: 13px;
-
-            margin:
-                28px 0 23px;
+            gap: 6px;
         }
 
 
-        .divider-line {
-            height: 1px;
+        .status-dot {
+            width: 6px;
+            height: 6px;
 
-            flex: 1;
+            border-radius: 50%;
 
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(255,255,255,.16),
-                    transparent
-                );
-        }
+            background: #23a55a;
 
-
-        .divider-panda {
-            font-size: 15px;
-
-            opacity: .75;
-
-            filter: grayscale(1);
+            box-shadow:
+                0 0 6px
+                rgba(35,165,90,.8);
 
             animation:
-                dividerPanda 3s
+                statusPulse 2s
                 ease-in-out infinite;
         }
 
 
-        @keyframes dividerPanda {
+        @keyframes statusPulse {
 
             0%,
             100% {
-                transform:
-                    scale(1);
+                opacity: 1;
             }
 
             50% {
-                transform:
-                    scale(1.13)
-                    rotate(3deg);
-            }
-
-        }
-
-
-        /* =====================================================
-           SOCIAL LINKS
-        ====================================================== */
-
-        .social-links {
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 10px;
-        }
-
-
-        .social-button {
-            position: relative;
-
-            width: 100%;
-
-            min-height: 67px;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 14px;
-
-            padding:
-                11px 14px;
-
-            border-radius: 14px;
-
-            border:
-                1px solid
-                rgba(255,255,255,.09);
-
-            background:
-                rgba(255,255,255,.035);
-
-            transition:
-                transform .22s ease,
-                background .22s ease,
-                border-color .22s ease,
-                box-shadow .22s ease;
-
-            overflow: hidden;
-        }
-
-
-        .social-button::before {
-            content: "";
-
-            position: absolute;
-
-            inset: 0;
-
-            background:
-                linear-gradient(
-                    100deg,
-                    transparent,
-                    rgba(255,255,255,.07),
-                    transparent
-                );
-
-            transform:
-                translateX(-110%);
-
-            transition:
-                transform .55s ease;
-        }
-
-
-        .social-button:hover::before {
-            transform:
-                translateX(110%);
-        }
-
-
-        .social-button:hover {
-            transform:
-                translateY(-2px);
-
-            background:
-                rgba(255,255,255,.065);
-
-            border-color:
-                rgba(255,255,255,.18);
-
-            box-shadow:
-                0 12px 30px
-                rgba(0,0,0,.25);
-        }
-
-
-        .social-button:active {
-            transform:
-                translateY(0)
-                scale(.985);
-        }
-
-
-        /* =====================================================
-           ICON
-        ====================================================== */
-
-        .social-icon {
-            position: relative;
-
-            z-index: 1;
-
-            width: 38px;
-            height: 38px;
-
-            flex:
-                0 0 38px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border-radius: 10px;
-
-            background:
-                rgba(255,255,255,.065);
-
-            border:
-                1px solid
-                rgba(255,255,255,.08);
-
-            color: #fff;
-
-            font-size: 18px;
-
-            font-weight: 700;
-        }
-
-
-        /* =====================================================
-           TEXT
-        ====================================================== */
-
-        .social-text {
-            position: relative;
-
-            z-index: 1;
-
-            min-width: 0;
-
-            flex: 1;
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 4px;
-        }
-
-
-        .social-text strong {
-            font-size: 12px;
-
-            font-weight: 800;
-
-            letter-spacing:
-                .12em;
-
-            color: #fff;
-        }
-
-
-        .social-text small {
-            font-size: 9px;
-
-            font-weight: 500;
-
-            letter-spacing:
-                .06em;
-
-            color:
-                rgba(255,255,255,.43);
-
-            white-space: nowrap;
-
-            overflow: hidden;
-
-            text-overflow: ellipsis;
-        }
-
-
-        /* =====================================================
-           ARROW
-        ====================================================== */
-
-        .arrow {
-            position: relative;
-
-            z-index: 1;
-
-            font-size: 17px;
-
-            color:
-                rgba(255,255,255,.35);
-
-            transition:
-                transform .22s ease,
-                color .22s ease;
-        }
-
-
-        .social-button:hover .arrow {
-            transform:
-                translate(2px,-2px);
-
-            color:
-                rgba(255,255,255,.8);
-        }
-
-
-        /* =====================================================
-           DISCORD BUTTON
-        ====================================================== */
-
-        .discord-button:hover {
-            border-color:
-                rgba(88,101,242,.45);
-
-            background:
-                rgba(88,101,242,.08);
-
-            box-shadow:
-                0 12px 35px
-                rgba(88,101,242,.12);
-        }
-
-
-        .discord-button .social-icon {
-            background:
-                rgba(88,101,242,.12);
-
-            border-color:
-                rgba(88,101,242,.22);
-        }
-
-
-        /* =====================================================
-           FOOTER
-        ====================================================== */
-
-        .footer {
-            margin-top: 25px;
-
-            text-align: center;
-
-            color:
-                rgba(255,255,255,.28);
-
-            font-size: 9px;
-
-            font-weight: 500;
-
-            letter-spacing:
-                .18em;
-
-            text-transform:
-                lowercase;
-        }
-
-
-        .footer-panda {
-            margin-left: 4px;
-
-            opacity: .55;
-
-            filter: grayscale(1);
-        }
-
-
-        /* =====================================================
-           FOCUS
-        ====================================================== */
-
-        .social-button:focus-visible {
-            outline:
-                2px solid
-                rgba(255,255,255,.65);
-
-            outline-offset: 3px;
-        }
-
-
-        /* =====================================================
-           MOBILE
-        ====================================================== */
-
-        @media (max-width: 600px) {
-
-            main {
-                padding:
-                    25px 14px;
-            }
-
-
-            .card {
-                padding:
-                    40px 18px 25px;
-
-                border-radius: 21px;
-            }
-
-
-            .logo {
-                width: 105px;
-                height: 105px;
-            }
-
-
-            .title {
-                font-size: 30px;
-
-                letter-spacing:
-                    .12em;
-            }
-
-
-            .subtitle {
-                font-size: 9px;
-
-                letter-spacing:
-                    .11em;
-            }
-
-
-            .social-button {
-                min-height: 63px;
-            }
-
-
-            .social-icon {
-                width: 35px;
-                height: 35px;
-
-                flex-basis: 35px;
-            }
-
-
-            .social-text strong {
-                font-size: 10px;
-            }
-
-
-            .social-text small {
-                font-size: 8px;
-            }
-
-        }
-
-
-        /* =====================================================
-           REDUCED MOTION
-        ====================================================== */
-
-        @media (prefers-reduced-motion: reduce) {
-
-            *,
-            *::before,
-            *::after {
-                animation-duration:
-                    .001ms !important;
-
-                animation-iteration-count:
-                    1 !important;
-
-                scroll-behavior:
-                    auto !important;
-
-                transition-duration:
-                    .001ms !important;
+                opacity: .6;
             }
 
         }
 
     </style>
-</head>
 
+</head>
 
 <body>
 
-
-    <!-- =====================================================
-         PANDA BACKGROUND
-    ====================================================== -->
-
-    <div
-        class="background"
-        aria-hidden="true"
-    >
-
+    <!-- Background -->
+    <div class="background">
         <img
             src="https://github.com/PandaManDev/Panda-Man-Bio/blob/main/panda.man420-banner-1024.gif?raw=true"
-            alt=""
+            alt="Panda Man animated banner background"
         >
-
     </div>
 
+    <!-- Background Effects -->
+    <div class="background-noise"></div>
+    <div class="grid"></div>
+    <div class="grain"></div>
 
-    <!-- =====================================================
-         EFFECTS
-    ====================================================== -->
-
-    <div
-        class="background-noise"
-        aria-hidden="true"
-    ></div>
-
-
-    <div
-        class="grid"
-        aria-hidden="true"
-    ></div>
-
-
-    <div
-        class="grain"
-        aria-hidden="true"
-    ></div>
-
-
-    <!-- =====================================================
-         FLOATING PANDAS
-    ====================================================== -->
-
-    <div
-        class="floating-pandas"
-        aria-hidden="true"
-    >
-
+    <!-- Floating Pandas -->
+    <div class="floating-pandas">
         <div class="panda">🐼</div>
-
         <div class="panda">🐼</div>
-
         <div class="panda">🐼</div>
-
         <div class="panda">🐼</div>
-
     </div>
 
-
-    <!-- =====================================================
-         PARTICLES
-    ====================================================== -->
-
-    <div
-        class="particles"
-        aria-hidden="true"
-    >
-
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-
+    <!-- Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
     </div>
 
-
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
-
+    <!-- Main Content -->
     <main>
+        <div class="card">
 
-        <section
-            class="card"
-            id="profile-card"
-        >
+            <!-- Status Pill -->
+            <div class="status-pill">
+                <div class="status-dot"></div>
+                Online
+            </div>
 
-
-            <!-- =================================================
-                 CORNERS
-            ================================================== -->
-
+            <!-- Card Corners -->
             <div class="corner corner-tl"></div>
-
             <div class="corner corner-tr"></div>
-
             <div class="corner corner-bl"></div>
-
             <div class="corner corner-br"></div>
 
-
-            <!-- =================================================
-                 PROFILE PICTURE
-            ================================================== -->
-
+            <!-- Profile Logo -->
             <div class="logo-wrap">
-
                 <div class="logo">
-
                     <img
                         src="https://github.com/PandaManDev/Panda-Man-Bio/blob/main/panda.man420-avatar-1024.gif?raw=true"
-                        alt="Panda Man profile picture"
+                        alt="Panda Man profile avatar"
                     >
-
                 </div>
-
             </div>
 
-
-            <!-- =================================================
-                 NAME
-            ================================================== -->
-
+            <!-- Title -->
             <h1 class="title">
-
-                <span>
-                    PANDA MAN
-                </span>
-
+                <span>Panda</span>
+                <span>Man</span>
             </h1>
 
+            <!-- Subtitle -->
+            <p class="subtitle">
+                Just vibing in panda mode 🐼
+            </p>
 
-            <!-- =================================================
-                 TYPING TEXT
-            ================================================== -->
-
-            <div class="subtitle">
-
-                <span id="typing"></span>
-
-                <span
-                    class="cursor"
-                    aria-hidden="true"
-                ></span>
-
+            <!-- Links -->
+            <div class="links">
+                <a href="https://github.com/PandaManDev" class="link" target="_blank">GitHub</a>
+                <a href="https://twitter.com/PandaManDev" class="link" target="_blank">Twitter / X</a>
+                <a href="https://discord.gg/7Jh8v5n" class="link" target="_blank">Discord</a>
             </div>
 
-
-            <!-- =================================================
-                 DIVIDER
-            ================================================== -->
-
-            <div class="divider">
-
-                <div class="divider-line"></div>
-
-                <div
-                    class="divider-panda"
-                    aria-hidden="true"
-                >
-                    🐼
-                </div>
-
-                <div class="divider-line"></div>
-
-            </div>
-
-
-            <!-- =================================================
-                 SOCIAL LINKS
-            ================================================== -->
-
-            <div class="social-links">
-
-
-                <!-- DISCORD -->
-
-                <a
-                    class="social-button discord-button"
-                    href="https://discord.com/users/1535113286675206214"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <span
-                        class="social-icon"
-                        aria-hidden="true"
-                    >
-                        ◉
-                    </span>
-
-
-                    <span class="social-text">
-
-                        <strong>
-                            DISCORD
-                        </strong>
-
-                        <small>
-                            Panda Man • Add Me
-                        </small>
-
-                    </span>
-
-
-                    <span
-                        class="arrow"
-                        aria-hidden="true"
-                    >
-                        ↗
-                    </span>
-
-                </a>
-
-
-                <!-- ROBLOX -->
-
-                <a
-                    class="social-button"
-                    href="https://www.roblox.com/users/9659149141/profile"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <span
-                        class="social-icon"
-                        aria-hidden="true"
-                    >
-                        ◈
-                    </span>
-
-
-                    <span class="social-text">
-
-                        <strong>
-                            ROBLOX
-                        </strong>
-
-                        <small>
-                            PandaManOfficial
-                        </small>
-
-                    </span>
-
-
-                    <span
-                        class="arrow"
-                        aria-hidden="true"
-                    >
-                        ↗
-                    </span>
-
-                </a>
-
-
-                <!-- PLEASE PROCEED -->
-
-                <a
-                    class="social-button"
-                    href="https://www.roblox.com/games/101511354146772/Please-Proceed"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <span
-                        class="social-icon"
-                        aria-hidden="true"
-                    >
-                        ▶
-                    </span>
-
-
-                    <span class="social-text">
-
-                        <strong>
-                            PLEASE PROCEED
-                        </strong>
-
-                        <small>
-                            Roblox Game • Play Now
-                        </small>
-
-                    </span>
-
-
-                    <span
-                        class="arrow"
-                        aria-hidden="true"
-                    >
-                        ↗
-                    </span>
-
-                </a>
-
-
-                <!-- INSTAGRAM -->
-
-                <a
-                    class="social-button"
-                    href="https://www.instagram.com/panda.man.official420/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <span
-                        class="social-icon"
-                        aria-hidden="true"
-                    >
-                        ◎
-                    </span>
-
-
-                    <span class="social-text">
-
-                        <strong>
-                            INSTAGRAM
-                        </strong>
-
-                        <small>
-                            @panda.man.official420
-                        </small>
-
-                    </span>
-
-
-                    <span
-                        class="arrow"
-                        aria-hidden="true"
-                    >
-                        ↗
-                    </span>
-
-                </a>
-
-
-                <!-- THREADS -->
-
-                <a
-                    class="social-button"
-                    href="https://www.threads.com/@panda.man.official420"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <span
-                        class="social-icon"
-                        aria-hidden="true"
-                    >
-                        @
-                    </span>
-
-
-                    <span class="social-text">
-
-                        <strong>
-                            THREADS
-                        </strong>
-
-                        <small>
-                            @panda.man.official420
-                        </small>
-
-                    </span>
-
-
-                    <span
-                        class="arrow"
-                        aria-hidden="true"
-                    >
-                        ↗
-                    </span>
-
-                </a>
-
-
-                <!-- TIKTOK -->
-
-                <a
-                    class="social-button"
-                    href="https://www.tiktok.com/@panda.man.official"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <span
-                        class="social-icon"
-                        aria-hidden="true"
-                    >
-                        ♪
-                    </span>
-
-
-                    <span class="social-text">
-
-                        <strong>
-                            TIKTOK
-                        </strong>
-
-                        <small>
-                            @panda.man.official
-                        </small>
-
-                    </span>
-
-
-                    <span
-                        class="arrow"
-                        aria-hidden="true"
-                    >
-                        ↗
-                    </span>
-
-                </a>
-
-
-                <!-- X -->
-
-                <a
-                    class="social-button"
-                    href="https://x.com/pandama58474678"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <span
-                        class="social-icon"
-                        aria-hidden="true"
-                    >
-                        𝕏
-                    </span>
-
-
-                    <span class="social-text">
-
-                        <strong>
-                            X
-                        </strong>
-
-                        <small>
-                            @pandama58474678
-                        </small>
-
-                    </span>
-
-
-                    <span
-                        class="arrow"
-                        aria-hidden="true"
-                    >
-                        ↗
-                    </span>
-
-                </a>
-
-
-                <!-- REDDIT -->
-
-                <a
-                    class="social-button"
-                    href="https://www.reddit.com/user/PandaManOfficial420/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <span
-                        class="social-icon"
-                        aria-hidden="true"
-                    >
-                        ●
-                    </span>
-
-
-                    <span class="social-text">
-
-                        <strong>
-                            REDDIT
-                        </strong>
-
-                        <small>
-                            u/PandaManOfficial420
-                        </small>
-
-                    </span>
-
-
-                    <span
-                        class="arrow"
-                        aria-hidden="true"
-                    >
-                        ↗
-                    </span>
-
-                </a>
-
-            </div>
-
-
-            <!-- =================================================
-                 FOOTER
-            ================================================== -->
-
-            <div class="footer">
-
-                stay chill • stay panda
-
-                <span
-                    class="footer-panda"
-                    aria-hidden="true"
-                >
-                    🐼
-                </span>
-
-            </div>
-
-        </section>
-
+        </div>
     </main>
 
-
-    <script>
-
-        /* =====================================================
-           TYPING EFFECT
-        ====================================================== */
-
-        const typingElement =
-            document.getElementById("typing");
-
-
-        const messages = [
-
-            "mentally afk",
-
-            "just vibing",
-
-            "do not disturb the panda",
-
-            "🐼 panda mode activated"
-
-        ];
-
-
-        let messageIndex = 0;
-
-        let characterIndex = 0;
-
-        let deleting = false;
-
-
-        function typeEffect() {
-
-            const currentMessage =
-                messages[messageIndex];
-
-
-            if (!deleting) {
-
-                typingElement.textContent =
-                    currentMessage.substring(
-                        0,
-                        characterIndex + 1
-                    );
-
-
-                characterIndex++;
-
-
-                if (
-                    characterIndex >=
-                    currentMessage.length
-                ) {
-
-                    deleting = true;
-
-
-                    setTimeout(
-                        typeEffect,
-                        1800
-                    );
-
-
-                    return;
-                }
-
-
-                setTimeout(
-                    typeEffect,
-                    65
-                );
-
-
-            } else {
-
-                typingElement.textContent =
-                    currentMessage.substring(
-                        0,
-                        characterIndex - 1
-                    );
-
-
-                characterIndex--;
-
-
-                if (
-                    characterIndex <= 0
-                ) {
-
-                    deleting = false;
-
-
-                    messageIndex =
-                        (
-                            messageIndex + 1
-                        ) %
-                        messages.length;
-
-
-                    setTimeout(
-                        typeEffect,
-                        450
-                    );
-
-
-                    return;
-                }
-
-
-                setTimeout(
-                    typeEffect,
-                    35
-                );
-
-            }
-
-        }
-
-
-        typeEffect();
-
-
-        /* =====================================================
-           CARD / BACKGROUND PARALLAX
-        ====================================================== */
-
-        const card =
-            document.getElementById(
-                "profile-card"
-            );
-
-
-        const background =
-            document.querySelector(
-                ".background img"
-            );
-
-
-        const isTouch =
-            window.matchMedia(
-                "(pointer: coarse)"
-            ).matches;
-
-
-        if (!isTouch) {
-
-            document.addEventListener(
-                "mousemove",
-                (event) => {
-
-                    const x =
-                        event.clientX /
-                        window.innerWidth -
-                        0.5;
-
-
-                    const y =
-                        event.clientY /
-                        window.innerHeight -
-                        0.5;
-
-
-                    card.style.transform =
-                        `perspective(1000px)
-                         rotateY(${x * 2}deg)
-                         rotateX(${y * -2}deg)`;
-
-
-                    background.style.transform =
-                        `scale(1.07)
-                         translate(
-                            ${x * -8}px,
-                            ${y * -8}px
-                         )`;
-
-                }
-            );
-
-
-            document.addEventListener(
-                "mouseleave",
-                () => {
-
-                    card.style.transform = "";
-
-                    background.style.transform =
-                        "scale(1.05)";
-
-                }
-            );
-
-        }
-
-
-        /* =====================================================
-           MOBILE TOUCH TILT
-        ====================================================== */
-
-        if (isTouch) {
-
-            let touchStartX = 0;
-
-            let touchStartY = 0;
-
-
-            document.addEventListener(
-                "touchstart",
-                (event) => {
-
-                    if (
-                        event.touches.length !== 1
-                    ) {
-                        return;
-                    }
-
-
-                    touchStartX =
-                        event.touches[0].clientX;
-
-
-                    touchStartY =
-                        event.touches[0].clientY;
-
-                },
-                {
-                    passive: true
-                }
-            );
-
-
-            document.addEventListener(
-                "touchmove",
-                (event) => {
-
-                    if (
-                        event.touches.length !== 1
-                    ) {
-                        return;
-                    }
-
-
-                    const x =
-                        event.touches[0].clientX -
-                        touchStartX;
-
-
-                    const y =
-                        event.touches[0].clientY -
-                        touchStartY;
-
-
-                    const rotateY =
-                        Math.max(
-                            -2,
-                            Math.min(
-                                2,
-                                x / 90
-                            )
-                        );
-
-
-                    const rotateX =
-                        Math.max(
-                            -2,
-                            Math.min(
-                                2,
-                                -y / 90
-                            )
-                        );
-
-
-                    card.style.transform =
-                        `perspective(1000px)
-                         rotateY(${rotateY}deg)
-                         rotateX(${rotateX}deg)`;
-
-                },
-                {
-                    passive: true
-                }
-            );
-
-
-            document.addEventListener(
-                "touchend",
-                () => {
-
-                    card.style.transform = "";
-
-                },
-                {
-                    passive: true
-                }
-            );
-
-        }
-
-
-        /* =====================================================
-           RANDOMIZE PARTICLES
-        ====================================================== */
-
-        document
-            .querySelectorAll(".particle")
-            .forEach(
-                (particle) => {
-
-                    particle.style.bottom =
-                        `${Math.random() * 100}%`;
-
-
-                    particle.style.opacity =
-                        `${0.15 +
-                        Math.random() * 0.55}`;
-
-
-                    particle.style.transform =
-                        `scale(
-                            ${0.5 +
-                            Math.random() * 1.6}
-                        )`;
-
-                }
-            );
-
-
-        /* =====================================================
-           PAGE TITLE
-        ====================================================== */
-
-        document.title =
-            "Panda Mans | Bio";
-
-    </script>
-
 </body>
+
 </html>
