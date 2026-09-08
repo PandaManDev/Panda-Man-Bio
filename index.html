@@ -12,10 +12,11 @@
 
     <meta
         name="description"
-        content="Panda Man 🐼 — just vibing in panda mode."
+        content="Panda Mans | Bio — just vibing in panda mode."
     >
 
-    <title>Panda Man 🐼</title>
+    <!-- Browser Tab Title -->
+    <title>Panda Mans | Bio</title>
 
 
     <!-- =========================================================
@@ -78,11 +79,8 @@
         body {
             min-height: 100vh;
             overflow-x: hidden;
-
             background: #020303;
-
             color: #fff;
-
             font-family: "Orbitron", sans-serif;
         }
 
@@ -98,17 +96,14 @@
 
 
         /* =========================================================
-           ANIMATED BANNER
+           ANIMATED BANNER BACKGROUND
         ========================================================== */
 
         .background {
             position: fixed;
             inset: 0;
-
             z-index: -20;
-
             overflow: hidden;
-
             background: #020505;
         }
 
@@ -141,7 +136,7 @@
 
 
         /* =========================================================
-           BANNER DARK OVERLAY
+           DARK CINEMATIC OVERLAY
         ========================================================== */
 
         .background::before {
@@ -166,7 +161,7 @@
 
 
         /* =========================================================
-           BANNER VIGNETTE
+           VIGNETTE
         ========================================================== */
 
         .background::after {
@@ -464,28 +459,24 @@
         .panda:nth-child(1) {
             left: 7%;
             top: 20%;
-
             animation-delay: -3s;
         }
 
         .panda:nth-child(2) {
             right: 8%;
             top: 15%;
-
             animation-delay: -8s;
         }
 
         .panda:nth-child(3) {
             left: 13%;
             bottom: 12%;
-
             animation-delay: -5s;
         }
 
         .panda:nth-child(4) {
             right: 14%;
             bottom: 18%;
-
             animation-delay: -10s;
         }
 
@@ -654,7 +645,7 @@
 
 
         /* =========================================================
-           CORNER DECORATIONS
+           CORNERS
         ========================================================== */
 
         .corner {
@@ -666,6 +657,7 @@
             opacity: .6;
         }
 
+
         .corner::before,
         .corner::after {
             content: "";
@@ -676,20 +668,24 @@
                 rgba(255, 255, 255, .6);
         }
 
+
         .corner::before {
             width: 100%;
             height: 1px;
         }
+
 
         .corner::after {
             width: 1px;
             height: 100%;
         }
 
+
         .corner-tl {
             top: 15px;
             left: 15px;
         }
+
 
         .corner-tr {
             top: 15px;
@@ -698,12 +694,14 @@
             transform: rotate(90deg);
         }
 
+
         .corner-bl {
             bottom: 15px;
             left: 15px;
 
             transform: rotate(-90deg);
         }
+
 
         .corner-br {
             bottom: 15px;
@@ -850,8 +848,6 @@
         }
 
 
-        /* Animated PFP */
-
         .logo img {
             width: 100%;
             height: 100%;
@@ -870,7 +866,7 @@
         }
 
 
-        /* Outer rotating ring */
+        /* Rotating PFP Ring */
 
         .logo::before {
             content: "";
@@ -893,7 +889,7 @@
         }
 
 
-        /* PFP glow */
+        /* PFP Glow */
 
         .logo::after {
             content: "";
@@ -1447,7 +1443,7 @@
 
 
         /* =========================================================
-           VERY SMALL PHONES
+           SMALL PHONES
         ========================================================== */
 
         @media (max-width: 370px) {
@@ -1543,7 +1539,7 @@
 
 
     <!-- =========================================================
-         GRAIN
+         FILM GRAIN
     ========================================================== -->
 
     <div
@@ -1562,11 +1558,8 @@
     >
 
         <div class="panda">🐼</div>
-
         <div class="panda">🐼</div>
-
         <div class="panda">🐼</div>
-
         <div class="panda">🐼</div>
 
     </div>
@@ -1680,11 +1673,8 @@
             <!-- Corner Decorations -->
 
             <div class="corner corner-tl"></div>
-
             <div class="corner corner-tr"></div>
-
             <div class="corner corner-bl"></div>
-
             <div class="corner corner-br"></div>
 
 
@@ -1735,7 +1725,7 @@
 
 
             <!-- =================================================
-                 TYPING TEXT
+                 TYPING SUBTITLE
             ================================================== -->
 
             <div class="subtitle">
@@ -2125,7 +2115,6 @@
                         characterIndex + 1
                     );
 
-
                 characterIndex++;
 
 
@@ -2136,12 +2125,10 @@
 
                     deleting = true;
 
-
                     setTimeout(
                         typeEffect,
                         1800
                     );
-
 
                     return;
                 }
@@ -2165,7 +2152,6 @@
                         characterIndex - 1
                     );
 
-
                 characterIndex--;
 
 
@@ -2175,19 +2161,16 @@
 
                     deleting = false;
 
-
                     messageIndex =
                         (
                             messageIndex + 1
                         ) %
                         messages.length;
 
-
                     setTimeout(
                         typeEffect,
                         450
                     );
-
 
                     return;
                 }
@@ -2245,14 +2228,13 @@
                         window.innerWidth -
                         .5;
 
-
                     const y =
                         event.clientY /
                         window.innerHeight -
                         .5;
 
 
-                    /* Card */
+                    /* Card Tilt */
 
                     card.style.transform =
                         `perspective(1000px)
@@ -2260,7 +2242,7 @@
                          rotateX(${y * -2}deg)`;
 
 
-                    /* Background */
+                    /* Background Movement */
 
                     background.style.transform =
                         `scale(1.07)
@@ -2286,27 +2268,15 @@
 
 
         /* =======================================================
-           TAB TITLE
+           KEEP TAB TITLE AS PANDA MANS | BIO
         ======================================================== */
 
-        const originalTitle =
-            document.title;
-
-
-        document.addEventListener(
-            "visibilitychange",
-            () => {
-
-                document.title =
-                    document.hidden
-                        ? "Come back 🐼"
-                        : originalTitle;
-            }
-        );
+        document.title =
+            "Panda Mans | Bio";
 
 
         /* =======================================================
-           RANDOM PARTICLES
+           RANDOM PARTICLE POSITIONS
         ======================================================== */
 
         document
@@ -2316,7 +2286,6 @@
 
                     particle.style.top =
                         `${Math.random() * 100}%`;
-
 
                     particle.style.opacity =
                         `${.2 + Math.random() * .5}`;
@@ -2342,7 +2311,6 @@
                     ) {
                         return;
                     }
-
 
                     touchStartX =
                         event.touches[0].clientX;
