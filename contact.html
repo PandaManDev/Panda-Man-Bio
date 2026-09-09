@@ -69,6 +69,7 @@
     @media (max-width:760px) { .shell { width:min(100% - 28px,560px); } header { padding:20px 0; } nav { gap:14px; font-size:.78rem; } main { grid-template-columns:1fr; gap:44px; padding:48px 0 70px; } h1 { font-size:clamp(3.5rem,18vw,6rem); } .form-card { padding:22px; } footer { flex-direction:column; gap:8px; } }
     @media (prefers-reduced-motion:reduce) { *, *::before, *::after { transition:none !important; } }
   </style>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <div class="loader" id="loader" role="status" aria-label="Loading Panda Man site"><div class="loader-inner"><div class="loader-mark"><img src="/panda.man420-avatar-1024.gif" alt="Panda Man profile picture"></div><div class="loader-copy"><span class="loader-label">Panda Man is loading</span><span class="loader-status">Bringing the good vibes online</span><span class="loader-bar" aria-hidden="true"><span></span></span></div></div></div>
@@ -82,7 +83,7 @@
     <footer><span>© 2026 Panda Man</span><a href="/">Back to home ↩</a></footer>
   </div>
   <script>
-    window.addEventListener('load', function () { setTimeout(function () { document.getElementById('loader').classList.add('is-hidden'); }, 1600); });
+    window.addEventListener('load', function () { setTimeout(function () { document.getElementById('loader').classList.add('is-hidden'); }, 3600); });
     document.getElementById('contact-form').addEventListener('submit', function (event) {
       event.preventDefault();
       const data = new FormData(event.currentTarget);
@@ -92,5 +93,5 @@
       document.getElementById('success').classList.add('visible');
     });
   </script>
-</body>
+<script src="/script.js"></script></body>
 </html>
