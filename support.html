@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support Access | Panda Man</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Panda Man home"><img src="/panda.man420-avatar-1024.gif" alt="Panda Man profile picture"><span>PANDA MAN</span></a>
+    <nav aria-label="Main navigation"></nav>
+  </header>
+  <main class="page-shell support-page">
+    <section class="support-hero">
+      <p class="eyebrow">PRIVATE SUPPORT ROOM</p>
+      <h1>Request a helping hand.</h1>
+      <p class="lede">This page is a safe place to ask for tech help. It never connects to or controls your computer.</p>
+    </section>
+    <section class="support-card" aria-labelledby="support-title">
+      <div class="support-lock" aria-hidden="true">LOCKED</div>
+      <h2 id="support-title">Enter the access phrase</h2>
+      <p class="muted">Use the private phrase to reveal the support request form.</p>
+      <form id="support-gate" class="support-form">
+        <label for="support-password">Access phrase</label>
+        <input id="support-password" name="password" type="password" autocomplete="off" required>
+        <button type="submit" class="button button-primary">Unlock request form</button>
+        <p id="support-error" class="form-error" role="alert" hidden>That phrase did not work. Try again.</p>
+      </form>
+      <div id="support-request" class="support-request" hidden>
+        <p class="eyebrow">REQUEST ONLY</p>
+        <h2>Tell me what needs fixing.</h2>
+        <p class="muted">Do not send passwords, private keys, payment details, or anything sensitive.</p>
+        <form id="support-form" class="support-form">
+          <label for="support-name">Your name</label>
+          <input id="support-name" name="name" required>
+          <label for="support-message">What do you need help with?</label>
+          <textarea id="support-message" name="message" rows="5" required></textarea>
+          <button type="submit" class="button button-primary">Prepare support request</button>
+          <p id="support-success" class="form-success" role="status" hidden>Your request is ready to send through your email app.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <script src="/script.js"></script>
+  <script>
+    const gate = document.querySelector('#support-gate');
+    const request = document.querySelector('#support-request');
+    const error = document.querySelector('#support-error');
+    gate?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (document.querySelector('#support-password').value.trim().toLowerCase() === 'b jacob') {
+        gate.hidden = true;
+        request.hidden = false;
+        document.querySelector('#support-name').focus();
+      } else {
+        error.hidden = false;
+      }
+    });
+    document.querySelector('#support-form')?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+      const subject = encodeURIComponent(`Panda Man support request from ${data.get('name')}`);
+      const body = encodeURIComponent(`Name: ${data.get('name')}\n\nRequest:\n${data.get('message')}`);
+      window.location.href = `mailto:pandamanofficial420@gmail.com?subject=${subject}&body=${body}`;
+      document.querySelector('#support-success').hidden = false;
+    });
+  </script>
+</body>
+</html>
