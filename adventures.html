@@ -31,6 +31,7 @@
     @keyframes loader-pulse { 50% { transform:scale(1.08); opacity:.65; } }
     @media (prefers-reduced-motion:reduce) { .loader-mark,.loader-mark::before,.loader-mark::after { animation:none; } }
   </style>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body><div class="loader" id="loader" role="status" aria-label="Loading Panda Man site"><div class="loader-inner"><div class="loader-mark"><img src="/panda.man420-avatar-1024.gif" alt="Panda Man profile picture"></div><div class="loader-copy"><span class="loader-label">Panda Man is loading</span><span class="loader-status">Bringing the good vibes online</span><span class="loader-bar" aria-hidden="true"><span></span></span></div></div></div><div class="backdrop" aria-hidden="true"></div><div class="grid" aria-hidden="true"></div><div class="shell">
   <header><a class="brand" href="/" aria-label="Panda Man home"><span class="brand-mark"><img src="/panda.man420-avatar-1024.gif" alt=""></span><span>PANDA MAN</span></a><nav aria-label="Main navigation"><a href="/">Home</a><a href="/about.html">About</a><a href="/contact.html">Contact</a></nav></header>
@@ -41,6 +42,6 @@
   </section></main>
   <footer><span>© 2026 Panda Man</span><a href="/">Back to home ↩</a></footer>
 </div><script>
-  window.addEventListener('load', function () { setTimeout(function () { document.getElementById('loader').classList.add('is-hidden'); }, 1600); });
-</script></body>
+  window.addEventListener('load', function () { setTimeout(function () { document.getElementById('loader').classList.add('is-hidden'); }, 3600); });
+</script><script src="/script.js"></script></body>
 </html>
