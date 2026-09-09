@@ -18,16 +18,10 @@
       <p class="lede">This page is a safe place to ask for tech help. It never connects to or controls your computer.</p>
     </section>
     <section class="support-card" aria-labelledby="support-title">
-      <div class="support-lock" aria-hidden="true">LOCKED</div>
-      <h2 id="support-title">Enter the access phrase</h2>
-      <p class="muted">Use the private phrase to reveal the support request form.</p>
-      <form id="support-gate" class="support-form">
-        <label for="support-password">Access phrase</label>
-        <input id="support-password" name="password" type="password" autocomplete="off" required>
-        <button type="submit" class="button button-primary">Unlock request form</button>
-        <p id="support-error" class="form-error" role="alert" hidden>That phrase did not work. Try again.</p>
-      </form>
-      <div id="support-request" class="support-request" hidden>
+      <div class="support-lock" aria-hidden="true">REQUEST ONLY</div>
+      <h2 id="support-title">Tell me what needs fixing.</h2>
+      <p class="muted">Send a request for tech help. This page never connects to or controls your computer.</p>
+      <div id="support-request" class="support-request">
         <p class="eyebrow">REQUEST ONLY</p>
         <h2>Tell me what needs fixing.</h2>
         <p class="muted">Do not send passwords, private keys, payment details, or anything sensitive.</p>
@@ -45,28 +39,8 @@
   <script src="/script.js"></script>
   <script>
     (() => {
-      const gate = document.querySelector('#support-gate');
-      const password = document.querySelector('#support-password');
-      const request = document.querySelector('#support-request');
-      const error = document.querySelector('#support-error');
       const supportForm = document.querySelector('#support-form');
       const success = document.querySelector('#support-success');
-
-      if (!gate || !password || !request || !error) return;
-
-      gate.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const isValid = password.value.trim().toLowerCase() === 'b jacob';
-        error.hidden = isValid;
-        if (!isValid) {
-          password.focus();
-          password.select();
-          return;
-        }
-        gate.hidden = true;
-        request.hidden = false;
-        document.querySelector('#support-name')?.focus();
-      });
 
       supportForm?.addEventListener('submit', (event) => {
         event.preventDefault();
