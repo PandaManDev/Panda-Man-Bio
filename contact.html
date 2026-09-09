@@ -48,22 +48,30 @@
     .success.visible { display:block; }
     footer { display:flex; justify-content:space-between; gap:20px; padding:0 0 28px; color:#737b74; font-size:.78rem; }
     :focus-visible { outline:2px solid var(--lime); outline-offset:4px; }
-    .loader { position:fixed; inset:0; z-index:20; display:grid; place-items:center; background:var(--deep); transition:opacity .6s ease,visibility .6s ease; }
-    .loader.is-hidden { opacity:0; visibility:hidden; pointer-events:none; }
-    .loader-inner { display:grid; justify-items:center; gap:16px; }
-    .loader-mark { position:relative; width:78px; height:78px; display:grid; place-items:center; border:1px solid rgba(198,243,107,.35); border-radius:50%; color:var(--lime); font-family:'Space Grotesk',sans-serif; font-size:1.25rem; font-weight:700; animation:loader-breathe 1.4s ease-in-out infinite; }
-    .loader-mark::before,.loader-mark::after { content:''; position:absolute; inset:-9px; border:1px solid rgba(198,243,107,.32); border-radius:50%; animation:loader-orbit 2s linear infinite; }
-    .loader-mark::after { inset:-18px; border-color:rgba(242,245,241,.14); animation-direction:reverse; animation-duration:3s; }
-    .loader-label { color:var(--muted); font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; }
-    @keyframes loader-breathe { 50% { transform:scale(1.08); box-shadow:0 0 35px rgba(198,243,107,.18); } }
-    @keyframes loader-orbit { to { transform:rotate(360deg); } }
+  .loader { position:fixed; inset:0; z-index:20; display:grid; place-items:center; overflow:hidden; background:var(--deep); transition:opacity .7s ease,visibility .7s ease; }
+  .loader.is-hidden { opacity:0; visibility:hidden; pointer-events:none; }
+  .loader::before { content:''; position:absolute; width:420px; height:420px; border:1px solid rgba(198,243,107,.08); border-radius:50%; box-shadow:0 0 0 55px rgba(198,243,107,.025),0 0 0 110px rgba(198,243,107,.018); animation:loader-pulse 3s ease-in-out infinite; }
+  .loader-inner { position:relative; display:grid; justify-items:center; gap:18px; }
+  .loader-mark { position:relative; width:116px; height:116px; display:grid; place-items:center; border:1px solid rgba(198,243,107,.5); border-radius:50%; background:rgba(17,21,18,.75); box-shadow:0 0 45px rgba(198,243,107,.16); animation:loader-breathe 2s ease-in-out infinite; }
+  .loader-mark::before { content:''; position:absolute; inset:-10px; border:1px solid rgba(198,243,107,.5); border-right-color:transparent; border-bottom-color:transparent; border-radius:50%; animation:loader-orbit 1.4s linear infinite; }
+  .loader-mark::after { content:''; position:absolute; inset:-21px; border:1px solid rgba(242,245,241,.18); border-left-color:transparent; border-radius:50%; animation:loader-orbit 3s linear infinite reverse; }
+  .loader-mark img { width:82px; height:82px; border-radius:50%; object-fit:cover; }
+  .loader-copy { display:grid; justify-items:center; gap:8px; }
+  .loader-label { color:var(--ink); font-family:'Space Grotesk',sans-serif; font-size:.82rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+  .loader-status { color:var(--muted); font-size:.7rem; letter-spacing:.08em; }
+  .loader-bar { width:150px; height:3px; overflow:hidden; border-radius:99px; background:rgba(242,245,241,.12); }
+  .loader-bar span { display:block; width:45%; height:100%; border-radius:inherit; background:var(--lime); animation:loader-progress 1.2s ease-in-out infinite; }
+  @keyframes loader-breathe { 50% { transform:scale(1.04); } }
+  @keyframes loader-orbit { to { transform:rotate(360deg); } }
+  @keyframes loader-progress { 0% { transform:translateX(-100%); } 100% { transform:translateX(340%); } }
+  @keyframes loader-pulse { 50% { transform:scale(1.08); opacity:.65; } }
     @media (prefers-reduced-motion:reduce) { .loader-mark,.loader-mark::before,.loader-mark::after { animation:none; } }
     @media (max-width:760px) { .shell { width:min(100% - 28px,560px); } header { padding:20px 0; } nav { gap:14px; font-size:.78rem; } main { grid-template-columns:1fr; gap:44px; padding:48px 0 70px; } h1 { font-size:clamp(3.5rem,18vw,6rem); } .form-card { padding:22px; } footer { flex-direction:column; gap:8px; } }
     @media (prefers-reduced-motion:reduce) { *, *::before, *::after { transition:none !important; } }
   </style>
 </head>
 <body>
-  <div class="loader" id="loader" role="status" aria-label="Loading Panda Man site"><div class="loader-inner"><div class="loader-mark" aria-hidden="true">P</div><span class="loader-label">Loading good vibes</span></div></div>
+  <div class="loader" id="loader" role="status" aria-label="Loading Panda Man site"><div class="loader-inner"><div class="loader-mark"><img src="/panda.man420-avatar-1024.gif" alt="Panda Man profile picture"></div><div class="loader-copy"><span class="loader-label">Panda Man is loading</span><span class="loader-status">Bringing the good vibes online</span><span class="loader-bar" aria-hidden="true"><span></span></span></div></div></div>
   <div class="backdrop" aria-hidden="true"></div><div class="grid" aria-hidden="true"></div>
   <div class="shell">
     <header><a class="brand" href="/" aria-label="Panda Man home"><span class="brand-mark"><img src="/panda.man420-avatar-1024.gif" alt=""></span><span>PANDA MAN</span></a><nav aria-label="Main navigation"><a href="/">Home</a><a href="/adventures.html">Adventures</a><a href="/about.html">About</a><a href="/contact.html" aria-current="page">Contact</a></nav></header>
